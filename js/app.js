@@ -2,6 +2,7 @@ import { store } from './state.js';
 import { speakText, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js';
 import { initPathModule } from './modules/path.js';
 import { initBriefModule } from './modules/brief.js';
+import { initLexiconModule } from './modules/lexicon.js';
 
 let islandTimer = null;
 
@@ -229,15 +230,17 @@ async function bootstrap() {
   document.getElementById('themeToggleBtn').onclick = () => { store.toggleTheme(); notifyIsland(`Mode ${store.state.theme === 'dark' ? 'Dark' : 'Light'} aktif`); };
   document.getElementById('sheetBackdrop').onclick = (e) => { if (e.target.id === 'sheetBackdrop') closeSheet(); };
 
-  const [levelsData, briefsData, scenariosData] = await Promise.all([
+  const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
     fetch('./data/levels.json').then((r) => r.json()),
     fetch('./data/briefs.json').then((r) => r.json()),
-    fetch('./data/scenarios.json').then((r) => r.json())
+    fetch('./data/scenarios.json').then((r) => r.json()),
+    fetch('./data/dictionary.json').then((r) => r.json())
   ]);
 
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);
   initSpeakStudio(scenariosData);
+  initLexiconModule(dictData, notifyIsland, openSheet);
   window.addEventListener('begin:statechange', renderDashboard);
   renderDashboard();
 }

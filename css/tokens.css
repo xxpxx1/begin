@@ -114,3 +114,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+
+.tab-bar { grid-template-columns: repeat(5, 1fr) !important; }
+.tab-btn { font-size: 10px !important; }

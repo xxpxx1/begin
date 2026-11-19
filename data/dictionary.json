@@ -1,0 +1,109 @@
+{
+  "words": [
+    {
+      "word": "breakthrough", "pos": "noun", "level": "B2", "topic": "Tech & Progress",
+      "phonetic": "/ˈbreɪkθruː/", "meaning": "terobosan besar / penemuan penting",
+      "example": "This lightweight app is a major breakthrough for offline learning.",
+      "collocations": ["major breakthrough", "scientific breakthrough", "achieve a breakthrough"],
+      "wordFamily": ["break through (verb)"]
+    },
+    {
+      "word": "habit", "pos": "noun", "level": "A1", "topic": "Daily Life",
+      "phonetic": "/ˈhæbɪt/", "meaning": "kebiasaan / rutinitas",
+      "example": "Reading for five minutes every morning is a healthy habit.",
+      "collocations": ["build a habit", "break a habit", "daily habit"],
+      "wordFamily": ["habitual (adj)", "habitually (adv)"]
+    },
+    {
+      "word": "perspective", "pos": "noun", "level": "B1", "topic": "Mindset",
+      "phonetic": "/pərˈspektɪv/", "meaning": "sudut pandang / cara melihat masalah",
+      "example": "Traveling abroad gave her a fresh perspective on life.",
+      "collocations": ["fresh perspective", "from my perspective", "broaden perspective"],
+      "wordFamily": ["perspectively (adv)"]
+    },
+    {
+      "word": "appliance", "pos": "noun", "level": "B1", "topic": "Daily Objects",
+      "phonetic": "/əˈplaɪəns/", "meaning": "peralatan rumah tangga (elektronik)",
+      "example": "Modern kitchen appliances save a lot of time.",
+      "collocations": ["home appliance", "electrical appliance", "kitchen appliance"],
+      "wordFamily": ["apply (verb)", "applicable (adj)"]
+    },
+    {
+      "word": "accomplish", "pos": "verb", "level": "B1", "topic": "Actions",
+      "phonetic": "/əˈkɑːmplɪʃ/", "meaning": "menyelesaikan / mencapai dengan sukses",
+      "example": "You can accomplish a lot by focusing on one task at a time.",
+      "collocations": ["accomplish a goal", "accomplish a mission", "easily accomplished"],
+      "wordFamily": ["accomplishment (noun)", "accomplished (adj)"]
+    },
+    {
+      "word": "adapt", "pos": "verb", "level": "B1", "topic": "Growth",
+      "phonetic": "/əˈdæpt/", "meaning": "menyesuaikan diri / beradaptasi",
+      "example": "Good developers adapt quickly to new tools and workflows.",
+      "collocations": ["adapt to change", "quickly adapt", "adapt a strategy"],
+      "wordFamily": ["adaptation (noun)", "adaptable (adj)"]
+    },
+    {
+      "word": "clarify", "pos": "verb", "level": "B2", "topic": "Communication",
+      "phonetic": "/ˈklærəfaɪ/", "meaning": "memperjelas / meluruskan maksud",
+      "example": "Could you clarify what you meant by that last point?",
+      "collocations": ["clarify a point", "help clarify", "seek to clarify"],
+      "wordFamily": ["clarity (noun)", "clear (adj)", "clearly (adv)"]
+    },
+    {
+      "word": "resilient", "pos": "adjective", "level": "B2", "topic": "Character",
+      "phonetic": "/rɪˈzɪliənt/", "meaning": "tangguh / cepat bangkit dari kesulitan",
+      "example": "She remained calm and resilient despite the unexpected setback.",
+      "collocations": ["remarkably resilient", "resilient system", "resilient mindset"],
+      "wordFamily": ["resilience (noun)", "resiliently (adv)"]
+    },
+    {
+      "word": "concise", "pos": "adjective", "level": "B2", "topic": "Communication",
+      "phonetic": "/kənˈsaɪs/", "meaning": "ringkas, padat, dan jelas",
+      "example": "Keep your summary concise so everyone can read it in a minute.",
+      "collocations": ["clear and concise", "concise explanation", "concise summary"],
+      "wordFamily": ["conciseness (noun)", "concisely (adv)"]
+    },
+    {
+      "word": "reliable", "pos": "adjective", "level": "A2", "topic": "Character & Tech",
+      "phonetic": "/rɪˈlaɪəbl/", "meaning": "dapat diandalkan / konsisten",
+      "example": "Offline storage makes the app reliable even without signal.",
+      "collocations": ["reliable source", "highly reliable", "reliable connection"],
+      "wordFamily": ["rely (verb)", "reliability (noun)", "reliably (adv)"]
+    },
+    {
+      "word": "curious", "pos": "adjective", "level": "A2", "topic": "Character",
+      "phonetic": "/ˈkjʊriəs/", "meaning": "penasaran / ingin tahu",
+      "example": "Stay curious and never stop asking how things work under the hood.",
+      "collocations": ["genuinely curious", "curious mind", "curious about"],
+      "wordFamily": ["curiosity (noun)", "curiously (adv)"]
+    },
+    {
+      "word": "effortlessly", "pos": "adverb", "level": "B2", "topic": "Manner",
+      "phonetic": "/ˈefərtləsli/", "meaning": "dengan mudah tanpa terasa berat",
+      "example": "With daily practice, natural phrases will come to you effortlessly.",
+      "collocations": ["glide effortlessly", "flow effortlessly", "seemingly effortlessly"],
+      "wordFamily": ["effort (noun)", "effortless (adj)"]
+    },
+    {
+      "word": "gradually", "pos": "adverb", "level": "B1", "topic": "Time & Process",
+      "phonetic": "/ˈɡrædʒuəli/", "meaning": "secara bertahap / perlahan-lahan",
+      "example": "Your listening comprehension improves gradually every single week.",
+      "collocations": ["gradually improve", "gradually shift", "gradually increase"],
+      "wordFamily": ["gradual (adj)"]
+    },
+    {
+      "word": "figure out", "pos": "phrasal verb", "level": "B1", "topic": "Problem Solving",
+      "phonetic": "/ˈfɪɡjər aʊt/", "meaning": "menemukan solusi / memahami cara kerja",
+      "example": "It took ten minutes to figure out why the cache was not updating.",
+      "collocations": ["figure out how", "figure out a way", "finally figure out"],
+      "wordFamily": ["figure (noun/verb)"]
+    },
+    {
+      "word": "bring up", "pos": "phrasal verb", "level": "B1", "topic": "Conversation",
+      "phonetic": "/brɪŋ ʌp/", "meaning": "mengangkat topik / mulai membahas",
+      "example": "That is a great question—I am glad you brought it up.",
+      "collocations": ["bring up a topic", "bring up an issue", "glad you brought it up"],
+      "wordFamily": ["bring (verb)"]
+    }
+  ]
+}
