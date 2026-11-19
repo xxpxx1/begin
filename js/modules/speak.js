@@ -1,13 +1,42 @@
-export function speakText(text, rate = 1.0, onEnd = null) {
+import { store } from '../state.js';
+
+export function getEnglishVoices() {
+  if (!('speechSynthesis' in window)) return [];
+  const all = window.speechSynthesis.getVoices();
+  const enVoices = all.filter((v) => v.lang.toLowerCase().startsWith('en'));
+  return enVoices.length ? enVoices : all;
+}
+
+export function formatAccentTag(lang) {
+  const code = (lang || '').toUpperCase();
+  if (code.includes('US')) return '🇺🇸 US';
+  if (code.includes('GB') || code.includes('UK')) return '🇬🇧 UK';
+  if (code.includes('AU')) return '🇦🇺 AU';
+  if (code.includes('IN')) return '🇮🇳 IN';
+  if (code.includes('CA')) return '🇨🇦 CA';
+  return `🌐 ${code || 'EN'}`;
+}
+
+export function speakText(text, rate = 1.0, onEnd = null, overrideVoiceURI = null) {
   if (!('speechSynthesis' in window)) { if (onEnd) onEnd(); return; }
   window.speechSynthesis.cancel();
   const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = 'en-US';
   utter.rate = rate;
-  const voices = window.speechSynthesis.getVoices();
-  const preferred = voices.find((v) => v.lang.includes('en-US') && v.name.includes('Samantha'))
-    || voices.find((v) => v.lang.includes('en-US')) || voices[0];
-  if (preferred) utter.voice = preferred;
+
+  const voices = getEnglishVoices();
+  const targetURI = overrideVoiceURI !== null ? overrideVoiceURI : store.state.voiceURI;
+  const chosen = voices.find((v) => v.voiceURI === targetURI)
+    || voices.find((v) => v.lang.includes('en-US') && v.name.includes('Samantha'))
+    || voices.find((v) => v.lang.includes('en-US'))
+    || voices[0];
+
+  if (chosen) {
+    utter.voice = chosen;
+    utter.lang = chosen.lang;
+  } else {
+    utter.lang = 'en-US';
+  }
+
   if (onEnd) utter.onend = onEnd;
   window.speechSynthesis.speak(utter);
 }
@@ -30,7 +59,7 @@ export function evaluateSpeech(targetSentence, spokenTranscript) {
 export function startRecognition({ onStart, onResult, onError, onEnd }) {
   const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
   if (!SpeechRec) {
-    if (onError) onError('Browser ini tidak mendukung Web Speech API. Gunakan tombol Simulasi.');
+    if (onError) onError('Browser ini tidak mendukung Web Speech API. Gunakan tombol Demo.');
     return null;
   }
   const recognition = new SpeechRec();

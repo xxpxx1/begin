@@ -4,6 +4,8 @@ const todayStr = () => new Date().toISOString().slice(0, 10);
 const defaultState = () => ({
   theme: 'light',
   currentLevel: 'A1',
+  voiceURI: '',
+  voiceName: 'Auto (Default)',
   xp: 120,
   streakDays: 3,
   lastActiveDate: todayStr(),
@@ -47,6 +49,11 @@ class Store {
     this.save();
   }
   setLevel(level) { this.state.currentLevel = level; this.save(); }
+  setVoice(voiceURI, voiceName) {
+    this.state.voiceURI = voiceURI;
+    this.state.voiceName = voiceName;
+    this.save();
+  }
   incrementRing(type, amount = 1, xpBonus = 15) {
     this.checkDailyReset();
     if (this.state.rings[type]) this.state.rings[type].current += amount;

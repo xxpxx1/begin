@@ -1,5 +1,5 @@
 import { store } from './state.js';
-import { speakText, startRecognition, evaluateSpeech } from './modules/speak.js';
+import { speakText, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js';
 import { initPathModule } from './modules/path.js';
 import { initBriefModule } from './modules/brief.js';
 
@@ -29,6 +29,81 @@ function openSheet(html) {
 
 function closeSheet() {
   document.getElementById('sheetBackdrop').classList.remove('open');
+}
+
+function openVoicePicker() {
+  let accentFilter = 'ALL';
+
+  const renderSheet = () => {
+    const voices = getEnglishVoices();
+    const filtered = voices.filter((v) => {
+      if (accentFilter === 'ALL') return true;
+      return v.lang.toUpperCase().includes(accentFilter);
+    });
+
+    openSheet(`
+      <div class="card-label" style="color:var(--ios-blue);">Voice & Accent Studio</div>
+      <h3 style="font-size:20px;margin:2px 0 4px;">Pilih Suara Native</h3>
+      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
+        Aktif: <strong>${store.state.voiceName || 'Auto (Default)'}</strong>
+      </p>
+
+      <div class="level-pills" style="margin-bottom:12px;">
+        ${['ALL', 'US', 'GB', 'AU'].map((tag) => `
+          <button class="level-pill ${accentFilter === tag ? 'active' : ''}" data-vfilter="${tag}">
+            ${tag === 'ALL' ? 'Semua' : tag === 'US' ? '🇺🇸 US' : tag === 'GB' ? '🇬🇧 UK' : '🇦🇺 AU'}
+          </button>`).join('')}
+      </div>
+
+      <div style="max-height:46dvh;overflow-y:auto;display:flex;flex-direction:column;gap:8px;">
+        ${filtered.length ? filtered.map((v) => {
+          const isSelected = store.state.voiceURI === v.voiceURI;
+          const cleanName = v.name.replace(/Microsoft |Google |Android /g, '');
+          return `
+          <div class="ios-card" style="margin:0;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border:${isSelected ? '1.5px solid var(--ios-blue)' : '0.5px solid var(--separator)'};">
+            <div style="flex:1;cursor:pointer;" data-select-uri="${v.voiceURI}" data-select-name="${cleanName}">
+              <div style="font-weight:700;font-size:14px;">
+                ${isSelected ? '✓ ' : ''}${cleanName}
+              </div>
+              <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">
+                ${formatAccentTag(v.lang)} · ${v.localService ? 'Offline Ready' : 'Online'}
+              </div>
+            </div>
+            <button class="btn-secondary" style="padding:6px 10px;font-size:12px;" data-preview-uri="${v.voiceURI}">🔊 Tes</button>
+          </div>`;
+        }).join('') : `
+          <div class="ios-card" style="text-align:center;color:var(--text-secondary);font-size:13px;">
+            Daftar suara sedang dimuat oleh sistem.<br/>
+            <button class="btn-secondary" id="reloadVoicesBtn" style="margin-top:10px;">↻ Muat Ulang Suara</button>
+          </div>`}
+      </div>
+    `);
+
+    document.querySelectorAll('[data-vfilter]').forEach((btn) => {
+      btn.onclick = () => { accentFilter = btn.dataset.vfilter; renderSheet(); };
+    });
+
+    document.querySelectorAll('[data-preview-uri]').forEach((btn) => {
+      btn.onclick = (e) => {
+        e.stopPropagation();
+        speakText("Hello! Let's practice English fluency together.", 1.0, null, btn.dataset.previewUri);
+      };
+    });
+
+    document.querySelectorAll('[data-select-uri]').forEach((el) => {
+      el.onclick = () => {
+        store.setVoice(el.dataset.selectUri, el.dataset.selectName);
+        speakText("Voice updated.", 1.0, null, el.dataset.selectUri);
+        notifyIsland(`Suara: ${el.dataset.selectName}`);
+        renderSheet();
+      };
+    });
+
+    const reloadBtn = document.getElementById('reloadVoicesBtn');
+    if (reloadBtn) reloadBtn.onclick = renderSheet;
+  };
+
+  renderSheet();
 }
 
 function renderDashboard() {
@@ -139,6 +214,7 @@ function initSpeakStudio(scenariosData) {
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
+  if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   const switchTab = (tabName) => {
     document.querySelectorAll('.tab-view').forEach((v) => v.classList.remove('active'));
@@ -149,7 +225,8 @@ async function bootstrap() {
 
   document.querySelectorAll('.tab-btn').forEach((btn) => { btn.onclick = () => switchTab(btn.dataset.tab); });
   document.getElementById('continueLearningBtn').onclick = () => switchTab('path');
-  document.getElementById('themeToggleBtn').onclick = () => { store.toggleTheme(); notifyIsland(`Mode ${store.state.theme === 'dark' ? 'True Black' : 'Light'} aktif`); };
+  document.getElementById('voicePickerBtn').onclick = openVoicePicker;
+  document.getElementById('themeToggleBtn').onclick = () => { store.toggleTheme(); notifyIsland(`Mode ${store.state.theme === 'dark' ? 'Dark' : 'Light'} aktif`); };
   document.getElementById('sheetBackdrop').onclick = (e) => { if (e.target.id === 'sheetBackdrop') closeSheet(); };
 
   const [levelsData, briefsData, scenariosData] = await Promise.all([
