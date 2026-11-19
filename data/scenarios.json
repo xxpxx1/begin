@@ -1,11 +1,182 @@
 {
   "shadowing": [
-    { "id": "sh-1", "level": "A2", "context": "Casual Networking", "sentence": "It is great to finally put a face to the name", "tip": "Sambungkan 'great to' terdengar halus seperti 'greato'." },
-    { "id": "sh-2", "level": "B1", "context": "Tech Standup", "sentence": "I ran into a minor bug but I have a solid workaround", "tip": "Tekankan kata 'minor bug' dan 'solid workaround'." },
-    { "id": "sh-3", "level": "B2", "context": "Podcast Insight", "sentence": "Clarity of thought always precedes clarity of expression", "tip": "Beri jeda sepersekian detik setelah kata 'thought'." }
+    {
+      "id": "sh-1",
+      "level": "A1",
+      "context": "Cafe Order",
+      "sentence": "Could I get an iced oat latte with less ice please",
+      "tip": "Sambungkan 'could I' menjadi 'kudai'."
+    },
+    {
+      "id": "sh-2",
+      "level": "A1",
+      "context": "Greeting",
+      "sentence": "It is really nice to finally meet you in person",
+      "tip": "Tekankan kata 'really nice' dan 'in person'."
+    },
+    {
+      "id": "sh-3",
+      "level": "A1",
+      "context": "Directions",
+      "sentence": "Excuse me could you tell me how to get to the station",
+      "tip": "Naikkan nada sedikit di akhir kalimat tanya."
+    },
+    {
+      "id": "sh-4",
+      "level": "A2",
+      "context": "Weekend",
+      "sentence": "I was thinking of going for a morning run tomorrow",
+      "tip": "Ucapkan 'thinking of' mengalir tanpa jeda."
+    },
+    {
+      "id": "sh-5",
+      "level": "A2",
+      "context": "Restaurant",
+      "sentence": "Everything looks delicious what do you recommend here",
+      "tip": "Beri jeda tipis setelah kata 'delicious'."
+    },
+    {
+      "id": "sh-6",
+      "level": "A2",
+      "context": "Routine",
+      "sentence": "I usually spend fifteen minutes reviewing new words",
+      "tip": "Tekankan angka 'fifteen minutes'."
+    },
+    {
+      "id": "sh-7",
+      "level": "B1",
+      "context": "Tech Standup",
+      "sentence": "I ran into a minor bug but I have a solid workaround",
+      "tip": "Tekankan 'minor bug' dan 'solid workaround'."
+    },
+    {
+      "id": "sh-8",
+      "level": "B1",
+      "context": "Networking",
+      "sentence": "It is great to finally put a face to the name",
+      "tip": "Sambungkan 'great to' terdengar halus."
+    },
+    {
+      "id": "sh-9",
+      "level": "B1",
+      "context": "Productivity",
+      "sentence": "Consistency matters far more than intensity when learning",
+      "tip": "Tekankan 'consistency' dan 'intensity'."
+    },
+    {
+      "id": "sh-10",
+      "level": "B1",
+      "context": "Sports Talk",
+      "sentence": "They were down by two goals yet pulled off a comeback",
+      "tip": "Ucapkan penuh energi pada 'pulled off a comeback'."
+    },
+    {
+      "id": "sh-11",
+      "level": "B1",
+      "context": "Travel",
+      "sentence": "We missed our connecting flight due to heavy rain",
+      "tip": "Sambungkan 'due to' secara natural."
+    },
+    {
+      "id": "sh-12",
+      "level": "B2",
+      "context": "Architecture",
+      "sentence": "From a long term perspective this system scales cleanly",
+      "tip": "Beri jeda sepersekian detik setelah 'perspective'."
+    },
+    {
+      "id": "sh-13",
+      "level": "B2",
+      "context": "Podcast",
+      "sentence": "Clarity of thought always precedes clarity of expression",
+      "tip": "Jeda singkat setelah kata 'thought' pertama."
+    },
+    {
+      "id": "sh-14",
+      "level": "B2",
+      "context": "Negotiation",
+      "sentence": "While that works short term it may create bottlenecks",
+      "tip": "Tekankan kontras 'short term' vs 'bottlenecks'."
+    },
+    {
+      "id": "sh-15",
+      "level": "B2",
+      "context": "Mindset",
+      "sentence": "What separates resilient people is how they handle friction",
+      "tip": "Tekankan kata 'resilient' dan 'friction'."
+    },
+    {
+      "id": "sh-16",
+      "level": "B2",
+      "context": "Feedback",
+      "sentence": "I appreciate your honesty and will refine the design",
+      "tip": "Sambungkan 'appreciate your' secara halus."
+    },
+    {
+      "id": "sh-17",
+      "level": "C1",
+      "context": "Strategy",
+      "sentence": "Rather than jumping to conclusions let us examine the evidence",
+      "tip": "Ritme tenang dan berwibawa."
+    },
+    {
+      "id": "sh-18",
+      "level": "C1",
+      "context": "Leadership",
+      "sentence": "Subtle consistent habits compound into remarkable outcomes",
+      "tip": "Tekankan kata 'compound' dan 'remarkable'."
+    },
+    {
+      "id": "sh-19",
+      "level": "C1",
+      "context": "Philosophy",
+      "sentence": "True mastery lies in making complex ideas feel effortless",
+      "tip": "Turunkan nada dengan mantap di 'effortless'."
+    },
+    {
+      "id": "sh-20",
+      "level": "C1",
+      "context": "Debate",
+      "sentence": "That is a compelling point though I see it differently",
+      "tip": "Tekankan 'compelling' sebelum transisi 'though'."
+    }
   ],
   "roleplays": [
-    { "id": "rp-1", "title": "Specialty Coffee Order", "aiPrompt": "Hi there! Welcome to Begin Roasters. What can I get started for you today?", "suggestedReply": "Hi could I get an oat milk latte with less ice please" },
-    { "id": "rp-2", "title": "Frontend & Security Interview", "aiPrompt": "Tell me briefly why you prefer building Progressive Web Apps over heavy native binaries.", "suggestedReply": "Because web apps load instantly work offline and run across every device" }
+    {
+      "id": "rp-1",
+      "title": "Specialty Coffee Order",
+      "aiPrompt": "Hi! Welcome to Begin Roasters. What can I get started for you today?",
+      "suggestedReply": "Hi could I get an iced americano with a splash of oat milk please"
+    },
+    {
+      "id": "rp-2",
+      "title": "Tech & PWA Interview",
+      "aiPrompt": "Why do you prefer building offline-first web apps over heavy binaries?",
+      "suggestedReply": "Because web apps load instantly work offline and run across every device"
+    },
+    {
+      "id": "rp-3",
+      "title": "Post-Match Sports Chat",
+      "aiPrompt": "What a match! How did they manage to win after trailing at halftime?",
+      "suggestedReply": "They stayed calm adjusted their tactics and pulled off an incredible comeback"
+    },
+    {
+      "id": "rp-4",
+      "title": "Podcast Guest Intro",
+      "aiPrompt": "Thanks for joining the show! What habit changed your life the most?",
+      "suggestedReply": "Writing down three clear priorities every morning before checking my phone"
+    },
+    {
+      "id": "rp-5",
+      "title": "Hotel Late Check-in",
+      "aiPrompt": "Good evening! Checking in? Do you have any room preferences tonight?",
+      "suggestedReply": "Yes I have a reservation and would love a quiet room on a higher floor"
+    },
+    {
+      "id": "rp-6",
+      "title": "Project Trade-off Meeting",
+      "aiPrompt": "Should we ship the prototype this Friday or wait another two weeks?",
+      "suggestedReply": "Let us ship the core prototype Friday gather feedback and iterate quickly"
+    }
   ]
 }

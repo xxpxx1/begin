@@ -1,30 +1,332 @@
 {
   "briefs": [
     {
-      "id": "brief-01", "category": "Technology", "readTime": "2 min read",
-      "title": "Why Minimalist Phones Are Making a Quiet Comeback",
+      "id": "brief-01",
+      "category": "Podcast \u00b7 Neuroscience",
+      "readTime": "4 min read",
+      "title": "Huberman Lab Insight: Why Dopamine Controls Your Drive to Learn",
       "paragraphs": [
-        "Across major cities, young professionals are increasingly reluctant to spend every waking hour glued to endless social feeds.",
-        "Instead of upgrading to larger screens, many are adopting minimalist devices or monochrome interfaces to curb digital fatigue and reclaim deep focus."
+        "On popular neuroscience podcasts, Dr. Andrew Huberman frequently explains that dopamine is not merely a molecule of pleasure\u2014it is the primary currency of motivation, craving, and sustained pursuit.",
+        "When you check social media every few minutes, your brain experiences rapid, effortless spikes in dopamine. Over time, this constant stimulation lowers your baseline, making deep activities like reading or practicing a new language feel unusually tedious.",
+        "The practical antidote is remarkably simple: attach rewards to effort rather than passive consumption. By celebrating small wins\u2014such as completing a five-minute speaking drill\u2014you train your nervous system to enjoy the friction of learning itself.",
+        "Instead of waiting to feel motivated before starting, initiating a tiny two-minute session triggers momentum, allowing dopamine to rise naturally as your focus locks in."
       ],
       "glossary": {
-        "reluctant": { "phonetic": "/rɪˈlʌktənt/", "pos": "adjective", "meaning": "enggan / ragu-ragu", "example": "She was reluctant to share her password." },
-        "adopting": { "phonetic": "/əˈdɒptɪŋ/", "pos": "verb", "meaning": "mulai menerapkan / menggunakan", "example": "Teams are adopting offline-first tools." },
-        "curb": { "phonetic": "/kɜːrb/", "pos": "verb", "meaning": "menahan / mengurangi", "example": "New habits help curb late-night scrolling." },
-        "fatigue": { "phonetic": "/fəˈtiːɡ/", "pos": "noun", "meaning": "kelelahan (mental maupun fisik)", "example": "Screen fatigue affects sleep quality." }
+        "merely": {
+          "phonetic": "/\u02c8m\u026arli/",
+          "pos": "adverb",
+          "meaning": "sekadar / hanya",
+          "example": "It is not merely luck; it is daily practice."
+        },
+        "tedious": {
+          "phonetic": "/\u02c8ti\u02d0di\u0259s/",
+          "pos": "adjective",
+          "meaning": "membosankan / melelahkan",
+          "example": "Without breaks, long study feels tedious."
+        },
+        "antidote": {
+          "phonetic": "/\u02c8\u00e6nt\u026ado\u028at/",
+          "pos": "noun",
+          "meaning": "penawar / solusi penyeimbang",
+          "example": "Deep focus is the antidote to distraction."
+        },
+        "friction": {
+          "phonetic": "/\u02c8fr\u026ak\u0283n/",
+          "pos": "noun",
+          "meaning": "hambatan / rasa berat di awal",
+          "example": "Embrace the initial friction of speaking."
+        }
+      },
+      "quiz": {
+        "question": "Apa solusi utama menurut narasi podcast di atas untuk menjaga motivasi belajar?",
+        "options": [
+          "Menunggu mood bagus sebelum mulai",
+          "Mengaitkan rasa puas pada usaha kecil yang konsisten",
+          "Belajar 5 jam sekaligus tanpa jeda"
+        ],
+        "answerIdx": 1
       }
     },
     {
-      "id": "brief-02", "category": "Cognitive Science", "readTime": "2 min read",
-      "title": "The Science Behind Five-Minute Micro-Learning",
+      "id": "brief-02",
+      "category": "Sports \u00b7 Mindset",
+      "readTime": "4 min read",
+      "title": "The Anatomy of Historic Sports Comebacks Under Extreme Pressure",
       "paragraphs": [
-        "Neuroscientists have long observed that brief, frequent study sessions outperform marathon cramming when building long-term memory.",
-        "By spacing repetition right before a memory fades, learners reinforce neural pathways effortlessly during daily commutes."
+        "In championship football and tennis, trailing behind in the final minutes often causes panic. Yet elite athletes treat a scoreboard deficit as a tactical puzzle rather than an emotional crisis.",
+        "Sports psychologists studying famous comeback victories found one shared trait: composure. Instead of rushing reckless plays, resilient teams narrow their focus to winning the very next possession or single point.",
+        "This micro-focus prevents mental fatigue. When players stop worrying about the final whistle and zero in on immediate execution, opponent momentum begins to crumble.",
+        "Outside the stadium, the exact same principle applies to mastering English. You do not become fluent in one giant leap; you win one conversation, one paragraph, and one pronunciation drill at a time."
       ],
       "glossary": {
-        "outperform": { "phonetic": "/ˌaʊtpərˈfɔːrm/", "pos": "verb", "meaning": "mengungguli / bekerja lebih baik dari", "example": "Short daily practice outperforms cramming." },
-        "cramming": { "phonetic": "/ˈkræmɪŋ/", "pos": "noun", "meaning": "belajar sistem kebut semalam", "example": "Cramming rarely leads to fluency." },
-        "reinforce": { "phonetic": "/ˌriːɪnˈfɔːrs/", "pos": "verb", "meaning": "memperkuat", "example": "Speaking aloud reinforces vocabulary." }
+        "trailing": {
+          "phonetic": "/\u02c8tre\u026al\u026a\u014b/",
+          "pos": "verb",
+          "meaning": "tertinggal skor",
+          "example": "They were trailing by two goals at halftime."
+        },
+        "composure": {
+          "phonetic": "/k\u0259m\u02c8po\u028a\u0292\u0259r/",
+          "pos": "noun",
+          "meaning": "ketenangan diri di bawah tekanan",
+          "example": "She kept her composure during the final."
+        },
+        "reckless": {
+          "phonetic": "/\u02c8rekl\u0259s/",
+          "pos": "adjective",
+          "meaning": "ceroboh / terburu-buru",
+          "example": "Reckless passes cost them the ball."
+        },
+        "crumble": {
+          "phonetic": "/\u02c8kr\u028cmbl/",
+          "pos": "verb",
+          "meaning": "runtuh / melemah",
+          "example": "Their defense began to crumble late in the game."
+        }
+      },
+      "quiz": {
+        "question": "Sifat utama apa yang dimiliki atlet saat membalikkan keadaan (comeback)?",
+        "options": [
+          "Bermain terburu-buru",
+          "Composure (ketenangan) dan fokus per poin",
+          "Mengabaikan strategi tim"
+        ],
+        "answerIdx": 1
+      }
+    },
+    {
+      "id": "brief-03",
+      "category": "Podcast \u00b7 Entrepreneurship",
+      "readTime": "4 min read",
+      "title": "The Diary of a CEO: Building Leverage Through Small Daily Habits",
+      "paragraphs": [
+        "During a candid conversation on The Diary of a CEO podcast, hosts and founders explored why most ambitious New Year resolutions fail before February even arrives.",
+        "The culprit is intensity addiction. People try to overhaul their entire lifestyle overnight\u2014waking up at four in the morning, studying for three hours, and burning out within ten days.",
+        "High performers rely on compounding leverage instead. Improving by just one percent each day seems invisible in the first week, yet over twelve months it produces an exponential gap in skill.",
+        "When a habit is designed to be lightweight, mobile, and enjoyable, consistency stops requiring willpower and quietly becomes part of your identity."
+      ],
+      "glossary": {
+        "candid": {
+          "phonetic": "/\u02c8k\u00e6nd\u026ad/",
+          "pos": "adjective",
+          "meaning": "jujur / apa adanya",
+          "example": "He gave a candid interview about his failures."
+        },
+        "culprit": {
+          "phonetic": "/\u02c8k\u028clpr\u026at/",
+          "pos": "noun",
+          "meaning": "penyebab utama masalah",
+          "example": "Lack of sleep is often the real culprit."
+        },
+        "overhaul": {
+          "phonetic": "/\u02c8o\u028av\u0259rh\u0254\u02d0l/",
+          "pos": "verb",
+          "meaning": "merombak total",
+          "example": "Do not overhaul your routine all at once."
+        },
+        "compounding": {
+          "phonetic": "/k\u0259m\u02c8pa\u028and\u026a\u014b/",
+          "pos": "adjective",
+          "meaning": "berlipat ganda seiring waktu",
+          "example": "Daily reading has a compounding effect."
+        }
+      },
+      "quiz": {
+        "question": "Mengapa resolusi belajar sering gagal menurut diskusi podcast tersebut?",
+        "options": [
+          "Karena kecanduan intensitas tinggi di awal hingga burnout",
+          "Karena durasinya terlalu singkat",
+          "Karena terlalu banyak istirahat"
+        ],
+        "answerIdx": 0
+      }
+    },
+    {
+      "id": "brief-04",
+      "category": "Global Culture",
+      "readTime": "3 min read",
+      "title": "Kaizen & Craftsmanship: Why Small Refinements Beat Perfectionism",
+      "paragraphs": [
+        "In Japanese workshops and design studios, the philosophy of Kaizen emphasizes continuous, incremental improvement over dramatic overnight transformation.",
+        "Rather than waiting until an idea is flawless before sharing it, craftsmen test their work early, observe subtle flaws, and refine one small detail every single day.",
+        "Perfectionism often disguises fear of making mistakes. Language learners frequently stay silent because they want every grammar rule to be spotless before uttering a single sentence.",
+        "Adopting Kaizen means speaking early, welcoming gentle corrections, and treating every mispronounced word as useful feedback rather than failure."
+      ],
+      "glossary": {
+        "incremental": {
+          "phonetic": "/\u02cc\u026ankr\u0259\u02c8mentl/",
+          "pos": "adjective",
+          "meaning": "bertahap sedikit demi sedikit",
+          "example": "Incremental updates keep software stable."
+        },
+        "flawless": {
+          "phonetic": "/\u02c8fl\u0254\u02d0l\u0259s/",
+          "pos": "adjective",
+          "meaning": "sempurna tanpa cacat",
+          "example": "Nobody speaks a new language flawlessly at first."
+        },
+        "disguises": {
+          "phonetic": "/d\u026as\u02c8\u0261a\u026az\u026az/",
+          "pos": "verb",
+          "meaning": "menyamarkan / menyembunyikan",
+          "example": "Perfectionism often disguises fear."
+        },
+        "uttering": {
+          "phonetic": "/\u02c8\u028ct\u0259r\u026a\u014b/",
+          "pos": "verb",
+          "meaning": "mengucapkan",
+          "example": "Practice uttering full sentences aloud."
+        }
+      },
+      "quiz": {
+        "question": "Apa inti dari filosofi Kaizen dalam belajar bahasa?",
+        "options": [
+          "Menunggu tata bahasa sempurna baru bicara",
+          "Perbaikan kecil terus-menerus & belajar dari koreksi",
+          "Menghafal kamus tanpa praktik"
+        ],
+        "answerIdx": 1
+      }
+    },
+    {
+      "id": "brief-05",
+      "category": "Technology",
+      "readTime": "4 min read",
+      "title": "Local-First Software: Why Modern Apps Are Returning to Offline Speed",
+      "paragraphs": [
+        "For the past decade, nearly every mobile app required a constant cloud connection just to open a note or check a daily schedule. When the signal dropped, productivity ground to a halt.",
+        "A new wave of engineers is championing local-first software\u2014applications that store data directly on your device first, delivering zero-latency taps while syncing quietly in the background.",
+        "Progressive Web Apps paired with Service Workers exemplify this shift. Once cached locally, lessons, dictionaries, and audio drills launch instantaneously inside a subway tunnel or on a flight.",
+        "By respecting user bandwidth and battery life, lightweight local-first tools feel crisp, dependable, and genuinely personal."
+      ],
+      "glossary": {
+        "championing": {
+          "phonetic": "/\u02c8t\u0283\u00e6mpi\u0259n\u026a\u014b/",
+          "pos": "verb",
+          "meaning": "memperjuangkan / mendukung penuh",
+          "example": "Developers are championing offline-first apps."
+        },
+        "latency": {
+          "phonetic": "/\u02c8le\u026atnsi/",
+          "pos": "noun",
+          "meaning": "jeda waktu tunggu",
+          "example": "Local storage ensures near-zero latency."
+        },
+        "exemplify": {
+          "phonetic": "/\u026a\u0261\u02c8zempl\u026afa\u026a/",
+          "pos": "verb",
+          "meaning": "menjadi contoh nyata",
+          "example": "PWAs exemplify modern web capability."
+        },
+        "dependable": {
+          "phonetic": "/d\u026a\u02c8pend\u0259bl/",
+          "pos": "adjective",
+          "meaning": "dapat diandalkan",
+          "example": "Offline caching makes the app dependable."
+        }
+      },
+      "quiz": {
+        "question": "Apa keunggulan utama arsitektur local-first software?",
+        "options": [
+          "Harus selalu terhubung ke server",
+          "Respons instan tanpa jeda & tetap jalan saat offline",
+          "Membutuhkan ukuran file bergiga-giga"
+        ],
+        "answerIdx": 1
+      }
+    },
+    {
+      "id": "brief-06",
+      "category": "Sports \u00b7 Endurance",
+      "readTime": "4 min read",
+      "title": "Breaking the Two-Hour Marathon: What Pacing Teaches Us About Fluency",
+      "paragraphs": [
+        "When Eliud Kipchoge ran a marathon in under two hours, observers marveled at his speed. Yet coaches pointed out that his real secret was metronomic pacing\u2014running every kilometer at almost identical effort.",
+        "Amateur runners often sprint the first five kilometers fueled by adrenaline, only to hit a wall halfway through when their energy reserves collapse.",
+        "Language acquisition follows the exact same physiological curve. Sprinting through fifty new words in one night leads to rapid forgetting, whereas steady daily pacing builds permanent fluency.",
+        "Pacing yourself with ten minutes of listening, reading, and speaking each day ensures you finish the marathon strong."
+      ],
+      "glossary": {
+        "marveled": {
+          "phonetic": "/\u02c8m\u0251\u02d0rvld/",
+          "pos": "verb",
+          "meaning": "takjub / kagum",
+          "example": "Fans marveled at his steady pace."
+        },
+        "metronomic": {
+          "phonetic": "/\u02ccmetr\u0259\u02c8n\u0251\u02d0m\u026ak/",
+          "pos": "adjective",
+          "meaning": "sangat teratur seperti metronom",
+          "example": "He maintained a metronomic rhythm."
+        },
+        "amateur": {
+          "phonetic": "/\u02c8\u00e6m\u0259t\u0283\u0259r/",
+          "pos": "adjective",
+          "meaning": "amatir / pemula",
+          "example": "Amateur runners often start too fast."
+        },
+        "acquisition": {
+          "phonetic": "/\u02cc\u00e6kw\u026a\u02c8z\u026a\u0283n/",
+          "pos": "noun",
+          "meaning": "pemerolehan / penguasaan",
+          "example": "Language acquisition takes steady exposure."
+        }
+      },
+      "quiz": {
+        "question": "Pelajaran apa yang diambil dari strategi lari maraton Eliud Kipchoge?",
+        "options": [
+          "Lari secepat mungkin di awal",
+          "Pacing (ritme stabil) setiap hari lebih efektif daripada ngebut sesaat",
+          "Berlatih hanya seminggu sekali"
+        ],
+        "answerIdx": 1
+      }
+    },
+    {
+      "id": "brief-07",
+      "category": "Sleep & Memory",
+      "readTime": "4 min read",
+      "title": "How Deep Sleep Transfers New Vocabulary Into Long-Term Memory",
+      "paragraphs": [
+        "Studying vocabulary is only half of the learning equation; the actual wiring of new words happens hours later while you are fast asleep.",
+        "During deep slow-wave sleep, the brain replays neural patterns from the day, transferring fragile short-term notes from the hippocampus to permanent storage in the cortex.",
+        "Researchers discovered that reviewing tricky words or listening to a short English story ten minutes before bed significantly boosts recall the following morning.",
+        "Think of sleep as your brain's nightly save button\u2014without adequate rest, yesterday's study session never fully writes to disk."
+      ],
+      "glossary": {
+        "equation": {
+          "phonetic": "/\u026a\u02c8kwe\u026a\u0292n/",
+          "pos": "noun",
+          "meaning": "persamaan / rumus keseluruhan",
+          "example": "Rest is half of the learning equation."
+        },
+        "fragile": {
+          "phonetic": "/\u02c8fr\u00e6d\u0292l/",
+          "pos": "adjective",
+          "meaning": "rapuh / mudah hilang",
+          "example": "Short-term memory is fragile without review."
+        },
+        "significantly": {
+          "phonetic": "/s\u026a\u0261\u02c8n\u026af\u026ak\u0259ntli/",
+          "pos": "adverb",
+          "meaning": "secara signifikan / cukup besar",
+          "example": "Evening review significantly improves recall."
+        },
+        "adequate": {
+          "phonetic": "/\u02c8\u00e6d\u026akw\u0259t/",
+          "pos": "adjective",
+          "meaning": "cukup / memadai",
+          "example": "Adequate sleep keeps your mind sharp."
+        }
+      },
+      "quiz": {
+        "question": "Kapan otak memindahkan kosakata baru ke memori jangka panjang?",
+        "options": [
+          "Saat membaca sambil membuka media sosial",
+          "Saat fase tidur nyenyak (deep slow-wave sleep)",
+          "Hanya saat ujian berlangsung"
+        ],
+        "answerIdx": 1
       }
     }
   ]

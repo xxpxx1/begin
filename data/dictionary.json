@@ -1,109 +1,1729 @@
 {
   "words": [
     {
-      "word": "breakthrough", "pos": "noun", "level": "B2", "topic": "Tech & Progress",
-      "phonetic": "/ˈbreɪkθruː/", "meaning": "terobosan besar / penemuan penting",
-      "example": "This lightweight app is a major breakthrough for offline learning.",
-      "collocations": ["major breakthrough", "scientific breakthrough", "achieve a breakthrough"],
-      "wordFamily": ["break through (verb)"]
+      "word": "breakthrough",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Tech",
+      "phonetic": "/\u02c8bre\u026ak\u03b8ru\u02d0/",
+      "meaning": "terobosan besar",
+      "example": "This app is a major breakthrough.",
+      "collocations": [
+        "major breakthrough"
+      ],
+      "wordFamily": [
+        "break through"
+      ]
     },
     {
-      "word": "habit", "pos": "noun", "level": "A1", "topic": "Daily Life",
-      "phonetic": "/ˈhæbɪt/", "meaning": "kebiasaan / rutinitas",
-      "example": "Reading for five minutes every morning is a healthy habit.",
-      "collocations": ["build a habit", "break a habit", "daily habit"],
-      "wordFamily": ["habitual (adj)", "habitually (adv)"]
+      "word": "habit",
+      "pos": "noun",
+      "level": "A1",
+      "topic": "Daily",
+      "phonetic": "/\u02c8h\u00e6b\u026at/",
+      "meaning": "kebiasaan",
+      "example": "Daily reading is a great habit.",
+      "collocations": [
+        "build a habit"
+      ],
+      "wordFamily": [
+        "habitual"
+      ]
     },
     {
-      "word": "perspective", "pos": "noun", "level": "B1", "topic": "Mindset",
-      "phonetic": "/pərˈspektɪv/", "meaning": "sudut pandang / cara melihat masalah",
-      "example": "Traveling abroad gave her a fresh perspective on life.",
-      "collocations": ["fresh perspective", "from my perspective", "broaden perspective"],
-      "wordFamily": ["perspectively (adv)"]
+      "word": "perspective",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Mindset",
+      "phonetic": "/p\u0259r\u02c8spekt\u026av/",
+      "meaning": "sudut pandang",
+      "example": "Travel gives a fresh perspective.",
+      "collocations": [
+        "fresh perspective"
+      ],
+      "wordFamily": [
+        "perspectively"
+      ]
     },
     {
-      "word": "appliance", "pos": "noun", "level": "B1", "topic": "Daily Objects",
-      "phonetic": "/əˈplaɪəns/", "meaning": "peralatan rumah tangga (elektronik)",
-      "example": "Modern kitchen appliances save a lot of time.",
-      "collocations": ["home appliance", "electrical appliance", "kitchen appliance"],
-      "wordFamily": ["apply (verb)", "applicable (adj)"]
+      "word": "appliance",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Objects",
+      "phonetic": "/\u0259\u02c8pla\u026a\u0259ns/",
+      "meaning": "peralatan elektronik",
+      "example": "Modern kitchen appliances save time.",
+      "collocations": [
+        "home appliance"
+      ],
+      "wordFamily": [
+        "apply"
+      ]
     },
     {
-      "word": "accomplish", "pos": "verb", "level": "B1", "topic": "Actions",
-      "phonetic": "/əˈkɑːmplɪʃ/", "meaning": "menyelesaikan / mencapai dengan sukses",
-      "example": "You can accomplish a lot by focusing on one task at a time.",
-      "collocations": ["accomplish a goal", "accomplish a mission", "easily accomplished"],
-      "wordFamily": ["accomplishment (noun)", "accomplished (adj)"]
+      "word": "architecture",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Tech",
+      "phonetic": "/\u02c8\u0251\u02d0rk\u026atekt\u0283\u0259r/",
+      "meaning": "arsitektur / struktur",
+      "example": "Clean architecture scales easily.",
+      "collocations": [
+        "system architecture"
+      ],
+      "wordFamily": [
+        "architect"
+      ]
     },
     {
-      "word": "adapt", "pos": "verb", "level": "B1", "topic": "Growth",
-      "phonetic": "/əˈdæpt/", "meaning": "menyesuaikan diri / beradaptasi",
-      "example": "Good developers adapt quickly to new tools and workflows.",
-      "collocations": ["adapt to change", "quickly adapt", "adapt a strategy"],
-      "wordFamily": ["adaptation (noun)", "adaptable (adj)"]
+      "word": "milestone",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Progress",
+      "phonetic": "/\u02c8ma\u026alsto\u028an/",
+      "meaning": "tonggak pencapaian",
+      "example": "Reaching 100 words is a milestone.",
+      "collocations": [
+        "key milestone"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
     },
     {
-      "word": "clarify", "pos": "verb", "level": "B2", "topic": "Communication",
-      "phonetic": "/ˈklærəfaɪ/", "meaning": "memperjelas / meluruskan maksud",
-      "example": "Could you clarify what you meant by that last point?",
-      "collocations": ["clarify a point", "help clarify", "seek to clarify"],
-      "wordFamily": ["clarity (noun)", "clear (adj)", "clearly (adv)"]
+      "word": "friction",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Design",
+      "phonetic": "/\u02c8fr\u026ak\u0283n/",
+      "meaning": "hambatan / gesekan",
+      "example": "Good UX removes user friction.",
+      "collocations": [
+        "reduce friction"
+      ],
+      "wordFamily": [
+        "frictional"
+      ]
     },
     {
-      "word": "resilient", "pos": "adjective", "level": "B2", "topic": "Character",
-      "phonetic": "/rɪˈzɪliənt/", "meaning": "tangguh / cepat bangkit dari kesulitan",
-      "example": "She remained calm and resilient despite the unexpected setback.",
-      "collocations": ["remarkably resilient", "resilient system", "resilient mindset"],
-      "wordFamily": ["resilience (noun)", "resiliently (adv)"]
+      "word": "momentum",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Growth",
+      "phonetic": "/mo\u028a\u02c8ment\u0259m/",
+      "meaning": "momentum / dorongan",
+      "example": "Keep your learning momentum alive.",
+      "collocations": [
+        "gain momentum"
+      ],
+      "wordFamily": [
+        "momentous"
+      ]
     },
     {
-      "word": "concise", "pos": "adjective", "level": "B2", "topic": "Communication",
-      "phonetic": "/kənˈsaɪs/", "meaning": "ringkas, padat, dan jelas",
-      "example": "Keep your summary concise so everyone can read it in a minute.",
-      "collocations": ["clear and concise", "concise explanation", "concise summary"],
-      "wordFamily": ["conciseness (noun)", "concisely (adv)"]
+      "word": "stamina",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Sports",
+      "phonetic": "/\u02c8st\u00e6m\u026an\u0259/",
+      "meaning": "daya tahan tubuh",
+      "example": "Running builds mental stamina.",
+      "collocations": [
+        "build stamina"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
     },
     {
-      "word": "reliable", "pos": "adjective", "level": "A2", "topic": "Character & Tech",
-      "phonetic": "/rɪˈlaɪəbl/", "meaning": "dapat diandalkan / konsisten",
-      "example": "Offline storage makes the app reliable even without signal.",
-      "collocations": ["reliable source", "highly reliable", "reliable connection"],
-      "wordFamily": ["rely (verb)", "reliability (noun)", "reliably (adv)"]
+      "word": "endurance",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Sports",
+      "phonetic": "/\u026an\u02c8d\u028ar\u0259ns/",
+      "meaning": "ketahanan fisik & mental",
+      "example": "Marathons test pure endurance.",
+      "collocations": [
+        "endurance training"
+      ],
+      "wordFamily": [
+        "endure"
+      ]
     },
     {
-      "word": "curious", "pos": "adjective", "level": "A2", "topic": "Character",
-      "phonetic": "/ˈkjʊriəs/", "meaning": "penasaran / ingin tahu",
-      "example": "Stay curious and never stop asking how things work under the hood.",
-      "collocations": ["genuinely curious", "curious mind", "curious about"],
-      "wordFamily": ["curiosity (noun)", "curiously (adv)"]
+      "word": "itinerary",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Travel",
+      "phonetic": "/a\u026a\u02c8t\u026an\u0259reri/",
+      "meaning": "rencana perjalanan",
+      "example": "Check our flight itinerary first.",
+      "collocations": [
+        "travel itinerary"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
     },
     {
-      "word": "effortlessly", "pos": "adverb", "level": "B2", "topic": "Manner",
-      "phonetic": "/ˈefərtləsli/", "meaning": "dengan mudah tanpa terasa berat",
-      "example": "With daily practice, natural phrases will come to you effortlessly.",
-      "collocations": ["glide effortlessly", "flow effortlessly", "seemingly effortlessly"],
-      "wordFamily": ["effort (noun)", "effortless (adj)"]
+      "word": "beverage",
+      "pos": "noun",
+      "level": "A2",
+      "topic": "Food",
+      "phonetic": "/\u02c8bev\u0259r\u026ad\u0292/",
+      "meaning": "minuman",
+      "example": "Would you like a hot beverage?",
+      "collocations": [
+        "cold beverage"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
     },
     {
-      "word": "gradually", "pos": "adverb", "level": "B1", "topic": "Time & Process",
-      "phonetic": "/ˈɡrædʒuəli/", "meaning": "secara bertahap / perlahan-lahan",
-      "example": "Your listening comprehension improves gradually every single week.",
-      "collocations": ["gradually improve", "gradually shift", "gradually increase"],
-      "wordFamily": ["gradual (adj)"]
+      "word": "ingredient",
+      "pos": "noun",
+      "level": "A2",
+      "topic": "Food",
+      "phonetic": "/\u026an\u02c8\u0261ri\u02d0di\u0259nt/",
+      "meaning": "bahan masakan",
+      "example": "Fresh ingredients make better food.",
+      "collocations": [
+        "key ingredient"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
     },
     {
-      "word": "figure out", "pos": "phrasal verb", "level": "B1", "topic": "Problem Solving",
-      "phonetic": "/ˈfɪɡjər aʊt/", "meaning": "menemukan solusi / memahami cara kerja",
-      "example": "It took ten minutes to figure out why the cache was not updating.",
-      "collocations": ["figure out how", "figure out a way", "finally figure out"],
-      "wordFamily": ["figure (noun/verb)"]
+      "word": "receipt",
+      "pos": "noun",
+      "level": "A1",
+      "topic": "Shopping",
+      "phonetic": "/r\u026a\u02c8si\u02d0t/",
+      "meaning": "struk / tanda terima",
+      "example": "Keep the receipt for warranty.",
+      "collocations": [
+        "sales receipt"
+      ],
+      "wordFamily": [
+        "receive"
+      ]
     },
     {
-      "word": "bring up", "pos": "phrasal verb", "level": "B1", "topic": "Conversation",
-      "phonetic": "/brɪŋ ʌp/", "meaning": "mengangkat topik / mulai membahas",
-      "example": "That is a great question—I am glad you brought it up.",
-      "collocations": ["bring up a topic", "bring up an issue", "glad you brought it up"],
-      "wordFamily": ["bring (verb)"]
+      "word": "refund",
+      "pos": "noun",
+      "level": "A2",
+      "topic": "Shopping",
+      "phonetic": "/\u02c8ri\u02d0f\u028cnd/",
+      "meaning": "pengembalian dana",
+      "example": "You can request a full refund.",
+      "collocations": [
+        "full refund"
+      ],
+      "wordFamily": [
+        "refundable"
+      ]
+    },
+    {
+      "word": "commute",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Daily",
+      "phonetic": "/k\u0259\u02c8mju\u02d0t/",
+      "meaning": "perjalanan pulang-pergi",
+      "example": "I listen to podcasts on my commute.",
+      "collocations": [
+        "daily commute"
+      ],
+      "wordFamily": [
+        "commuter"
+      ]
+    },
+    {
+      "word": "pedestrian",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "City",
+      "phonetic": "/p\u0259\u02c8destri\u0259n/",
+      "meaning": "pejalan kaki",
+      "example": "Pedestrians have the right of way.",
+      "collocations": [
+        "pedestrian zone"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "luggage",
+      "pos": "noun",
+      "level": "A2",
+      "topic": "Travel",
+      "phonetic": "/\u02c8l\u028c\u0261\u026ad\u0292/",
+      "meaning": "bagasi / koper",
+      "example": "Pack light luggage for short trips.",
+      "collocations": [
+        "carry-on luggage"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "currency",
+      "pos": "noun",
+      "level": "A2",
+      "topic": "Finance",
+      "phonetic": "/\u02c8k\u025c\u02d0r\u0259nsi/",
+      "meaning": "mata uang",
+      "example": "Exchange currency before flying.",
+      "collocations": [
+        "foreign currency"
+      ],
+      "wordFamily": [
+        "current"
+      ]
+    },
+    {
+      "word": "budget",
+      "pos": "noun",
+      "level": "A2",
+      "topic": "Finance",
+      "phonetic": "/\u02c8b\u028cd\u0292\u026at/",
+      "meaning": "anggaran",
+      "example": "Stick to your monthly budget.",
+      "collocations": [
+        "tight budget"
+      ],
+      "wordFamily": [
+        "budgetary"
+      ]
+    },
+    {
+      "word": "deadline",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Work",
+      "phonetic": "/\u02c8dedla\u026an/",
+      "meaning": "batas waktu",
+      "example": "We met the project deadline.",
+      "collocations": [
+        "tight deadline"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "feedback",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Work",
+      "phonetic": "/\u02c8fi\u02d0db\u00e6k/",
+      "meaning": "umpan balik / masukan",
+      "example": "Honest feedback accelerates growth.",
+      "collocations": [
+        "constructive feedback"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "bottleneck",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Tech",
+      "phonetic": "/\u02c8b\u0251\u02d0tlnek/",
+      "meaning": "titik penghambat",
+      "example": "Slow queries caused a bottleneck.",
+      "collocations": [
+        "major bottleneck"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "vulnerability",
+      "pos": "noun",
+      "level": "C1",
+      "topic": "Security",
+      "phonetic": "/\u02ccv\u028cln\u0259r\u0259\u02c8b\u026al\u0259ti/",
+      "meaning": "celah keamanan",
+      "example": "Patch the security vulnerability fast.",
+      "collocations": [
+        "critical vulnerability"
+      ],
+      "wordFamily": [
+        "vulnerable"
+      ]
+    },
+    {
+      "word": "encryption",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Security",
+      "phonetic": "/\u026an\u02c8kr\u026ap\u0283n/",
+      "meaning": "enkripsi data",
+      "example": "End-to-end encryption protects chats.",
+      "collocations": [
+        "strong encryption"
+      ],
+      "wordFamily": [
+        "encrypt"
+      ]
+    },
+    {
+      "word": "bandwidth",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Tech",
+      "phonetic": "/\u02c8b\u00e6ndw\u026ad\u03b8/",
+      "meaning": "kapasitas jalur data",
+      "example": "Caching saves server bandwidth.",
+      "collocations": [
+        "high bandwidth"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "algorithm",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Tech",
+      "phonetic": "/\u02c8\u00e6l\u0261\u0259r\u026a\u00f0\u0259m/",
+      "meaning": "algoritma",
+      "example": "The search algorithm runs locally.",
+      "collocations": [
+        "smart algorithm"
+      ],
+      "wordFamily": [
+        "algorithmic"
+      ]
+    },
+    {
+      "word": "nuance",
+      "pos": "noun",
+      "level": "C1",
+      "topic": "Language",
+      "phonetic": "/\u02c8nu\u02d0\u0251\u02d0ns/",
+      "meaning": "nuansa makna halus",
+      "example": "Context reveals subtle nuances.",
+      "collocations": [
+        "subtle nuance"
+      ],
+      "wordFamily": [
+        "nuanced"
+      ]
+    },
+    {
+      "word": "paradox",
+      "pos": "noun",
+      "level": "C1",
+      "topic": "Logic",
+      "phonetic": "/\u02c8p\u00e6r\u0259d\u0251\u02d0ks/",
+      "meaning": "paradoks",
+      "example": "Choice overload is a modern paradox.",
+      "collocations": [
+        "interesting paradox"
+      ],
+      "wordFamily": [
+        "paradoxical"
+      ]
+    },
+    {
+      "word": "resilience",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Mindset",
+      "phonetic": "/r\u026a\u02c8z\u026ali\u0259ns/",
+      "meaning": "ketangguhan mental",
+      "example": "Resilience helps you bounce back.",
+      "collocations": [
+        "build resilience"
+      ],
+      "wordFamily": [
+        "resilient"
+      ]
+    },
+    {
+      "word": "empathy",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Social",
+      "phonetic": "/\u02c8emp\u0259\u03b8i/",
+      "meaning": "empati",
+      "example": "Empathy improves communication.",
+      "collocations": [
+        "deep empathy"
+      ],
+      "wordFamily": [
+        "empathetic"
+      ]
+    },
+    {
+      "word": "curiosity",
+      "pos": "noun",
+      "level": "B1",
+      "topic": "Mindset",
+      "phonetic": "/\u02cckj\u028ari\u02c8\u0251\u02d0s\u0259ti/",
+      "meaning": "rasa ingin tahu",
+      "example": "Curiosity fuels lifelong learning.",
+      "collocations": [
+        "natural curiosity"
+      ],
+      "wordFamily": [
+        "curious"
+      ]
+    },
+    {
+      "word": "clarity",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Mindset",
+      "phonetic": "/\u02c8kl\u00e6r\u0259ti/",
+      "meaning": "kejernihan pikiran",
+      "example": "Writing brings clarity of thought.",
+      "collocations": [
+        "mental clarity"
+      ],
+      "wordFamily": [
+        "clarify"
+      ]
+    },
+    {
+      "word": "outcome",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Work",
+      "phonetic": "/\u02c8a\u028atk\u028cm/",
+      "meaning": "hasil akhir",
+      "example": "Focus on the long-term outcome.",
+      "collocations": [
+        "positive outcome"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "setback",
+      "pos": "noun",
+      "level": "B2",
+      "topic": "Growth",
+      "phonetic": "/\u02c8setb\u00e6k/",
+      "meaning": "kemunduran sementara",
+      "example": "Every setback teaches a lesson.",
+      "collocations": [
+        "minor setback"
+      ],
+      "wordFamily": [
+        "set back"
+      ]
+    },
+    {
+      "word": "accomplish",
+      "pos": "verb",
+      "level": "B1",
+      "topic": "Actions",
+      "phonetic": "/\u0259\u02c8k\u0251\u02d0mpl\u026a\u0283/",
+      "meaning": "menyelesaikan / mencapai",
+      "example": "You can accomplish big goals.",
+      "collocations": [
+        "accomplish a goal"
+      ],
+      "wordFamily": [
+        "accomplishment"
+      ]
+    },
+    {
+      "word": "adapt",
+      "pos": "verb",
+      "level": "B1",
+      "topic": "Growth",
+      "phonetic": "/\u0259\u02c8d\u00e6pt/",
+      "meaning": "beradaptasi",
+      "example": "Great teams adapt to change.",
+      "collocations": [
+        "adapt quickly"
+      ],
+      "wordFamily": [
+        "adaptation"
+      ]
+    },
+    {
+      "word": "clarify",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Speech",
+      "phonetic": "/\u02c8kl\u00e6r\u0259fa\u026a/",
+      "meaning": "memperjelas",
+      "example": "Let me clarify my main point.",
+      "collocations": [
+        "clarify a point"
+      ],
+      "wordFamily": [
+        "clarity"
+      ]
+    },
+    {
+      "word": "accelerate",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Growth",
+      "phonetic": "/\u0259k\u02c8sel\u0259re\u026at/",
+      "meaning": "mempercepat",
+      "example": "Practice accelerates fluency.",
+      "collocations": [
+        "accelerate growth"
+      ],
+      "wordFamily": [
+        "acceleration"
+      ]
+    },
+    {
+      "word": "negotiate",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Work",
+      "phonetic": "/n\u026a\u02c8\u0261o\u028a\u0283ie\u026at/",
+      "meaning": "bernegosiasi",
+      "example": "Learn to negotiate calmly.",
+      "collocations": [
+        "negotiate terms"
+      ],
+      "wordFamily": [
+        "negotiation"
+      ]
+    },
+    {
+      "word": "prioritize",
+      "pos": "verb",
+      "level": "B1",
+      "topic": "Work",
+      "phonetic": "/pra\u026a\u02c8\u0254\u02d0r\u0259ta\u026az/",
+      "meaning": "memprioritaskan",
+      "example": "Prioritize high-impact habits.",
+      "collocations": [
+        "prioritize tasks"
+      ],
+      "wordFamily": [
+        "priority"
+      ]
+    },
+    {
+      "word": "consolidate",
+      "pos": "verb",
+      "level": "C1",
+      "topic": "Science",
+      "phonetic": "/k\u0259n\u02c8s\u0251\u02d0l\u026ade\u026at/",
+      "meaning": "memperkuat / menyatukan",
+      "example": "Sleep consolidates new memories.",
+      "collocations": [
+        "consolidate memory"
+      ],
+      "wordFamily": [
+        "consolidation"
+      ]
+    },
+    {
+      "word": "implement",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Tech",
+      "phonetic": "/\u02c8\u026ampl\u026ament/",
+      "meaning": "menerapkan",
+      "example": "Implement offline caching first.",
+      "collocations": [
+        "implement a plan"
+      ],
+      "wordFamily": [
+        "implementation"
+      ]
+    },
+    {
+      "word": "diagnose",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Tech",
+      "phonetic": "/\u02ccda\u026a\u0259\u0261\u02c8no\u028as/",
+      "meaning": "mendiagnosis masalah",
+      "example": "Logs help diagnose errors fast.",
+      "collocations": [
+        "diagnose an issue"
+      ],
+      "wordFamily": [
+        "diagnosis"
+      ]
+    },
+    {
+      "word": "overcome",
+      "pos": "verb",
+      "level": "B1",
+      "topic": "Growth",
+      "phonetic": "/\u02cco\u028av\u0259r\u02c8k\u028cm/",
+      "meaning": "mengatasi",
+      "example": "Overcome speaking anxiety daily.",
+      "collocations": [
+        "overcome fear"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "persist",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Mindset",
+      "phonetic": "/p\u0259r\u02c8s\u026ast/",
+      "meaning": "bertahan / gigih",
+      "example": "Persist even when progress feels slow.",
+      "collocations": [
+        "persist in"
+      ],
+      "wordFamily": [
+        "persistence"
+      ]
+    },
+    {
+      "word": "articulate",
+      "pos": "verb",
+      "level": "C1",
+      "topic": "Speech",
+      "phonetic": "/\u0251\u02d0r\u02c8t\u026akjule\u026at/",
+      "meaning": "mengungkapkan dengan jelas",
+      "example": "Articulate your thoughts concisely.",
+      "collocations": [
+        "clearly articulate"
+      ],
+      "wordFamily": [
+        "articulation"
+      ]
+    },
+    {
+      "word": "scrutinize",
+      "pos": "verb",
+      "level": "C1",
+      "topic": "Logic",
+      "phonetic": "/\u02c8skru\u02d0t\u0259na\u026az/",
+      "meaning": "meneliti dengan cermat",
+      "example": "Scrutinize every line of code.",
+      "collocations": [
+        "closely scrutinize"
+      ],
+      "wordFamily": [
+        "scrutiny"
+      ]
+    },
+    {
+      "word": "streamline",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Work",
+      "phonetic": "/\u02c8stri\u02d0mla\u026an/",
+      "meaning": "menyederhanakan alur",
+      "example": "Streamline your daily workflow.",
+      "collocations": [
+        "streamline process"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "leverage",
+      "pos": "verb",
+      "level": "C1",
+      "topic": "Business",
+      "phonetic": "/\u02c8lev\u0259r\u026ad\u0292/",
+      "meaning": "memanfaatkan secara maksimal",
+      "example": "Leverage small tools for big wins.",
+      "collocations": [
+        "leverage technology"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "mitigate",
+      "pos": "verb",
+      "level": "C1",
+      "topic": "Risk",
+      "phonetic": "/\u02c8m\u026at\u026a\u0261e\u026at/",
+      "meaning": "mengurangi risiko",
+      "example": "Backups mitigate data loss.",
+      "collocations": [
+        "mitigate risk"
+      ],
+      "wordFamily": [
+        "mitigation"
+      ]
+    },
+    {
+      "word": "foster",
+      "pos": "verb",
+      "level": "C1",
+      "topic": "Social",
+      "phonetic": "/\u02c8f\u0251\u02d0st\u0259r/",
+      "meaning": "menumbuhkan / mendorong",
+      "example": "Good leaders foster trust.",
+      "collocations": [
+        "foster growth"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "anticipate",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Planning",
+      "phonetic": "/\u00e6n\u02c8t\u026as\u026ape\u026at/",
+      "meaning": "mengantisipasi",
+      "example": "Anticipate edge cases early.",
+      "collocations": [
+        "anticipate needs"
+      ],
+      "wordFamily": [
+        "anticipation"
+      ]
+    },
+    {
+      "word": "hesitate",
+      "pos": "verb",
+      "level": "B1",
+      "topic": "Actions",
+      "phonetic": "/\u02c8hez\u026ate\u026at/",
+      "meaning": "ragu-ragu",
+      "example": "Do not hesitate to speak up.",
+      "collocations": [
+        "hesitate to ask"
+      ],
+      "wordFamily": [
+        "hesitation"
+      ]
+    },
+    {
+      "word": "comprehend",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Learning",
+      "phonetic": "/\u02cck\u0251\u02d0mpr\u026a\u02c8hend/",
+      "meaning": "memahami sepenuhnya",
+      "example": "Read slowly to comprehend context.",
+      "collocations": [
+        "fully comprehend"
+      ],
+      "wordFamily": [
+        "comprehension"
+      ]
+    },
+    {
+      "word": "retain",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Memory",
+      "phonetic": "/r\u026a\u02c8te\u026an/",
+      "meaning": "mengingat / menyimpan",
+      "example": "Active recall helps retain words.",
+      "collocations": [
+        "retain knowledge"
+      ],
+      "wordFamily": [
+        "retention"
+      ]
+    },
+    {
+      "word": "collaborate",
+      "pos": "verb",
+      "level": "B1",
+      "topic": "Work",
+      "phonetic": "/k\u0259\u02c8l\u00e6b\u0259re\u026at/",
+      "meaning": "berkolaborasi",
+      "example": "Collaborate across time zones.",
+      "collocations": [
+        "collaborate closely"
+      ],
+      "wordFamily": [
+        "collaboration"
+      ]
+    },
+    {
+      "word": "refuel",
+      "pos": "verb",
+      "level": "B1",
+      "topic": "Sports",
+      "phonetic": "/\u02ccri\u02d0\u02c8fju\u02d0\u0259l/",
+      "meaning": "mengisi ulang energi",
+      "example": "Athletes refuel right after training.",
+      "collocations": [
+        "refuel energy"
+      ],
+      "wordFamily": [
+        "fuel"
+      ]
+    },
+    {
+      "word": "improvise",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Speech",
+      "phonetic": "/\u02c8\u026ampr\u0259va\u026az/",
+      "meaning": "berimprovisasi",
+      "example": "Speakers learn to improvise smoothly.",
+      "collocations": [
+        "improvise replies"
+      ],
+      "wordFamily": [
+        "improvisation"
+      ]
+    },
+    {
+      "word": "thrive",
+      "pos": "verb",
+      "level": "B2",
+      "topic": "Growth",
+      "phonetic": "/\u03b8ra\u026av/",
+      "meaning": "berkembang pesat",
+      "example": "Curious minds thrive on challenges.",
+      "collocations": [
+        "thrive under pressure"
+      ],
+      "wordFamily": [
+        "thriving"
+      ]
+    },
+    {
+      "word": "resilient",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Character",
+      "phonetic": "/r\u026a\u02c8z\u026ali\u0259nt/",
+      "meaning": "tangguh / cepat bangkit",
+      "example": "Remain resilient after mistakes.",
+      "collocations": [
+        "remarkably resilient"
+      ],
+      "wordFamily": [
+        "resilience"
+      ]
+    },
+    {
+      "word": "concise",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Speech",
+      "phonetic": "/k\u0259n\u02c8sa\u026as/",
+      "meaning": "ringkas dan padat",
+      "example": "Keep explanations clear and concise.",
+      "collocations": [
+        "clear and concise"
+      ],
+      "wordFamily": [
+        "concisely"
+      ]
+    },
+    {
+      "word": "reliable",
+      "pos": "adjective",
+      "level": "A2",
+      "topic": "Tech",
+      "phonetic": "/r\u026a\u02c8la\u026a\u0259bl/",
+      "meaning": "dapat diandalkan",
+      "example": "Offline apps feel super reliable.",
+      "collocations": [
+        "highly reliable"
+      ],
+      "wordFamily": [
+        "reliability"
+      ]
+    },
+    {
+      "word": "curious",
+      "pos": "adjective",
+      "level": "A2",
+      "topic": "Character",
+      "phonetic": "/\u02c8kj\u028ari\u0259s/",
+      "meaning": "penasaran / ingin tahu",
+      "example": "Stay curious every single day.",
+      "collocations": [
+        "genuinely curious"
+      ],
+      "wordFamily": [
+        "curiosity"
+      ]
+    },
+    {
+      "word": "versatile",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Skills",
+      "phonetic": "/\u02c8v\u025c\u02d0rs\u0259tl/",
+      "meaning": "serba bisa",
+      "example": "Python is a versatile language.",
+      "collocations": [
+        "highly versatile"
+      ],
+      "wordFamily": [
+        "versatility"
+      ]
+    },
+    {
+      "word": "pragmatic",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Mindset",
+      "phonetic": "/pr\u00e6\u0261\u02c8m\u00e6t\u026ak/",
+      "meaning": "praktis & realistis",
+      "example": "Take a pragmatic approach first.",
+      "collocations": [
+        "pragmatic solution"
+      ],
+      "wordFamily": [
+        "pragmatically"
+      ]
+    },
+    {
+      "word": "seamless",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Design",
+      "phonetic": "/\u02c8si\u02d0ml\u0259s/",
+      "meaning": "mulus tanpa jeda",
+      "example": "Aim for a seamless user flow.",
+      "collocations": [
+        "seamless experience"
+      ],
+      "wordFamily": [
+        "seamlessly"
+      ]
+    },
+    {
+      "word": "ambiguous",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Logic",
+      "phonetic": "/\u00e6m\u02c8b\u026a\u0261ju\u0259s/",
+      "meaning": "bermakna ganda / kabur",
+      "example": "Avoid ambiguous instructions.",
+      "collocations": [
+        "slightly ambiguous"
+      ],
+      "wordFamily": [
+        "ambiguity"
+      ]
+    },
+    {
+      "word": "pivotal",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "History",
+      "phonetic": "/\u02c8p\u026av\u0259tl/",
+      "meaning": "sangat menentukan",
+      "example": "That match was a pivotal moment.",
+      "collocations": [
+        "pivotal role"
+      ],
+      "wordFamily": [
+        "pivot"
+      ]
+    },
+    {
+      "word": "meticulous",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Character",
+      "phonetic": "/m\u0259\u02c8t\u026akj\u0259l\u0259s/",
+      "meaning": "sangat teliti",
+      "example": "Meticulous notes aid revision.",
+      "collocations": [
+        "meticulous attention"
+      ],
+      "wordFamily": [
+        "meticulously"
+      ]
+    },
+    {
+      "word": "spontaneous",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Social",
+      "phonetic": "/sp\u0251\u02d0n\u02c8te\u026ani\u0259s/",
+      "meaning": "spontan",
+      "example": "Spontaneous chats build fluency.",
+      "collocations": [
+        "spontaneous reply"
+      ],
+      "wordFamily": [
+        "spontaneously"
+      ]
+    },
+    {
+      "word": "authentic",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Character",
+      "phonetic": "/\u0254\u02d0\u02c8\u03b8ent\u026ak/",
+      "meaning": "asli / tulus",
+      "example": "Speak in an authentic voice.",
+      "collocations": [
+        "authentic tone"
+      ],
+      "wordFamily": [
+        "authenticity"
+      ]
+    },
+    {
+      "word": "inevitable",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Logic",
+      "phonetic": "/\u026an\u02c8ev\u026at\u0259bl/",
+      "meaning": "tak terhindarkan",
+      "example": "Mistakes are inevitable when learning.",
+      "collocations": [
+        "almost inevitable"
+      ],
+      "wordFamily": [
+        "inevitably"
+      ]
+    },
+    {
+      "word": "profound",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Mindset",
+      "phonetic": "/pr\u0259\u02c8fa\u028and/",
+      "meaning": "mendalam",
+      "example": "Small habits have profound impact.",
+      "collocations": [
+        "profound impact"
+      ],
+      "wordFamily": [
+        "profoundly"
+      ]
+    },
+    {
+      "word": "agile",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Work",
+      "phonetic": "/\u02c8\u00e6d\u0292l/",
+      "meaning": "lincah / cepat bergerak",
+      "example": "Small teams stay agile.",
+      "collocations": [
+        "agile mindset"
+      ],
+      "wordFamily": [
+        "agility"
+      ]
+    },
+    {
+      "word": "coherent",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Speech",
+      "phonetic": "/ko\u028a\u02c8h\u026ar\u0259nt/",
+      "meaning": "runtut & masuk akal",
+      "example": "Build a coherent argument.",
+      "collocations": [
+        "coherent story"
+      ],
+      "wordFamily": [
+        "coherence"
+      ]
+    },
+    {
+      "word": "vivid",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Memory",
+      "phonetic": "/\u02c8v\u026av\u026ad/",
+      "meaning": "jelas terbayang",
+      "example": "Use vivid examples to remember.",
+      "collocations": [
+        "vivid memory"
+      ],
+      "wordFamily": [
+        "vividly"
+      ]
+    },
+    {
+      "word": "reluctant",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Emotion",
+      "phonetic": "/r\u026a\u02c8l\u028ckt\u0259nt/",
+      "meaning": "enggan / ragu",
+      "example": "Many are reluctant to speak aloud.",
+      "collocations": [
+        "reluctant to try"
+      ],
+      "wordFamily": [
+        "reluctance"
+      ]
+    },
+    {
+      "word": "subtle",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Detail",
+      "phonetic": "/\u02c8s\u028ctl/",
+      "meaning": "halus / tipis",
+      "example": "Notice the subtle tone shift.",
+      "collocations": [
+        "subtle difference"
+      ],
+      "wordFamily": [
+        "subtly"
+      ]
+    },
+    {
+      "word": "essential",
+      "pos": "adjective",
+      "level": "A2",
+      "topic": "Core",
+      "phonetic": "/\u026a\u02c8sen\u0283l/",
+      "meaning": "sangat penting",
+      "example": "Listening is essential for accent.",
+      "collocations": [
+        "absolutely essential"
+      ],
+      "wordFamily": [
+        "essentially"
+      ]
+    },
+    {
+      "word": "fluent",
+      "pos": "adjective",
+      "level": "B1",
+      "topic": "Language",
+      "phonetic": "/\u02c8flu\u02d0\u0259nt/",
+      "meaning": "fasih / lancar",
+      "example": "Become fluent through daily reps.",
+      "collocations": [
+        "fluent speaker"
+      ],
+      "wordFamily": [
+        "fluency"
+      ]
+    },
+    {
+      "word": "gritty",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Sports",
+      "phonetic": "/\u02c8\u0261r\u026ati/",
+      "meaning": "penuh daya juang",
+      "example": "The team won a gritty comeback.",
+      "collocations": [
+        "gritty performance"
+      ],
+      "wordFamily": [
+        "grit"
+      ]
+    },
+    {
+      "word": "tranquil",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Mood",
+      "phonetic": "/\u02c8tr\u00e6\u014bkw\u026al/",
+      "meaning": "tenang & damai",
+      "example": "A tranquil space helps focus.",
+      "collocations": [
+        "tranquil environment"
+      ],
+      "wordFamily": [
+        "tranquility"
+      ]
+    },
+    {
+      "word": "intuitive",
+      "pos": "adjective",
+      "level": "B2",
+      "topic": "Design",
+      "phonetic": "/\u026an\u02c8tu\u02d0\u026at\u026av/",
+      "meaning": "mudah dipahami",
+      "example": "Clean UI feels intuitive.",
+      "collocations": [
+        "intuitive design"
+      ],
+      "wordFamily": [
+        "intuitively"
+      ]
+    },
+    {
+      "word": "compelling",
+      "pos": "adjective",
+      "level": "C1",
+      "topic": "Speech",
+      "phonetic": "/k\u0259m\u02c8pel\u026a\u014b/",
+      "meaning": "menarik & meyakinkan",
+      "example": "Tell a compelling story.",
+      "collocations": [
+        "compelling reason"
+      ],
+      "wordFamily": [
+        "compel"
+      ]
+    },
+    {
+      "word": "effortlessly",
+      "pos": "adverb",
+      "level": "B2",
+      "topic": "Manner",
+      "phonetic": "/\u02c8ef\u0259rtl\u0259sli/",
+      "meaning": "dengan mudah",
+      "example": "Words will flow effortlessly.",
+      "collocations": [
+        "flow effortlessly"
+      ],
+      "wordFamily": [
+        "effortless"
+      ]
+    },
+    {
+      "word": "gradually",
+      "pos": "adverb",
+      "level": "B1",
+      "topic": "Time",
+      "phonetic": "/\u02c8\u0261r\u00e6d\u0292u\u0259li/",
+      "meaning": "secara bertahap",
+      "example": "Fluency builds gradually.",
+      "collocations": [
+        "gradually improve"
+      ],
+      "wordFamily": [
+        "gradual"
+      ]
+    },
+    {
+      "word": "consistently",
+      "pos": "adverb",
+      "level": "B1",
+      "topic": "Habit",
+      "phonetic": "/k\u0259n\u02c8s\u026ast\u0259ntli/",
+      "meaning": "secara konsisten",
+      "example": "Practice consistently every day.",
+      "collocations": [
+        "consistently deliver"
+      ],
+      "wordFamily": [
+        "consistent"
+      ]
+    },
+    {
+      "word": "deliberately",
+      "pos": "adverb",
+      "level": "B2",
+      "topic": "Focus",
+      "phonetic": "/d\u026a\u02c8l\u026ab\u0259r\u0259tli/",
+      "meaning": "secara sengaja & sadar",
+      "example": "Practice deliberately, not blindly.",
+      "collocations": [
+        "deliberately slow"
+      ],
+      "wordFamily": [
+        "deliberate"
+      ]
+    },
+    {
+      "word": "remarkably",
+      "pos": "adverb",
+      "level": "B2",
+      "topic": "Degree",
+      "phonetic": "/r\u026a\u02c8m\u0251\u02d0rk\u0259bli/",
+      "meaning": "luar biasa",
+      "example": "The app loads remarkably fast.",
+      "collocations": [
+        "remarkably well"
+      ],
+      "wordFamily": [
+        "remarkable"
+      ]
+    },
+    {
+      "word": "simultaneously",
+      "pos": "adverb",
+      "level": "C1",
+      "topic": "Time",
+      "phonetic": "/\u02ccsa\u026aml\u02c8te\u026ani\u0259sli/",
+      "meaning": "secara bersamaan",
+      "example": "Listen and read simultaneously.",
+      "collocations": [
+        "happen simultaneously"
+      ],
+      "wordFamily": [
+        "simultaneous"
+      ]
+    },
+    {
+      "word": "ultimately",
+      "pos": "adverb",
+      "level": "B2",
+      "topic": "Logic",
+      "phonetic": "/\u02c8\u028clt\u026am\u0259tli/",
+      "meaning": "pada akhirnya",
+      "example": "Ultimately, action beats theory.",
+      "collocations": [
+        "ultimately leads"
+      ],
+      "wordFamily": [
+        "ultimate"
+      ]
+    },
+    {
+      "word": "genuinely",
+      "pos": "adverb",
+      "level": "B2",
+      "topic": "Emotion",
+      "phonetic": "/\u02c8d\u0292enju\u026anli/",
+      "meaning": "sungguh-sungguh",
+      "example": "Stay genuinely interested.",
+      "collocations": [
+        "genuinely curious"
+      ],
+      "wordFamily": [
+        "genuine"
+      ]
+    },
+    {
+      "word": "roughly",
+      "pos": "adverb",
+      "level": "B1",
+      "topic": "Estimate",
+      "phonetic": "/\u02c8r\u028cfli/",
+      "meaning": "kira-kira / sekitar",
+      "example": "It takes roughly five minutes.",
+      "collocations": [
+        "roughly speaking"
+      ],
+      "wordFamily": [
+        "rough"
+      ]
+    },
+    {
+      "word": "seldom",
+      "pos": "adverb",
+      "level": "B2",
+      "topic": "Frequency",
+      "phonetic": "/\u02c8seld\u0259m/",
+      "meaning": "jarang sekali",
+      "example": "Cramming seldom works long term.",
+      "collocations": [
+        "very seldom"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "thoroughly",
+      "pos": "adverb",
+      "level": "B2",
+      "topic": "Manner",
+      "phonetic": "/\u02c8\u03b8\u025c\u02d0ro\u028ali/",
+      "meaning": "secara menyeluruh",
+      "example": "Review each unit thoroughly.",
+      "collocations": [
+        "thoroughly check"
+      ],
+      "wordFamily": [
+        "thorough"
+      ]
+    },
+    {
+      "word": "instinctively",
+      "pos": "adverb",
+      "level": "C1",
+      "topic": "Action",
+      "phonetic": "/\u026an\u02c8st\u026a\u014bkt\u026avli/",
+      "meaning": "secara naluriah",
+      "example": "You will reply instinctively.",
+      "collocations": [
+        "react instinctively"
+      ],
+      "wordFamily": [
+        "instinct"
+      ]
+    },
+    {
+      "word": "predominantly",
+      "pos": "adverb",
+      "level": "C1",
+      "topic": "Degree",
+      "phonetic": "/pr\u026a\u02c8d\u0251\u02d0m\u026an\u0259ntli/",
+      "meaning": "sebagian besar",
+      "example": "Focus predominantly on speaking.",
+      "collocations": [
+        "predominantly used"
+      ],
+      "wordFamily": [
+        "predominant"
+      ]
+    },
+    {
+      "word": "briefly",
+      "pos": "adverb",
+      "level": "A2",
+      "topic": "Time",
+      "phonetic": "/\u02c8bri\u02d0fli/",
+      "meaning": "secara singkat",
+      "example": "Summarize the news briefly.",
+      "collocations": [
+        "speak briefly"
+      ],
+      "wordFamily": [
+        "brief"
+      ]
+    },
+    {
+      "word": "steadily",
+      "pos": "adverb",
+      "level": "B1",
+      "topic": "Growth",
+      "phonetic": "/\u02c8sted\u0259li/",
+      "meaning": "dengan stabil",
+      "example": "Your vocabulary grows steadily.",
+      "collocations": [
+        "grow steadily"
+      ],
+      "wordFamily": [
+        "steady"
+      ]
+    },
+    {
+      "word": "figure out",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Logic",
+      "phonetic": "/\u02c8f\u026a\u0261j\u0259r a\u028at/",
+      "meaning": "menemukan solusi",
+      "example": "Figure out the root cause.",
+      "collocations": [
+        "figure out how"
+      ],
+      "wordFamily": [
+        "figure"
+      ]
+    },
+    {
+      "word": "bring up",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Speech",
+      "phonetic": "/br\u026a\u014b \u028cp/",
+      "meaning": "mengangkat topik",
+      "example": "Glad you brought up that point.",
+      "collocations": [
+        "bring up a topic"
+      ],
+      "wordFamily": [
+        "bring"
+      ]
+    },
+    {
+      "word": "break down",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Learning",
+      "phonetic": "/bre\u026ak da\u028an/",
+      "meaning": "memecah jadi bagian kecil",
+      "example": "Break down complex sentences.",
+      "collocations": [
+        "break down steps"
+      ],
+      "wordFamily": [
+        "break"
+      ]
+    },
+    {
+      "word": "keep up",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Habit",
+      "phonetic": "/ki\u02d0p \u028cp/",
+      "meaning": "mempertahankan ritme",
+      "example": "Keep up the daily streak!",
+      "collocations": [
+        "keep up with"
+      ],
+      "wordFamily": [
+        "keep"
+      ]
+    },
+    {
+      "word": "pull off",
+      "pos": "phrasal verb",
+      "level": "B2",
+      "topic": "Sports",
+      "phonetic": "/p\u028al \u0254\u02d0f/",
+      "meaning": "berhasil melakukan hal sulit",
+      "example": "They pulled off a huge comeback.",
+      "collocations": [
+        "pull off a win"
+      ],
+      "wordFamily": [
+        "pull"
+      ]
+    },
+    {
+      "word": "run into",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Daily",
+      "phonetic": "/r\u028cn \u02c8\u026antu\u02d0/",
+      "meaning": "menemui kendala / bertemu",
+      "example": "I ran into a minor bug.",
+      "collocations": [
+        "run into trouble"
+      ],
+      "wordFamily": [
+        "run"
+      ]
+    },
+    {
+      "word": "point out",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Speech",
+      "phonetic": "/p\u0254\u026ant a\u028at/",
+      "meaning": "menunjukkan / menyoroti",
+      "example": "Thanks for pointing that out.",
+      "collocations": [
+        "point out details"
+      ],
+      "wordFamily": [
+        "point"
+      ]
+    },
+    {
+      "word": "follow through",
+      "pos": "phrasal verb",
+      "level": "B2",
+      "topic": "Habit",
+      "phonetic": "/\u02c8f\u0251\u02d0lo\u028a \u03b8ru\u02d0/",
+      "meaning": "menuntaskan komitmen",
+      "example": "Follow through on your goals.",
+      "collocations": [
+        "follow through with"
+      ],
+      "wordFamily": [
+        "follow"
+      ]
+    },
+    {
+      "word": "cut back on",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Health",
+      "phonetic": "/k\u028ct b\u00e6k \u0251\u02d0n/",
+      "meaning": "mengurangi",
+      "example": "Cut back on late-night scrolling.",
+      "collocations": [
+        "cut back on sugar"
+      ],
+      "wordFamily": [
+        "cut"
+      ]
+    },
+    {
+      "word": "bounce back",
+      "pos": "phrasal verb",
+      "level": "B2",
+      "topic": "Mindset",
+      "phonetic": "/ba\u028ans b\u00e6k/",
+      "meaning": "bangkit kembali",
+      "example": "Champions bounce back quickly.",
+      "collocations": [
+        "bounce back fast"
+      ],
+      "wordFamily": [
+        "bounce"
+      ]
+    },
+    {
+      "word": "wrap up",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Work",
+      "phonetic": "/r\u00e6p \u028cp/",
+      "meaning": "menyelesaikan / menutup",
+      "example": "Let us wrap up this session.",
+      "collocations": [
+        "wrap up soon"
+      ],
+      "wordFamily": [
+        "wrap"
+      ]
+    },
+    {
+      "word": "look into",
+      "pos": "phrasal verb",
+      "level": "B1",
+      "topic": "Research",
+      "phonetic": "/l\u028ak \u02c8\u026antu\u02d0/",
+      "meaning": "menyelidiki / mendalami",
+      "example": "I will look into that topic.",
+      "collocations": [
+        "look into details"
+      ],
+      "wordFamily": [
+        "look"
+      ]
+    },
+    {
+      "word": "take off",
+      "pos": "phrasal verb",
+      "level": "A2",
+      "topic": "Growth",
+      "phonetic": "/te\u026ak \u0254\u02d0f/",
+      "meaning": "lepas landas / melesat",
+      "example": "Her podcast really took off.",
+      "collocations": [
+        "take off quickly"
+      ],
+      "wordFamily": [
+        "take"
+      ]
+    },
+    {
+      "word": "zero in on",
+      "pos": "phrasal verb",
+      "level": "C1",
+      "topic": "Focus",
+      "phonetic": "/\u02c8z\u026a\u0259ro\u028a \u026an \u0251\u02d0n/",
+      "meaning": "fokus penuh pada",
+      "example": "Zero in on pronunciation.",
+      "collocations": [
+        "zero in on goals"
+      ],
+      "wordFamily": [
+        "zero"
+      ]
+    },
+    {
+      "word": "brush up on",
+      "pos": "phrasal verb",
+      "level": "B2",
+      "topic": "Learning",
+      "phonetic": "/br\u028c\u0283 \u028cp \u0251\u02d0n/",
+      "meaning": "mengasah kembali",
+      "example": "Brush up on your English daily.",
+      "collocations": [
+        "brush up on skills"
+      ],
+      "wordFamily": [
+        "brush"
+      ]
     }
   ]
 }

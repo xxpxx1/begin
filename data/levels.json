@@ -1,68 +1,942 @@
 {
   "levels": [
     {
-      "id": "A1", "title": "Starter", "subtitle": "Daily essentials & polite requests", "color": "#34C759",
+      "id": "A1",
+      "title": "Starter",
+      "subtitle": "Daily essentials & polite requests",
+      "color": "#4A9B7F",
       "units": [
         {
-          "id": "A1-U1", "title": "Coffee & Casual Greetings", "duration": "3 min", "xp": 50,
+          "id": "A1-U1",
+          "title": "Coffee & Casual Greetings",
+          "duration": "3 min",
+          "xp": 50,
           "exercises": [
-            { "type": "arrange", "prompt": "Susun kalimat: Saya ingin pesan kopi hitam dingin.", "tokens": ["I", "would", "like", "an", "iced", "black", "coffee", "tea"], "answer": ["I", "would", "like", "an", "iced", "black", "coffee"] },
-            { "type": "speak", "prompt": "Ucapkan dengan jelas:", "target": "Could I get an iced americano please" }
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Saya ingin pesan kopi hitam dingin.",
+              "tokens": [
+                "I",
+                "would",
+                "like",
+                "an",
+                "iced",
+                "black",
+                "coffee"
+              ],
+              "answer": [
+                "I",
+                "would",
+                "like",
+                "an",
+                "iced",
+                "black",
+                "coffee"
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Could I get an iced americano please"
+            }
           ]
         },
         {
-          "id": "A1-U2", "title": "Directions & Transit", "duration": "4 min", "xp": 60,
+          "id": "A1-U2",
+          "title": "Directions & Transit",
+          "duration": "4 min",
+          "xp": 60,
           "exercises": [
-            { "type": "arrange", "prompt": "Susun kalimat: Permisi, di mana stasiun kereta terdekat?", "tokens": ["Excuse", "me,", "where", "is", "the", "nearest", "train", "station?"], "answer": ["Excuse", "me,", "where", "is", "the", "nearest", "train", "station?"] },
-            { "type": "speak", "prompt": "Latih intonasi bertanya:", "target": "How long does it take to walk there" }
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Permisi, di mana stasiun kereta terdekat?",
+              "tokens": [
+                "Excuse",
+                "me,",
+                "where",
+                "is",
+                "the",
+                "nearest",
+                "train",
+                "station?"
+              ],
+              "answer": [
+                "Excuse",
+                "me,",
+                "where",
+                "is",
+                "the",
+                "nearest",
+                "train",
+                "station?"
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "How long does it take to walk there"
+            }
+          ]
+        },
+        {
+          "id": "A1-U3",
+          "title": "Shopping & Asking Prices",
+          "duration": "3 min",
+          "xp": 55,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Berapa harga jaket biru ini?",
+              "tokens": [
+                "How",
+                "much",
+                "does",
+                "this",
+                "blue",
+                "jacket",
+                "cost?"
+              ],
+              "answer": [
+                "How",
+                "much",
+                "does",
+                "this",
+                "blue",
+                "jacket",
+                "cost?"
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Do you have this shirt in a medium size"
+            }
+          ]
+        },
+        {
+          "id": "A1-U4",
+          "title": "Ordering at a Restaurant",
+          "duration": "4 min",
+          "xp": 60,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Boleh saya minta menu dan segelas air?",
+              "tokens": [
+                "May",
+                "I",
+                "have",
+                "the",
+                "menu",
+                "and",
+                "water?"
+              ],
+              "answer": [
+                "May",
+                "I",
+                "have",
+                "the",
+                "menu",
+                "and",
+                "water?"
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Could we get the bill whenever you are ready"
+            }
+          ]
+        },
+        {
+          "id": "A1-U5",
+          "title": "Daily Time & Routines",
+          "duration": "3 min",
+          "xp": 50,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Saya biasanya bangun pukul enam pagi.",
+              "tokens": [
+                "I",
+                "usually",
+                "wake",
+                "up",
+                "at",
+                "six",
+                "AM."
+              ],
+              "answer": [
+                "I",
+                "usually",
+                "wake",
+                "up",
+                "at",
+                "six",
+                "AM."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "What time do you start work every morning"
+            }
           ]
         }
       ]
     },
     {
-      "id": "A2", "title": "Elementary", "subtitle": "Everyday routines & weekend plans", "color": "#007AFF",
+      "id": "A2",
+      "title": "Elementary",
+      "subtitle": "Everyday routines & social plans",
+      "color": "#3F8A7C",
       "units": [
         {
-          "id": "A2-U1", "title": "Making Weekend Plans", "duration": "4 min", "xp": 70,
+          "id": "A2-U1",
+          "title": "Making Weekend Plans",
+          "duration": "4 min",
+          "xp": 70,
           "exercises": [
-            { "type": "arrange", "prompt": "Susun kalimat: Apakah kamu ada waktu luang Sabtu sore?", "tokens": ["Are", "you", "free", "on", "Saturday", "afternoon?", "yesterday"], "answer": ["Are", "you", "free", "on", "Saturday", "afternoon?"] },
-            { "type": "speak", "prompt": "Ucapkan secara natural:", "target": "Let me check my schedule and get back to you" }
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Apakah kamu luang Sabtu sore ini?",
+              "tokens": [
+                "Are",
+                "you",
+                "free",
+                "on",
+                "Saturday",
+                "afternoon?"
+              ],
+              "answer": [
+                "Are",
+                "you",
+                "free",
+                "on",
+                "Saturday",
+                "afternoon?"
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Let me check my schedule and get back to you"
+            }
+          ]
+        },
+        {
+          "id": "A2-U2",
+          "title": "Airport & Hotel Check-in",
+          "duration": "4 min",
+          "xp": 75,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Saya punya reservasi atas nama saya.",
+              "tokens": [
+                "I",
+                "have",
+                "a",
+                "reservation",
+                "under",
+                "my",
+                "name."
+              ],
+              "answer": [
+                "I",
+                "have",
+                "a",
+                "reservation",
+                "under",
+                "my",
+                "name."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Could I get a room on a quiet higher floor"
+            }
+          ]
+        },
+        {
+          "id": "A2-U3",
+          "title": "Health & Pharmacy",
+          "duration": "4 min",
+          "xp": 70,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Saya butuh obat untuk sakit tenggorokan.",
+              "tokens": [
+                "I",
+                "need",
+                "something",
+                "for",
+                "a",
+                "sore",
+                "throat."
+              ],
+              "answer": [
+                "I",
+                "need",
+                "something",
+                "for",
+                "a",
+                "sore",
+                "throat."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "How many times a day should I take this"
+            }
+          ]
+        },
+        {
+          "id": "A2-U4",
+          "title": "Describing Hobbies",
+          "duration": "4 min",
+          "xp": 75,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Saya suka membangun aplikasi di waktu luang.",
+              "tokens": [
+                "I",
+                "enjoy",
+                "building",
+                "apps",
+                "in",
+                "my",
+                "spare",
+                "time."
+              ],
+              "answer": [
+                "I",
+                "enjoy",
+                "building",
+                "apps",
+                "in",
+                "my",
+                "spare",
+                "time."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "How long have you been practicing photography"
+            }
+          ]
+        },
+        {
+          "id": "A2-U5",
+          "title": "Sharing Past Stories",
+          "duration": "5 min",
+          "xp": 80,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Perjalanan kemarin jauh lebih lancar dari dugaan.",
+              "tokens": [
+                "Yesterday's",
+                "trip",
+                "went",
+                "much",
+                "smoother",
+                "than",
+                "expected."
+              ],
+              "answer": [
+                "Yesterday's",
+                "trip",
+                "went",
+                "much",
+                "smoother",
+                "than",
+                "expected."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "We missed the first bus but caught the next one"
+            }
           ]
         }
       ]
     },
     {
-      "id": "B1", "title": "Intermediate", "subtitle": "Expressing opinions & storytelling", "color": "#FF9500",
+      "id": "B1",
+      "title": "Intermediate",
+      "subtitle": "Expressing opinions & problem solving",
+      "color": "#DF953B",
       "units": [
         {
-          "id": "B1-U1", "title": "Sharing Tech Perspectives", "duration": "5 min", "xp": 90,
+          "id": "B1-U1",
+          "title": "Sharing Tech Perspectives",
+          "duration": "5 min",
+          "xp": 90,
           "exercises": [
-            { "type": "arrange", "prompt": "Susun kalimat: Menurutku aplikasi sederhana justru lebih produktif.", "tokens": ["In", "my", "opinion,", "minimalist", "apps", "are", "more", "productive."], "answer": ["In", "my", "opinion,", "minimalist", "apps", "are", "more", "productive."] },
-            { "type": "speak", "prompt": "Ucapkan dengan penekanan kata:", "target": "Consistency matters far more than intensity when learning" }
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Menurutku aplikasi ringan jauh lebih produktif.",
+              "tokens": [
+                "In",
+                "my",
+                "opinion,",
+                "lightweight",
+                "apps",
+                "are",
+                "more",
+                "productive."
+              ],
+              "answer": [
+                "In",
+                "my",
+                "opinion,",
+                "lightweight",
+                "apps",
+                "are",
+                "more",
+                "productive."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Consistency matters far more than intensity when learning"
+            }
+          ]
+        },
+        {
+          "id": "B1-U2",
+          "title": "Job Interview Essentials",
+          "duration": "5 min",
+          "xp": 95,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Saya senang memecahkan masalah teknis yang rumit.",
+              "tokens": [
+                "I",
+                "enjoy",
+                "solving",
+                "complex",
+                "technical",
+                "problems."
+              ],
+              "answer": [
+                "I",
+                "enjoy",
+                "solving",
+                "complex",
+                "technical",
+                "problems."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "My greatest strength is staying calm under tight deadlines"
+            }
+          ]
+        },
+        {
+          "id": "B1-U3",
+          "title": "Giving Constructive Advice",
+          "duration": "4 min",
+          "xp": 90,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Sebaiknya kita uji fitur ini sebelum rilis.",
+              "tokens": [
+                "We",
+                "should",
+                "test",
+                "this",
+                "feature",
+                "before",
+                "releasing",
+                "it."
+              ],
+              "answer": [
+                "We",
+                "should",
+                "test",
+                "this",
+                "feature",
+                "before",
+                "releasing",
+                "it."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Have you considered breaking the task into smaller steps"
+            }
+          ]
+        },
+        {
+          "id": "B1-U4",
+          "title": "Explaining Cause & Effect",
+          "duration": "5 min",
+          "xp": 95,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Karena jaringan lambat, proses sinkronisasi tertunda.",
+              "tokens": [
+                "Because",
+                "the",
+                "network",
+                "was",
+                "slow,",
+                "syncing",
+                "was",
+                "delayed."
+              ],
+              "answer": [
+                "Because",
+                "the",
+                "network",
+                "was",
+                "slow,",
+                "syncing",
+                "was",
+                "delayed."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Poor sleep directly affects how well we retain memory"
+            }
+          ]
+        },
+        {
+          "id": "B1-U5",
+          "title": "Handling Unexpected Changes",
+          "duration": "5 min",
+          "xp": 100,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Meskipun jadwal berubah, tim tetap siap.",
+              "tokens": [
+                "Even",
+                "though",
+                "the",
+                "schedule",
+                "changed,",
+                "the",
+                "team",
+                "adapted."
+              ],
+              "answer": [
+                "Even",
+                "though",
+                "the",
+                "schedule",
+                "changed,",
+                "the",
+                "team",
+                "adapted."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Let us figure out a practical workaround right away"
+            }
           ]
         }
       ]
     },
     {
-      "id": "B2", "title": "Upper-Intermediate", "subtitle": "Workplace fluency & nuance", "color": "#AF52DE",
+      "id": "B2",
+      "title": "Upper-Intermediate",
+      "subtitle": "Workplace fluency & nuanced ideas",
+      "color": "#6476B8",
       "units": [
         {
-          "id": "B2-U1", "title": "Project Trade-offs & Strategy", "duration": "5 min", "xp": 110,
+          "id": "B2-U1",
+          "title": "Project Trade-offs",
+          "duration": "5 min",
+          "xp": 110,
           "exercises": [
-            { "type": "arrange", "prompt": "Susun kalimat: Kita perlu menyeimbangkan kecepatan rilis dan keamanan.", "tokens": ["We", "need", "to", "balance", "release", "speed", "with", "security."], "answer": ["We", "need", "to", "balance", "release", "speed", "with", "security."] },
-            { "type": "speak", "prompt": "Latih gaya presentasi:", "target": "From a long term perspective this architecture scales cleanly" }
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Kita harus menyeimbangkan kecepatan dan keamanan.",
+              "tokens": [
+                "We",
+                "need",
+                "to",
+                "balance",
+                "release",
+                "speed",
+                "with",
+                "security."
+              ],
+              "answer": [
+                "We",
+                "need",
+                "to",
+                "balance",
+                "release",
+                "speed",
+                "with",
+                "security."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "From a long term perspective this architecture scales cleanly"
+            }
+          ]
+        },
+        {
+          "id": "B2-U2",
+          "title": "Diplomatic Disagreement",
+          "duration": "5 min",
+          "xp": 115,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Saya paham maksudmu, namun ada risiko tersembunyi.",
+              "tokens": [
+                "I",
+                "see",
+                "your",
+                "point,",
+                "yet",
+                "there",
+                "is",
+                "a",
+                "hidden",
+                "risk."
+              ],
+              "answer": [
+                "I",
+                "see",
+                "your",
+                "point,",
+                "yet",
+                "there",
+                "is",
+                "a",
+                "hidden",
+                "risk."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "While that approach works short term it may create bottlenecks"
+            }
+          ]
+        },
+        {
+          "id": "B2-U3",
+          "title": "Presenting Insights",
+          "duration": "6 min",
+          "xp": 120,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Data menunjukkan peningkatan retensi pengguna yang tajam.",
+              "tokens": [
+                "The",
+                "data",
+                "reveals",
+                "a",
+                "sharp",
+                "increase",
+                "in",
+                "retention."
+              ],
+              "answer": [
+                "The",
+                "data",
+                "reveals",
+                "a",
+                "sharp",
+                "increase",
+                "in",
+                "retention."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Notice how daily micro sessions outperform long cramming"
+            }
+          ]
+        },
+        {
+          "id": "B2-U4",
+          "title": "Cross-Team Collaboration",
+          "duration": "5 min",
+          "xp": 115,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Mari selaraskan prioritas utama sebelum mulai.",
+              "tokens": [
+                "Let",
+                "us",
+                "align",
+                "on",
+                "key",
+                "priorities",
+                "before",
+                "starting."
+              ],
+              "answer": [
+                "Let",
+                "us",
+                "align",
+                "on",
+                "key",
+                "priorities",
+                "before",
+                "starting."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Clear documentation prevents misunderstandings across remote teams"
+            }
+          ]
+        },
+        {
+          "id": "B2-U5",
+          "title": "Decision Under Uncertainty",
+          "duration": "6 min",
+          "xp": 120,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Kita perlu mengumpulkan bukti sebelum menarik kesimpulan.",
+              "tokens": [
+                "We",
+                "must",
+                "gather",
+                "evidence",
+                "before",
+                "drawing",
+                "conclusions."
+              ],
+              "answer": [
+                "We",
+                "must",
+                "gather",
+                "evidence",
+                "before",
+                "drawing",
+                "conclusions."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Let us run a small experiment to validate our hypothesis"
+            }
           ]
         }
       ]
     },
     {
-      "id": "C1", "title": "Advanced", "subtitle": "Executive persuasion & idiomatic flow", "color": "#FF3B30",
+      "id": "C1",
+      "title": "Advanced",
+      "subtitle": "Executive persuasion & idiomatic flow",
+      "color": "#D96E48",
       "units": [
         {
-          "id": "C1-U1", "title": "Negotiating & Framing Ideas", "duration": "6 min", "xp": 140,
+          "id": "C1-U1",
+          "title": "Framing Strategic Ideas",
+          "duration": "6 min",
+          "xp": 140,
           "exercises": [
-            { "type": "arrange", "prompt": "Susun kalimat: Terlepas dari kendala awal, hasilnya melampaui ekspektasi.", "tokens": ["Despite", "initial", "setbacks,", "the", "outcome", "exceeded", "expectations."], "answer": ["Despite", "initial", "setbacks,", "the", "outcome", "exceeded", "expectations."] },
-            { "type": "speak", "prompt": "Ucapkan dengan ritme tenang:", "target": "Rather than jumping to conclusions let us examine the evidence" }
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Terlepas dari kendala awal, hasilnya melampaui target.",
+              "tokens": [
+                "Despite",
+                "initial",
+                "setbacks,",
+                "the",
+                "outcome",
+                "exceeded",
+                "targets."
+              ],
+              "answer": [
+                "Despite",
+                "initial",
+                "setbacks,",
+                "the",
+                "outcome",
+                "exceeded",
+                "targets."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Rather than jumping to conclusions let us examine the evidence"
+            }
+          ]
+        },
+        {
+          "id": "C1-U2",
+          "title": "High-Stakes Negotiation",
+          "duration": "6 min",
+          "xp": 145,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Kesepakatan ini menguntungkan kedua belah pihak.",
+              "tokens": [
+                "This",
+                "arrangement",
+                "creates",
+                "mutual",
+                "value",
+                "for",
+                "both",
+                "parties."
+              ],
+              "answer": [
+                "This",
+                "arrangement",
+                "creates",
+                "mutual",
+                "value",
+                "for",
+                "both",
+                "parties."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "We are prepared to be flexible provided the timeline holds"
+            }
+          ]
+        },
+        {
+          "id": "C1-U3",
+          "title": "Synthesizing Complex Topics",
+          "duration": "6 min",
+          "xp": 150,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Intinya adalah menyederhanakan sistem tanpa mengurangi daya.",
+              "tokens": [
+                "The",
+                "crux",
+                "is",
+                "simplifying",
+                "systems",
+                "without",
+                "losing",
+                "power."
+              ],
+              "answer": [
+                "The",
+                "crux",
+                "is",
+                "simplifying",
+                "systems",
+                "without",
+                "losing",
+                "power."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "True mastery lies in making complex concepts feel effortless"
+            }
+          ]
+        },
+        {
+          "id": "C1-U4",
+          "title": "Persuasive Storytelling",
+          "duration": "6 min",
+          "xp": 145,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Perubahan kecil yang konsisten menghasilkan dampak besar.",
+              "tokens": [
+                "Subtle,",
+                "consistent",
+                "shifts",
+                "compound",
+                "into",
+                "remarkable",
+                "results."
+              ],
+              "answer": [
+                "Subtle,",
+                "consistent",
+                "shifts",
+                "compound",
+                "into",
+                "remarkable",
+                "results."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "What separates resilient teams is how they respond to friction"
+            }
+          ]
+        },
+        {
+          "id": "C1-U5",
+          "title": "Executive Briefing",
+          "duration": "6 min",
+          "xp": 150,
+          "exercises": [
+            {
+              "type": "arrange",
+              "prompt": "Susun kalimat: Kita berada di posisi ideal untuk memimpin inovasi.",
+              "tokens": [
+                "We",
+                "are",
+                "uniquely",
+                "positioned",
+                "to",
+                "spearhead",
+                "this",
+                "innovation."
+              ],
+              "answer": [
+                "We",
+                "are",
+                "uniquely",
+                "positioned",
+                "to",
+                "spearhead",
+                "this",
+                "innovation."
+              ]
+            },
+            {
+              "type": "speak",
+              "prompt": "Ucapkan dengan intonasi alami:",
+              "target": "Moving forward our primary focus will be sustainable execution"
+            }
           ]
         }
       ]
