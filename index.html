@@ -10,24 +10,30 @@
   <title>Begin — English Fluency</title>
   <link rel="manifest" href="./manifest.json" />
   <link rel="apple-touch-icon" href="./assets/icons/icon.svg" />
-  <link rel="stylesheet" href="./css/tokens.css?v=3" />
-  <link rel="stylesheet" href="./css/components.css?v=2" />
+  <link rel="stylesheet" href="./css/tokens.css?v=4" />
+  <link rel="stylesheet" href="./css/components.css?v=4" />
 </head>
 <body>
   <div class="app-shell">
+    <!-- Top Harmonized Navigation Bar -->
     <header class="top-bar">
-      <div style="font-weight:800;font-size:17px;letter-spacing:-0.02em;">Begin</div>
+      <div class="brand-title">Begin</div>
       <div class="dynamic-island" id="dynamicIsland">
         <span class="island-dot" id="islandDot"></span>
         <span id="islandText">Begin · 3d Streak</span>
       </div>
-      <div style="display:flex;gap:6px;">
-        <button class="icon-btn" id="voicePickerBtn" aria-label="Pilih Suara">🗣️</button>
-        <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Theme">◐</button>
+      <div class="top-actions">
+        <button class="icon-btn" id="voicePickerBtn" aria-label="Pilih Suara">
+          <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+        </button>
+        <button class="icon-btn" id="themeToggleBtn" aria-label="Ganti Tema">
+          <svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
       </div>
     </header>
 
     <main class="view-container">
+      <!-- TAB 1: TODAY -->
       <section class="tab-view active" id="view-today">
         <h1 class="large-title">Today</h1>
         <p class="subtitle">Start small, speak fluent every day.</p>
@@ -38,17 +44,17 @@
           </div>
           <div class="rings-layout">
             <svg class="rings-svg" viewBox="0 0 120 120">
-              <circle class="ring-track" cx="60" cy="60" r="48" stroke="#FF3B30"></circle>
-              <circle class="ring-progress" id="ringVocab" cx="60" cy="60" r="48" stroke="#FF3B30"></circle>
-              <circle class="ring-track" cx="60" cy="60" r="36" stroke="#34C759"></circle>
-              <circle class="ring-progress" id="ringListen" cx="60" cy="60" r="36" stroke="#34C759"></circle>
-              <circle class="ring-track" cx="60" cy="60" r="24" stroke="#3F8A7C"></circle>
-              <circle class="ring-progress" id="ringSpeak" cx="60" cy="60" r="24" stroke="#3F8A7C"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="48" stroke="#D96E48"></circle>
+              <circle class="ring-progress" id="ringVocab" cx="60" cy="60" r="48" stroke="#D96E48"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="36" stroke="#4A9B7F"></circle>
+              <circle class="ring-progress" id="ringListen" cx="60" cy="60" r="36" stroke="#4A9B7F"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="24" stroke="#DF953B"></circle>
+              <circle class="ring-progress" id="ringSpeak" cx="60" cy="60" r="24" stroke="#DF953B"></circle>
             </svg>
             <div class="ring-legend">
               <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-red);"></i>Vocab</span><strong id="statVocab">2/5</strong></div>
               <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-green);"></i>Listening</span><strong id="statListen">1/3</strong></div>
-              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-blue);"></i>Speaking</span><strong id="statSpeak">1/3</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-orange);"></i>Speaking</span><strong id="statSpeak">1/3</strong></div>
             </div>
           </div>
         </div>
@@ -74,6 +80,7 @@
         </div>
       </section>
 
+      <!-- TAB 2: PATH -->
       <section class="tab-view" id="view-path">
         <h1 class="large-title">Path</h1>
         <p class="subtitle">Kurikulum terstruktur dari A1 hingga C1.</p>
@@ -81,18 +88,21 @@
         <div id="unitsList"></div>
       </section>
 
+      <!-- TAB 3: WORDS (LEXICON) -->
       <section class="tab-view" id="view-words">
         <h1 class="large-title">Words</h1>
         <p class="subtitle">Kamus kata benda, sifat, kerja, flashcard & kuis.</p>
         <div id="lexiconContainer"></div>
       </section>
 
+      <!-- TAB 4: SPEAK -->
       <section class="tab-view" id="view-speak">
         <h1 class="large-title">Speak</h1>
         <p class="subtitle">Latih pelafalan, ritme, dan roleplay langsung.</p>
         <div id="speakStudioContainer"></div>
       </section>
 
+      <!-- TAB 5: BRIEF -->
       <section class="tab-view" id="view-brief">
         <h1 class="large-title">Daily Brief</h1>
         <p class="subtitle">Bacaan singkat dunia nyata & tap-to-translate.</p>
@@ -100,14 +110,31 @@
       </section>
     </main>
 
+    <!-- Crisp 5-Column iOS Tab Bar -->
     <nav class="tab-bar">
-      <button class="tab-btn active" data-tab="today"><span class="tab-icon">◎</span><span>Today</span></button>
-            <button class="tab-btn" data-tab="path"><span class="tab-icon">❖</span><span>Path</span></button>
-      <button class="tab-btn" data-tab="words"><span class="tab-icon">📖</span><span>Words</span></button>
-      <button class="tab-btn" data-tab="speak"><span class="tab-icon">🎙</span><span>Speak</span></button>
-      <button class="tab-btn" data-tab="brief"><span class="tab-icon">📰</span><span>Brief</span></button>
+      <button class="tab-btn active" data-tab="today">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+        <span>Today</span>
+      </button>
+      <button class="tab-btn" data-tab="path">
+        <svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        <span>Path</span>
+      </button>
+      <button class="tab-btn" data-tab="words">
+        <svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        <span>Words</span>
+      </button>
+      <button class="tab-btn" data-tab="speak">
+        <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+        <span>Speak</span>
+      </button>
+      <button class="tab-btn" data-tab="brief">
+        <svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+        <span>Brief</span>
+      </button>
     </nav>
 
+    <!-- iOS Bottom Sheet -->
     <div class="sheet-backdrop" id="sheetBackdrop">
       <div class="bottom-sheet">
         <div class="sheet-grabber"></div>
@@ -115,6 +142,7 @@
       </div>
     </div>
   </div>
-  <script type="module" src="./js/app.js"></script>
+
+  <script type="module" src="./js/app.js?v=4"></script>
 </body>
 </html>

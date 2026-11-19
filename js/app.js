@@ -1,8 +1,8 @@
-import { store } from './state.js';
-import { speakText, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js';
-import { initPathModule } from './modules/path.js';
-import { initBriefModule } from './modules/brief.js';
-import { initLexiconModule } from './modules/lexicon.js';
+import { store } from './state.js?v=4';
+import { speakText, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=4';
+import { initPathModule } from './modules/path.js?v=4';
+import { initBriefModule } from './modules/brief.js?v=4';
+import { initLexiconModule } from './modules/lexicon.js?v=4';
 
 let islandTimer = null;
 
@@ -37,10 +37,7 @@ function openVoicePicker() {
 
   const renderSheet = () => {
     const voices = getEnglishVoices();
-    const filtered = voices.filter((v) => {
-      if (accentFilter === 'ALL') return true;
-      return v.lang.toUpperCase().includes(accentFilter);
-    });
+    const filtered = voices.filter((v) => accentFilter === 'ALL' || v.lang.toUpperCase().includes(accentFilter));
 
     openSheet(`
       <div class="card-label" style="color:var(--ios-blue);">Voice & Accent Studio</div>
@@ -48,14 +45,12 @@ function openVoicePicker() {
       <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">
         Aktif: <strong>${store.state.voiceName || 'Auto (Default)'}</strong>
       </p>
-
       <div class="level-pills" style="margin-bottom:12px;">
         ${['ALL', 'US', 'GB', 'AU'].map((tag) => `
           <button class="level-pill ${accentFilter === tag ? 'active' : ''}" data-vfilter="${tag}">
             ${tag === 'ALL' ? 'Semua' : tag === 'US' ? '🇺🇸 US' : tag === 'GB' ? '🇬🇧 UK' : '🇦🇺 AU'}
           </button>`).join('')}
       </div>
-
       <div style="max-height:46dvh;overflow-y:auto;display:flex;flex-direction:column;gap:8px;">
         ${filtered.length ? filtered.map((v) => {
           const isSelected = store.state.voiceURI === v.voiceURI;
@@ -63,9 +58,7 @@ function openVoicePicker() {
           return `
           <div class="ios-card" style="margin:0;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border:${isSelected ? '1.5px solid var(--ios-blue)' : '0.5px solid var(--separator)'};">
             <div style="flex:1;cursor:pointer;" data-select-uri="${v.voiceURI}" data-select-name="${cleanName}">
-              <div style="font-weight:700;font-size:14px;">
-                ${isSelected ? '✓ ' : ''}${cleanName}
-              </div>
+              <div style="font-weight:700;font-size:14px;">${isSelected ? '✓ ' : ''}${cleanName}</div>
               <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">
                 ${formatAccentTag(v.lang)} · ${v.localService ? 'Offline Ready' : 'Online'}
               </div>
@@ -80,17 +73,10 @@ function openVoicePicker() {
       </div>
     `);
 
-    document.querySelectorAll('[data-vfilter]').forEach((btn) => {
-      btn.onclick = () => { accentFilter = btn.dataset.vfilter; renderSheet(); };
-    });
-
+    document.querySelectorAll('[data-vfilter]').forEach((btn) => { btn.onclick = () => { accentFilter = btn.dataset.vfilter; renderSheet(); }; });
     document.querySelectorAll('[data-preview-uri]').forEach((btn) => {
-      btn.onclick = (e) => {
-        e.stopPropagation();
-        speakText("Hello! Let's practice English fluency together.", 1.0, null, btn.dataset.previewUri);
-      };
+      btn.onclick = (e) => { e.stopPropagation(); speakText("Hello! Let's practice English fluency together.", 1.0, null, btn.dataset.previewUri); };
     });
-
     document.querySelectorAll('[data-select-uri]').forEach((el) => {
       el.onclick = () => {
         store.setVoice(el.dataset.selectUri, el.dataset.selectName);
@@ -99,11 +85,9 @@ function openVoicePicker() {
         renderSheet();
       };
     });
-
     const reloadBtn = document.getElementById('reloadVoicesBtn');
     if (reloadBtn) reloadBtn.onclick = renderSheet;
   };
-
   renderSheet();
 }
 
@@ -214,14 +198,16 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=4').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   const switchTab = (tabName) => {
     document.querySelectorAll('.tab-view').forEach((v) => v.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
-    document.getElementById(`view-${tabName}`).classList.add('active');
-    document.querySelector(`.tab-btn[data-tab="${tabName}"]`).classList.add('active');
+    const targetView = document.getElementById(`view-${tabName}`);
+    const targetBtn = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+    if (targetView) targetView.classList.add('active');
+    if (targetBtn) targetBtn.classList.add('active');
   };
 
   document.querySelectorAll('.tab-btn').forEach((btn) => { btn.onclick = () => switchTab(btn.dataset.tab); });
@@ -231,16 +217,17 @@ async function bootstrap() {
   document.getElementById('sheetBackdrop').onclick = (e) => { if (e.target.id === 'sheetBackdrop') closeSheet(); };
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json').then((r) => r.json()),
-    fetch('./data/briefs.json').then((r) => r.json()),
-    fetch('./data/scenarios.json').then((r) => r.json()),
-    fetch('./data/dictionary.json').then((r) => r.json())
+    fetch('./data/levels.json?v=4').then((r) => r.json()),
+    fetch('./data/briefs.json?v=4').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=4').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=4').then((r) => r.json())
   ]);
 
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);
   initSpeakStudio(scenariosData);
   initLexiconModule(dictData, notifyIsland, openSheet);
+
   window.addEventListener('begin:statechange', renderDashboard);
   renderDashboard();
 }
