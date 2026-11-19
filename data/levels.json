@@ -1,0 +1,71 @@
+{
+  "levels": [
+    {
+      "id": "A1", "title": "Starter", "subtitle": "Daily essentials & polite requests", "color": "#34C759",
+      "units": [
+        {
+          "id": "A1-U1", "title": "Coffee & Casual Greetings", "duration": "3 min", "xp": 50,
+          "exercises": [
+            { "type": "arrange", "prompt": "Susun kalimat: Saya ingin pesan kopi hitam dingin.", "tokens": ["I", "would", "like", "an", "iced", "black", "coffee", "tea"], "answer": ["I", "would", "like", "an", "iced", "black", "coffee"] },
+            { "type": "speak", "prompt": "Ucapkan dengan jelas:", "target": "Could I get an iced americano please" }
+          ]
+        },
+        {
+          "id": "A1-U2", "title": "Directions & Transit", "duration": "4 min", "xp": 60,
+          "exercises": [
+            { "type": "arrange", "prompt": "Susun kalimat: Permisi, di mana stasiun kereta terdekat?", "tokens": ["Excuse", "me,", "where", "is", "the", "nearest", "train", "station?"], "answer": ["Excuse", "me,", "where", "is", "the", "nearest", "train", "station?"] },
+            { "type": "speak", "prompt": "Latih intonasi bertanya:", "target": "How long does it take to walk there" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "A2", "title": "Elementary", "subtitle": "Everyday routines & weekend plans", "color": "#007AFF",
+      "units": [
+        {
+          "id": "A2-U1", "title": "Making Weekend Plans", "duration": "4 min", "xp": 70,
+          "exercises": [
+            { "type": "arrange", "prompt": "Susun kalimat: Apakah kamu ada waktu luang Sabtu sore?", "tokens": ["Are", "you", "free", "on", "Saturday", "afternoon?", "yesterday"], "answer": ["Are", "you", "free", "on", "Saturday", "afternoon?"] },
+            { "type": "speak", "prompt": "Ucapkan secara natural:", "target": "Let me check my schedule and get back to you" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B1", "title": "Intermediate", "subtitle": "Expressing opinions & storytelling", "color": "#FF9500",
+      "units": [
+        {
+          "id": "B1-U1", "title": "Sharing Tech Perspectives", "duration": "5 min", "xp": 90,
+          "exercises": [
+            { "type": "arrange", "prompt": "Susun kalimat: Menurutku aplikasi sederhana justru lebih produktif.", "tokens": ["In", "my", "opinion,", "minimalist", "apps", "are", "more", "productive."], "answer": ["In", "my", "opinion,", "minimalist", "apps", "are", "more", "productive."] },
+            { "type": "speak", "prompt": "Ucapkan dengan penekanan kata:", "target": "Consistency matters far more than intensity when learning" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B2", "title": "Upper-Intermediate", "subtitle": "Workplace fluency & nuance", "color": "#AF52DE",
+      "units": [
+        {
+          "id": "B2-U1", "title": "Project Trade-offs & Strategy", "duration": "5 min", "xp": 110,
+          "exercises": [
+            { "type": "arrange", "prompt": "Susun kalimat: Kita perlu menyeimbangkan kecepatan rilis dan keamanan.", "tokens": ["We", "need", "to", "balance", "release", "speed", "with", "security."], "answer": ["We", "need", "to", "balance", "release", "speed", "with", "security."] },
+            { "type": "speak", "prompt": "Latih gaya presentasi:", "target": "From a long term perspective this architecture scales cleanly" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C1", "title": "Advanced", "subtitle": "Executive persuasion & idiomatic flow", "color": "#FF3B30",
+      "units": [
+        {
+          "id": "C1-U1", "title": "Negotiating & Framing Ideas", "duration": "6 min", "xp": 140,
+          "exercises": [
+            { "type": "arrange", "prompt": "Susun kalimat: Terlepas dari kendala awal, hasilnya melampaui ekspektasi.", "tokens": ["Despite", "initial", "setbacks,", "the", "outcome", "exceeded", "expectations."], "answer": ["Despite", "initial", "setbacks,", "the", "outcome", "exceeded", "expectations."] },
+            { "type": "speak", "prompt": "Ucapkan dengan ritme tenang:", "target": "Rather than jumping to conclusions let us examine the evidence" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "shadowing": [
+    { "id": "sh-1", "level": "A2", "context": "Casual Networking", "sentence": "It is great to finally put a face to the name", "tip": "Sambungkan 'great to' terdengar halus seperti 'greato'." },
+    { "id": "sh-2", "level": "B1", "context": "Tech Standup", "sentence": "I ran into a minor bug but I have a solid workaround", "tip": "Tekankan kata 'minor bug' dan 'solid workaround'." },
+    { "id": "sh-3", "level": "B2", "context": "Podcast Insight", "sentence": "Clarity of thought always precedes clarity of expression", "tip": "Beri jeda sepersekian detik setelah kata 'thought'." }
+  ],
+  "roleplays": [
+    { "id": "rp-1", "title": "Specialty Coffee Order", "aiPrompt": "Hi there! Welcome to Begin Roasters. What can I get started for you today?", "suggestedReply": "Hi could I get an oat milk latte with less ice please" },
+    { "id": "rp-2", "title": "Frontend & Security Interview", "aiPrompt": "Tell me briefly why you prefer building Progressive Web Apps over heavy native binaries.", "suggestedReply": "Because web apps load instantly work offline and run across every device" }
+  ]
+}

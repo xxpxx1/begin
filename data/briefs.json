@@ -1,0 +1,31 @@
+{
+  "briefs": [
+    {
+      "id": "brief-01", "category": "Technology", "readTime": "2 min read",
+      "title": "Why Minimalist Phones Are Making a Quiet Comeback",
+      "paragraphs": [
+        "Across major cities, young professionals are increasingly reluctant to spend every waking hour glued to endless social feeds.",
+        "Instead of upgrading to larger screens, many are adopting minimalist devices or monochrome interfaces to curb digital fatigue and reclaim deep focus."
+      ],
+      "glossary": {
+        "reluctant": { "phonetic": "/rɪˈlʌktənt/", "pos": "adjective", "meaning": "enggan / ragu-ragu", "example": "She was reluctant to share her password." },
+        "adopting": { "phonetic": "/əˈdɒptɪŋ/", "pos": "verb", "meaning": "mulai menerapkan / menggunakan", "example": "Teams are adopting offline-first tools." },
+        "curb": { "phonetic": "/kɜːrb/", "pos": "verb", "meaning": "menahan / mengurangi", "example": "New habits help curb late-night scrolling." },
+        "fatigue": { "phonetic": "/fəˈtiːɡ/", "pos": "noun", "meaning": "kelelahan (mental maupun fisik)", "example": "Screen fatigue affects sleep quality." }
+      }
+    },
+    {
+      "id": "brief-02", "category": "Cognitive Science", "readTime": "2 min read",
+      "title": "The Science Behind Five-Minute Micro-Learning",
+      "paragraphs": [
+        "Neuroscientists have long observed that brief, frequent study sessions outperform marathon cramming when building long-term memory.",
+        "By spacing repetition right before a memory fades, learners reinforce neural pathways effortlessly during daily commutes."
+      ],
+      "glossary": {
+        "outperform": { "phonetic": "/ˌaʊtpərˈfɔːrm/", "pos": "verb", "meaning": "mengungguli / bekerja lebih baik dari", "example": "Short daily practice outperforms cramming." },
+        "cramming": { "phonetic": "/ˈkræmɪŋ/", "pos": "noun", "meaning": "belajar sistem kebut semalam", "example": "Cramming rarely leads to fluency." },
+        "reinforce": { "phonetic": "/ˌriːɪnˈfɔːrs/", "pos": "verb", "meaning": "memperkuat", "example": "Speaking aloud reinforces vocabulary." }
+      }
+    }
+  ]
+}

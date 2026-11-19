@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Begin" />
+  <meta name="theme-color" content="#3F8A7C" />
+  <title>Begin — English Fluency</title>
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="apple-touch-icon" href="./assets/icons/icon.svg" />
+  <link rel="stylesheet" href="./css/tokens.css?v=3" />
+  <link rel="stylesheet" href="./css/components.css?v=2" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-bar">
+      <div style="font-weight:800;font-size:17px;letter-spacing:-0.02em;">Begin</div>
+      <div class="dynamic-island" id="dynamicIsland">
+        <span class="island-dot" id="islandDot"></span>
+        <span id="islandText">Begin · 3d Streak</span>
+      </div>
+      <button class="icon-btn" id="themeToggleBtn" aria-label="Toggle Theme">◐</button>
+    </header>
+
+    <main class="view-container">
+      <section class="tab-view active" id="view-today">
+        <h1 class="large-title">Today</h1>
+        <p class="subtitle">Start small, speak fluent every day.</p>
+        <div class="ios-card">
+          <div class="card-header">
+            <span class="card-label">Daily Fluency Rings</span>
+            <span id="xpValue" style="font-size:13px;font-weight:700;color:var(--ios-blue);">120 XP</span>
+          </div>
+          <div class="rings-layout">
+            <svg class="rings-svg" viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="48" stroke="#FF3B30"></circle>
+              <circle class="ring-progress" id="ringVocab" cx="60" cy="60" r="48" stroke="#FF3B30"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="36" stroke="#34C759"></circle>
+              <circle class="ring-progress" id="ringListen" cx="60" cy="60" r="36" stroke="#34C759"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="24" stroke="#3F8A7C"></circle>
+              <circle class="ring-progress" id="ringSpeak" cx="60" cy="60" r="24" stroke="#3F8A7C"></circle>
+            </svg>
+            <div class="ring-legend">
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-red);"></i>Vocab</span><strong id="statVocab">2/5</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-green);"></i>Listening</span><strong id="statListen">1/3</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-blue);"></i>Speaking</span><strong id="statSpeak">1/3</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="bento-grid">
+          <div class="bento-tile">
+            <div class="card-label">Active Level</div>
+            <div class="bento-value" id="levelValue" style="color:var(--ios-blue);">A1</div>
+            <div style="font-size:12px;color:var(--text-secondary);">CEFR Standard</div>
+          </div>
+          <div class="bento-tile">
+            <div class="card-label">Vocab Vault</div>
+            <div class="bento-value" id="vaultCount" style="color:var(--ios-green);">1 Kata</div>
+            <div style="font-size:12px;color:var(--text-secondary);">Offline Ready</div>
+          </div>
+        </div>
+        <button class="btn-primary" id="continueLearningBtn" style="margin-bottom:16px;">Lanjutkan Kurikulum Level →</button>
+        <div class="ios-card">
+          <div class="card-header">
+            <span class="card-label">Smart Vocab Vault</span>
+            <span style="font-size:12px;color:var(--text-secondary);">Saved Words</span>
+          </div>
+          <div id="vaultPreviewList"></div>
+        </div>
+      </section>
+
+      <section class="tab-view" id="view-path">
+        <h1 class="large-title">Path</h1>
+        <p class="subtitle">Kurikulum terstruktur dari A1 hingga C1.</p>
+        <div class="level-pills" id="levelPills"></div>
+        <div id="unitsList"></div>
+      </section>
+
+      <section class="tab-view" id="view-speak">
+        <h1 class="large-title">Speak</h1>
+        <p class="subtitle">Latih pelafalan, ritme, dan roleplay langsung.</p>
+        <div id="speakStudioContainer"></div>
+      </section>
+
+      <section class="tab-view" id="view-brief">
+        <h1 class="large-title">Daily Brief</h1>
+        <p class="subtitle">Bacaan singkat dunia nyata & tap-to-translate.</p>
+        <div id="briefList"></div>
+      </section>
+    </main>
+
+    <nav class="tab-bar">
+      <button class="tab-btn active" data-tab="today"><span class="tab-icon">◎</span><span>Today</span></button>
+      <button class="tab-btn" data-tab="path"><span class="tab-icon">❖</span><span>Path</span></button>
+      <button class="tab-btn" data-tab="speak"><span class="tab-icon">🎙</span><span>Speak</span></button>
+      <button class="tab-btn" data-tab="brief"><span class="tab-icon">📰</span><span>Brief</span></button>
+    </nav>
+
+    <div class="sheet-backdrop" id="sheetBackdrop">
+      <div class="bottom-sheet">
+        <div class="sheet-grabber"></div>
+        <div id="sheetContent"></div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

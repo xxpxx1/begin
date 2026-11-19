@@ -1,0 +1,18 @@
+{
+  "name": "Begin — English Fluency",
+  "short_name": "Begin",
+  "description": "iOS-inspired English learning PWA: CEFR Path, AI Speaking Coach, and Daily Briefings.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F2F2F7",
+  "theme_color": "#3F8A7C",
+  "icons": [
+    {
+      "src": "./assets/icons/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
