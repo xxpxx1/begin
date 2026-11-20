@@ -421,3 +421,107 @@
 .eq-mini span:nth-child(3) { animation-delay: 0.4s; }
 .eq-mini span:nth-child(4) { animation-delay: 0.15s; }
 @keyframes eqPulse { from { height: 4px; } to { height: 14px; } }
+
+/* === v12: FULL-FIT REAL PHOTO HERO (ZERO SCROLL, ZERO OVERLAP) === */
+.view-container.landing-active {
+  padding: 10px 16px calc(12px + var(--safe-bottom));
+  overflow: hidden;
+}
+
+#view-landing.active {
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  height: calc(100dvh - 54px - var(--safe-top));
+  min-height: 540px;
+  gap: 10px;
+}
+
+.photo-hero-card {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  background: #0F172A;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 270px;
+}
+
+.photo-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+  z-index: 1;
+  transition: transform 6s var(--ease-out);
+}
+
+.photo-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.28) 0%,
+    rgba(15, 23, 42, 0.06) 34%,
+    rgba(15, 36, 84, 0.84) 68%,
+    rgba(11, 25, 58, 0.96) 100%
+  );
+}
+
+.hero-top-pill {
+  position: relative;
+  z-index: 3;
+  align-self: flex-start;
+  margin: 14px 14px 0;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(15, 23, 42, 0.46);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #F8FAFC;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #34D399;
+  box-shadow: 0 0 8px #34D399;
+}
+
+.hero-bottom-content {
+  position: relative;
+  z-index: 3;
+  padding: 16px 18px 18px;
+  color: #FFFFFF;
+}
+
+.hero-cta-clean {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 15px;
+  border: none;
+  background: linear-gradient(135deg, #FFFFFF 0%, #EFF6FF 100%);
+  color: #1A6DFF;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  transition: transform 0.22s var(--spring), box-shadow 0.22s ease;
+}
+.hero-cta-clean:active { transform: scale(0.96); }
