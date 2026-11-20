@@ -1,8 +1,8 @@
-import { store } from './state.js?v=10';
-import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=10';
-import { initPathModule } from './modules/path.js?v=10';
-import { initBriefModule } from './modules/brief.js?v=10';
-import { initLexiconModule } from './modules/lexicon.js?v=10';
+import { store } from './state.js?v=11';
+import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=11';
+import { initPathModule } from './modules/path.js?v=11';
+import { initBriefModule } from './modules/brief.js?v=11';
+import { initLexiconModule } from './modules/lexicon.js?v=11';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -236,17 +236,29 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=10').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=11').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
-  const heroSentence = "No worries, let's grab a coffee and catch up!";
-  document.getElementById('heroPlayBtn').onclick = () => speakText(heroSentence);
-  const runHeroEval = (spoken) => {
-    const res = evaluateSpeech(heroSentence, spoken);
-    document.getElementById('heroVoiceResult').innerHTML = `<div style="font-size:12px;margin-bottom:4px;">Akurasi: <strong>${res.accuracy}%</strong></div><div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div>`;
+  let landingSlangPool = [
+    { word: "no cap", phonetic: "/noʊ kæp/", meaning: "serius / tidak bohong (beneran)", example: "That new update is super fast, no cap." },
+    { word: "lowkey", phonetic: "/ˈloʊkiː/", meaning: "diam-diam / sebenarnya", example: "I am lowkey excited to try this feature." },
+    { word: "hit me up", phonetic: "/hɪt miː ʌp/", meaning: "kabari aku / hubungi aku nanti", example: "Hit me up whenever you are free tonight." }
+  ];
+  let slangCursor = 0;
+  const showLandingSlang = () => {
+    const cur = landingSlangPool[slangCursor % landingSlangPool.length];
+    document.getElementById('landingSlangWord').textContent = cur.word;
+    document.getElementById('landingSlangPhonetic').textContent = cur.phonetic;
+    document.getElementById('landingSlangMeaning').textContent = cur.meaning;
+    document.getElementById('landingSlangExample').textContent = `"${cur.example}"`;
   };
-  document.getElementById('heroMicBtn').onclick = () => { notifyIsland('Ucapkan kalimat...', true); startRecognition({ onResult: runHeroEval, onError: (e) => notifyIsland(`Mic: ${e}`), onEnd: () => {} }); };
-  document.getElementById('heroSimBtn').onclick = () => runHeroEval(heroSentence);
+  document.getElementById('shuffleLandingSlangBtn').onclick = () => {
+    slangCursor = (slangCursor + 1) % landingSlangPool.length;
+    showLandingSlang();
+    speakText(landingSlangPool[slangCursor].word);
+  };
+  document.getElementById('playLandingSlangBtn').onclick = () => speakText(landingSlangPool[slangCursor].example);
+  document.getElementById('landingBriefSampleBtn').onclick = () => speakText("Small daily habits build real English fluency.");
 
   document.getElementById('heroStartBtn').onclick = () => setAppMode(true, 'today');
   document.getElementById('brandHomeBtn').onclick = () => setAppMode(false);
@@ -268,14 +280,16 @@ async function bootstrap() {
   });
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=10').then((r) => r.json()),
-    fetch('./data/briefs.json?v=10').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=10').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=10').then((r) => r.json())
+    fetch('./data/levels.json?v=11').then((r) => r.json()),
+    fetch('./data/briefs.json?v=11').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=11').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=11').then((r) => r.json())
   ]);
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);
   initSpeakStudio(scenariosData);
   initLexiconModule(dictData, notifyIsland, openSheet);
+  const slangs = dictData.words.filter((w) => w.pos === 'slang');
+  if (slangs.length) { landingSlangPool = slangs; showLandingSlang(); }
 }
 bootstrap();

@@ -333,3 +333,91 @@
   display: grid; place-items: center; box-shadow: 0 10px 24px rgba(16, 185, 129, 0.32);
   animation: tokenPop 0.45s var(--spring);
 }
+
+/* === v11: LAYERED VECTOR HERO & PROPORTIONAL VIEWPORT === */
+#view-landing.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100dvh - 86px);
+  gap: 12px;
+}
+
+.editorial-hero-card {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(155deg, #1E3A8A 0%, #1A6DFF 48%, #0284C7 100%);
+  padding: 20px 18px 0;
+  color: #FFFFFF;
+  box-shadow: 0 16px 36px rgba(26, 109, 255, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.hero-top-copy {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 340px;
+  margin: 0 auto 6px;
+}
+
+.hero-stage {
+  position: relative;
+  height: 224px;
+  margin-top: 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero-artwork-svg {
+  width: 270px;
+  height: 218px;
+  display: block;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 12px 22px rgba(15, 23, 42, 0.28));
+}
+
+/* Floating Frosted Glass Feature Badges */
+.glass-float-pill {
+  position: absolute;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  padding: 7px 11px;
+  color: #0F172A;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  pointer-events: none;
+}
+
+.pill-pos-1 { top: 14px; left: 2px; animation: floatPillA 4.2s ease-in-out infinite; }
+.pill-pos-2 { top: 38px; right: 2px; animation: floatPillB 4.8s ease-in-out infinite; }
+.pill-pos-3 { bottom: 16px; left: 4px; animation: floatPillC 4.5s ease-in-out infinite; }
+
+@keyframes floatPillA { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
+@keyframes floatPillB { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(5px); } }
+@keyframes floatPillC { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-4px); } }
+
+.pill-dot-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.pill-dot-icon svg { width: 13px; height: 13px; stroke: currentColor; fill: none; stroke-width: 2.2; }
+
+.eq-mini { display: inline-flex; align-items: flex-end; gap: 2.5px; height: 14px; }
+.eq-mini span { width: 2.5px; border-radius: 99px; background: var(--ios-blue); animation: eqPulse 0.9s ease-in-out infinite alternate; }
+.eq-mini span:nth-child(2) { animation-delay: 0.2s; }
+.eq-mini span:nth-child(3) { animation-delay: 0.4s; }
+.eq-mini span:nth-child(4) { animation-delay: 0.15s; }
+@keyframes eqPulse { from { height: 4px; } to { height: 14px; } }

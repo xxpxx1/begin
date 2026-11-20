@@ -11,8 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/tokens.css?v=10" />
-  <link rel="stylesheet" href="./css/components.css?v=10" />
+  <link rel="stylesheet" href="./css/tokens.css?v=11" />
+  <link rel="stylesheet" href="./css/components.css?v=11" />
 </head>
 <body>
   <div class="app-shell">
@@ -38,72 +38,169 @@
     </header>
 
     <main class="view-container landing-active" id="mainContainer">
-      <!-- STREAMLINED EDITORIAL LANDING PAGE -->
+      <!-- LAYERED EDITORIAL LANDING PAGE -->
       <section class="tab-view active" id="view-landing">
-        <div class="hero-visual-banner stagger-1">
-          <div style="padding-bottom:18px;">
-            <div style="font-size:10.5px;font-weight:800;letter-spacing:0.06em;opacity:0.88;margin-bottom:6px;">ENGLISH FLUENCY STUDIO</div>
-            <h1 class="serif-display" style="font-size:36px;line-height:1.05;margin-bottom:8px;">Fluency in <em>Motion.</em></h1>
-            <p style="font-size:12.5px;line-height:1.45;opacity:0.92;margin-bottom:14px;">Belajar slang sehari-hari, latih pelafalan AI, dan simak cerita dunia dalam 5 menit.</p>
-            <button id="heroStartBtn" style="background:#FFF;color:#1A6DFF;border:none;padding:10px 16px;border-radius:13px;font-weight:800;font-size:13px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;box-shadow:0 6px 16px rgba(15,23,42,0.18);">
-              <span>Mulai Belajar</span><span>→</span>
+        <div class="editorial-hero-card stagger-1">
+          <div class="hero-top-copy">
+            <div style="font-size:10.5px;font-weight:800;letter-spacing:0.08em;opacity:0.86;margin-bottom:4px;">ENGLISH FLUENCY STUDIO</div>
+            <h1 class="serif-display" style="font-size:38px;line-height:1.04;margin-bottom:8px;">Speak English with <em>Real Confidence.</em></h1>
+            <p style="font-size:12.5px;line-height:1.45;opacity:0.92;margin-bottom:14px;">Kuasai kosakata slang harian, koreksi pelafalan AI, dan narasi audio dalam 5 menit sehari.</p>
+            <button id="heroStartBtn" style="background:#FFFFFF;color:#1A6DFF;border:none;padding:11px 22px;border-radius:14px;font-weight:800;font-size:13.5px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 22px rgba(15,23,42,0.22);">
+              <span>Mulai Belajar</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
           </div>
-          <!-- Custom Illustrated Artwork: Woman Studying with Studio Headset -->
-          <svg viewBox="0 0 180 190" style="width:100%;max-width:155px;justify-self:end;display:block;" aria-hidden="true">
-            <defs>
-              <linearGradient id="bgGlow" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#60A5FA" stop-opacity="0.45"/><stop offset="100%" stop-color="#38BDF8" stop-opacity="0.1"/></linearGradient>
-              <linearGradient id="shirtGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F8FAFC"/><stop offset="100%" stop-color="#CBD5E1"/></linearGradient>
-            </defs>
-            <circle cx="95" cy="95" r="72" fill="url(#bgGlow)"/>
-            <!-- Soundwave arcs -->
-            <path d="M24 78 Q16 90 24 102" stroke="#BAE6FD" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M16 70 Q4 90 16 110" stroke="#7DD3FC" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.7"/>
-            <!-- Back Hair -->
-            <path d="M56 76 C52 115 48 145 58 164 L132 164 C140 142 136 112 132 76 Z" fill="#1E293B"/>
-            <!-- Shoulders & Shirt -->
-            <path d="M40 190 C44 156 66 144 94 144 C122 144 144 156 148 190 Z" fill="url(#shirtGrad)"/>
-            <!-- Neck -->
-            <rect x="84" y="122" width="20" height="26" rx="10" fill="#F3C6A5"/>
-            <!-- Face -->
-            <path d="M66 78 C66 56 122 56 122 78 C122 106 110 126 94 126 C78 126 66 106 66 78 Z" fill="#FAD2B5"/>
-            <!-- Front Hair Fringe -->
-            <path d="M64 78 C66 50 122 48 124 78 C114 64 96 62 84 72 C76 66 68 70 64 78 Z" fill="#0F172A"/>
-            <!-- Eyes & Smile -->
-            <circle cx="82" cy="88" r="2.6" fill="#0F172A"/>
-            <circle cx="106" cy="88" r="2.6" fill="#0F172A"/>
-            <path d="M87 104 Q94 111 101 104" stroke="#BE123C" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-            <!-- Sleek Over-Ear Headset -->
-            <path d="M58 84 C58 44 130 44 130 84" stroke="#0F172A" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-            <path d="M58 84 C58 44 130 44 130 84" stroke="#38BDF8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <rect x="51" y="74" width="14" height="28" rx="7" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
-            <rect x="123" y="74" width="14" height="28" rx="7" fill="#0F172A" stroke="#38BDF8" stroke-width="2"/>
-            <!-- Tablet / Notebook -->
-            <rect x="64" y="156" width="60" height="34" rx="6" fill="#1E293B" stroke="#60A5FA" stroke-width="1.5"/>
-            <circle cx="94" cy="173" r="4" fill="#38BDF8"/>
-          </svg>
+
+          <div class="hero-stage">
+            <!-- Floating Pill 1: Slang Dictionary -->
+            <div class="glass-float-pill pill-pos-1">
+              <div class="pill-dot-icon" style="background:rgba(245,158,11,0.16);color:#D97706;">
+                <svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:800;line-height:1.1;">"no cap"</div>
+                <div style="font-size:9.5px;color:#475569;">Slang · Beneran</div>
+              </div>
+            </div>
+
+            <!-- Floating Pill 2: AI Speech Coach -->
+            <div class="glass-float-pill pill-pos-2">
+              <div class="pill-dot-icon" style="background:rgba(16,185,129,0.16);color:#059669;">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:800;line-height:1.1;color:#059669;">Akurasi 96%</div>
+                <div style="font-size:9.5px;color:#475569;">AI Speak Coach</div>
+              </div>
+            </div>
+
+            <!-- Floating Pill 3: Daily Brief Audio -->
+            <div class="glass-float-pill pill-pos-3">
+              <div class="pill-dot-icon" style="background:rgba(26,109,255,0.15);color:#1A6DFF;">
+                <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:800;line-height:1.1;">Daily Brief</div>
+                <div style="font-size:9.5px;color:#475569;">Audio · 0.85x</div>
+              </div>
+            </div>
+
+            <!-- Layered Editorial Vector Illustration: Woman with Studio Headset -->
+            <svg class="hero-artwork-svg" viewBox="0 0 300 230" aria-hidden="true">
+              <defs>
+                <radialGradient id="haloGrad" cx="50%" cy="45%" r="50%">
+                  <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.55"/>
+                  <stop offset="65%" stop-color="#38BDF8" stop-opacity="0.18"/>
+                  <stop offset="100%" stop-color="#1A6DFF" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="hairBack" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1E293B"/>
+                  <stop offset="100%" stop-color="#090D16"/>
+                </linearGradient>
+                <linearGradient id="skinTone" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#FDE0C8"/>
+                  <stop offset="100%" stop-color="#F2BA93"/>
+                </linearGradient>
+                <linearGradient id="knitTop" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="55%" stop-color="#E2E8F0"/>
+                  <stop offset="100%" stop-color="#CBD5E1"/>
+                </linearGradient>
+                <linearGradient id="headsetBand" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#0F172A"/>
+                  <stop offset="50%" stop-color="#334155"/>
+                  <stop offset="100%" stop-color="#0F172A"/>
+                </linearGradient>
+                <linearGradient id="tabletShell" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1E293B"/>
+                  <stop offset="100%" stop-color="#090D16"/>
+                </linearGradient>
+              </defs>
+
+              <!-- Layer 1: Ambient Halo & Orbital Rings -->
+              <circle cx="150" cy="112" r="98" fill="url(#haloGrad)"/>
+              <circle cx="150" cy="112" r="82" fill="none" stroke="#BAE6FD" stroke-width="1" stroke-dasharray="4 6" opacity="0.55"/>
+              <circle cx="150" cy="112" r="64" fill="none" stroke="#E0F2FE" stroke-width="1" opacity="0.35"/>
+
+              <!-- Layer 2: Flowing Back Hair -->
+              <path d="M98 92 C88 134 86 176 98 206 L202 206 C214 176 212 134 202 92 C194 52 106 52 98 92 Z" fill="url(#hairBack)"/>
+
+              <!-- Layer 3: Layered Knit Sweater & Collar -->
+              <path d="M74 230 C80 184 108 168 150 168 C192 168 220 184 226 230 Z" fill="url(#knitTop)"/>
+              <path d="M126 168 Q150 188 174 168" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+
+              <!-- Layer 4: Neck & Chin Shadow -->
+              <rect x="137" y="138" width="26" height="34" rx="13" fill="#E6A87E"/>
+              <path d="M137 142 Q150 153 163 142 L163 150 Q150 159 137 150 Z" fill="#C9865B" opacity="0.45"/>
+
+              <!-- Layer 5: Face Contour & Features -->
+              <path d="M114 92 C114 62 186 62 186 92 C186 126 171 148 150 148 C129 148 114 126 114 92 Z" fill="url(#skinTone)"/>
+              <!-- Soft Cheek Blush -->
+              <ellipse cx="127" cy="113" rx="7" ry="4" fill="#FB7185" opacity="0.24"/>
+              <ellipse cx="173" cy="113" rx="7" ry="4" fill="#FB7185" opacity="0.24"/>
+              <!-- Brows & Eyes -->
+              <path d="M127 93 Q135 89 142 93" stroke="#1E293B" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              <path d="M158 93 Q165 89 173 93" stroke="#1E293B" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              <circle cx="135" cy="102" r="3.4" fill="#0F172A"/>
+              <circle cx="165" cy="102" r="3.4" fill="#0F172A"/>
+              <circle cx="136.2" cy="100.8" r="1.1" fill="#FFFFFF"/>
+              <circle cx="166.2" cy="100.8" r="1.1" fill="#FFFFFF"/>
+              <!-- Nose & Warm Smile -->
+              <path d="M149 104 L147 114 L152 115" stroke="#D18F66" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M141 124 Q150 132 159 124" stroke="#BE123C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+              <!-- Layer 6: Sweeping Front Hair & Rim Highlight -->
+              <path d="M111 96 C112 56 188 54 189 96 C178 76 156 72 140 84 C128 76 118 82 111 96 Z" fill="#0F172A"/>
+              <path d="M124 66 Q150 56 176 66" stroke="#38BDF8" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.65"/>
+
+              <!-- Layer 7: Studio Over-Ear Headset & Mic Boom -->
+              <path d="M104 98 C104 44 196 44 196 98" stroke="url(#headsetBand)" stroke-width="8" fill="none" stroke-linecap="round"/>
+              <path d="M104 98 C104 44 196 44 196 98" stroke="#38BDF8" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+              <!-- Left & Right Earcups -->
+              <rect x="94" y="84" width="18" height="36" rx="9" fill="#0F172A" stroke="#38BDF8" stroke-width="2.2"/>
+              <line x1="103" y1="93" x2="103" y2="111" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+              <rect x="188" y="84" width="18" height="36" rx="9" fill="#0F172A" stroke="#38BDF8" stroke-width="2.2"/>
+              <line x1="197" y1="93" x2="197" y2="111" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+              <!-- Sleek Mic Boom -->
+              <path d="M103 118 Q114 138 134 136" stroke="#38BDF8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="135" cy="136" r="2.8" fill="#38BDF8"/>
+
+              <!-- Layer 8: Glowing Study Tablet -->
+              <rect x="108" y="182" width="84" height="48" rx="9" fill="url(#tabletShell)" stroke="#60A5FA" stroke-width="1.8"/>
+              <circle cx="150" cy="206" r="6" fill="#1A6DFF" stroke="#7DD3FC" stroke-width="1.5"/>
+            </svg>
+          </div>
         </div>
 
-        <div class="kpi-strip stagger-2">
-          <div class="kpi-pill" data-jump="words" style="cursor:pointer;"><div class="kpi-num" data-target="155" data-suffix="+">155+</div><div class="kpi-lbl">Slang & Kata</div></div>
-          <div class="kpi-pill" data-jump="path" style="cursor:pointer;"><div class="kpi-num" data-target="25" data-suffix="">25</div><div class="kpi-lbl">Unit CEFR</div></div>
-          <div class="kpi-pill" data-jump="brief" style="cursor:pointer;"><div class="kpi-num" data-target="7" data-suffix="">7</div><div class="kpi-lbl">Narasi Audio</div></div>
+        <!-- Interactive Slang of the Day Card (Fills middle-lower screen proportionally) -->
+        <div class="ios-card interactive stagger-2" style="margin-bottom:0;">
+          <div class="card-header" style="margin-bottom:6px;">
+            <span class="card-label" style="color:var(--ios-orange);">Slang Hari Ini · Ungkapan Nyata</span>
+            <button class="btn-secondary" id="shuffleLandingSlangBtn" style="padding:5px 10px;font-size:11.5px;">Acak Kata</button>
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px;">
+            <div>
+              <span id="landingSlangWord" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:21px;font-weight:800;">no cap</span>
+              <span id="landingSlangPhonetic" style="font-size:12.5px;color:var(--text-secondary);margin-left:6px;">/noʊ kæp/</span>
+            </div>
+            <button class="btn-secondary" id="playLandingSlangBtn" style="padding:7px 11px;font-size:12px;">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Dengar</span>
+            </button>
+          </div>
+          <div id="landingSlangMeaning" style="font-size:13.5px;font-weight:700;color:var(--ios-blue);margin-bottom:4px;">serius / tidak bohong (beneran)</div>
+          <div id="landingSlangExample" style="font-size:12.5px;color:var(--text-secondary);font-style:italic;">"That new update is super fast, no cap."</div>
         </div>
 
-        <div class="ios-card interactive stagger-3">
-          <div class="card-header">
-            <span class="card-label" style="color:var(--ios-blue);">Tes Pelafalan Cepat</span>
-            <span style="font-size:11px;font-weight:700;color:var(--ios-green);">Interaktif</span>
+        <!-- Bottom Mini Audio Strip (Balances viewport bottom cleanly) -->
+        <div class="ios-card stagger-3" style="margin-bottom:0;padding:12px 15px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="eq-mini"><span></span><span></span><span></span><span></span></div>
+            <div>
+              <div style="font-size:12.5px;font-weight:800;">25 Unit CEFR · 155+ Slang · 7 Audio Brief</div>
+              <div style="font-size:11px;color:var(--text-secondary);">Tersimpan offline & siap dipakai kapan saja</div>
+            </div>
           </div>
-          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16.5px;font-weight:800;margin-bottom:10px;">
-            "No worries, let's grab a coffee and catch up!"
-          </div>
-          <div id="heroVoiceResult" style="margin-bottom:10px;"></div>
-          <div style="display:grid;grid-template-columns:1fr 1.2fr 0.8fr;gap:6px;">
-            <button class="btn-secondary" id="heroPlayBtn" style="font-size:12px;">Dengar</button>
-            <button class="btn-primary" id="heroMicBtn" style="padding:10px;font-size:12px;">Rekam Suara</button>
-            <button class="btn-secondary" id="heroSimBtn" style="font-size:12px;">Simulasi</button>
-          </div>
+          <button class="btn-secondary" id="landingBriefSampleBtn" style="padding:7px 10px;font-size:11.5px;white-space:nowrap;">Tes Audio</button>
         </div>
       </section>
 
@@ -187,6 +284,6 @@
       <div class="bottom-sheet"><div class="sheet-grabber"></div><div id="sheetContent"></div></div>
     </div>
   </div>
-  <script type="module" src="./js/app.js?v=10"></script>
+  <script type="module" src="./js/app.js?v=11"></script>
 </body>
 </html>
