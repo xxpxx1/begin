@@ -4,11 +4,11 @@ import { speakText } from './speak.js';
 export function initLexiconModule(dictData, notifyIsland, openSheet) {
   const container = document.getElementById('lexiconContainer');
   let activePOS = 'all';
-  let activeTier = 'ALL';
   let searchQuery = '';
 
   const posFilters = [
     { id: 'all', label: 'Semua' },
+    { id: 'slang', label: 'Slang & Gaul' },
     { id: 'noun', label: 'Noun (Benda)' },
     { id: 'verb', label: 'Verb (Kerja)' },
     { id: 'adjective', label: 'Adjective (Sifat)' },
@@ -17,22 +17,20 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
   ];
 
   const posBadgeColor = (pos) => {
+    if (pos === 'slang') return 'var(--ios-orange)';
     if (pos === 'noun') return 'var(--ios-blue)';
     if (pos === 'verb') return 'var(--ios-green)';
     if (pos === 'adjective') return 'var(--ios-red)';
-    if (pos === 'adverb') return 'var(--ios-orange)';
-    return 'var(--ios-purple)';
+    if (pos === 'adverb') return 'var(--ios-purple)';
+    return 'var(--ios-azure)';
   };
 
   function getFilteredWords() {
     return dictData.words.filter((w) => {
       const matchPOS = activePOS === 'all' || w.pos === activePOS;
-      const matchTier = activeTier === 'ALL'
-        || (activeTier === 'BASIC' && ['A1', 'A2'].includes(w.level))
-        || (activeTier === 'ADV' && ['B1', 'B2', 'C1'].includes(w.level));
       const q = searchQuery.trim().toLowerCase();
       const matchQuery = !q || w.word.toLowerCase().includes(q) || w.meaning.toLowerCase().includes(q) || w.topic.toLowerCase().includes(q);
-      return matchPOS && matchTier && matchQuery;
+      return matchPOS && matchQuery;
     });
   }
 
@@ -40,7 +38,7 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
     speakText(item.word);
     openSheet(`
       <div style="display:flex;justify-content:space-between;align-items:center;">
-        <span class="card-label" style="color:${posBadgeColor(item.pos)};">${item.pos} · CEFR ${item.level}</span>
+        <span class="card-label" style="color:${posBadgeColor(item.pos)};">${item.pos.toUpperCase()} · ${item.level}</span>
         <span style="font-size:12px;color:var(--text-secondary);">${item.topic}</span>
       </div>
       <div style="display:flex;align-items:baseline;gap:10px;margin:6px 0;">
@@ -49,20 +47,20 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
       </div>
       <p style="font-size:17px;font-weight:700;color:var(--ios-blue);margin-bottom:12px;">${item.meaning}</p>
       <div class="ios-card" style="background:var(--bg-grouped);margin-bottom:12px;padding:14px;">
-        <div class="card-label" style="margin-bottom:4px;">Contoh Kalimat</div>
+        <div class="card-label" style="margin-bottom:4px;">Contoh Pemakaian Nyata</div>
         <div style="font-size:14px;line-height:1.5;">"${item.example}"</div>
       </div>
-      ${item.collocations?.length ? `<div style="margin-bottom:12px;"><div class="card-label" style="margin-bottom:6px;">Natural Collocations</div><div style="display:flex;flex-wrap:wrap;gap:6px;">${item.collocations.map((c) => `<span class="word-chip-result word-ok" style="font-size:12px;">${c}</span>`).join('')}</div></div>` : ''}
-      ${item.wordFamily?.length && item.wordFamily[0] !== '—' ? `<div style="margin-bottom:14px;"><div class="card-label" style="margin-bottom:6px;">Word Family</div><div style="display:flex;flex-wrap:wrap;gap:6px;">${item.wordFamily.map((f) => `<span class="word-token" style="font-size:12px;padding:5px 10px;">${f}</span>`).join('')}</div></div>` : ''}
+      ${item.collocations?.length ? `<div style="margin-bottom:12px;"><div class="card-label" style="margin-bottom:6px;">Frasa Serupa / Pasangan Kata</div><div style="display:flex;flex-wrap:wrap;gap:6px;">${item.collocations.map((c) => `<span class="word-chip-result word-ok" style="font-size:12px;">${c}</span>`).join('')}</div></div>` : ''}
+      ${item.wordFamily?.length && item.wordFamily[0] !== '—' ? `<div style="margin-bottom:14px;"><div class="card-label" style="margin-bottom:6px;">Bentuk Kata Lain</div><div style="display:flex;flex-wrap:wrap;gap:6px;">${item.wordFamily.map((f) => `<span class="word-token" style="font-size:12px;padding:5px 10px;">${f}</span>`).join('')}</div></div>` : ''}
       <div style="display:grid;grid-template-columns:1fr 2fr;gap:10px;">
-        <button class="btn-secondary" id="dictSpeakBtn">🔊 Lafalkan</button>
+        <button class="btn-secondary" id="dictSpeakBtn">Dengar</button>
         <button class="btn-primary" id="dictSaveBtn">+ Simpan ke Vault</button>
       </div>
     `);
     document.getElementById('dictSpeakBtn').onclick = () => speakText(item.word);
     document.getElementById('dictSaveBtn').onclick = () => {
       const added = store.saveWord({ word: item.word, phonetic: item.phonetic, meaning: item.meaning });
-      notifyIsland(added ? `"${item.word}" tersimpan! Cincin Vocab +1` : `"${item.word}" sudah ada di Vault`);
+      notifyIsland(added ? `"${item.word}" tersimpan! Kosakata +1` : `"${item.word}" sudah tersimpan`);
     };
   }
 
@@ -78,7 +76,7 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
       const d = m.definitions[0];
       const phonetic = entry.phonetic || (entry.phonetics.find((p) => p.text)?.text) || '/—/';
       notifyIsland(`Ditemukan: ${entry.word}`);
-      openWordDetail({ word: entry.word, pos: m.partOfSpeech || 'word', level: 'Live', topic: 'Online Dictionary', phonetic, meaning: d.definition, example: d.example || `Practice using "${entry.word}" today.`, collocations: m.synonyms?.slice(0, 3) || [], wordFamily: [] });
+      openWordDetail({ word: entry.word, pos: m.partOfSpeech || 'word', level: 'Online', topic: 'Kamus Global', phonetic, meaning: d.definition, example: d.example || `Try using "${entry.word}" in conversation today.`, collocations: m.synonyms?.slice(0, 3) || [], wordFamily: [] });
     } catch { notifyIsland(`Kata "${query}" tidak ditemukan`); }
   }
 
@@ -88,15 +86,15 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
     const renderCard = () => {
       const item = list[idx];
       openSheet(`
-        <div class="card-header"><span class="card-label" style="color:var(--ios-blue);">Flashcard · ${idx + 1}/${list.length}</span><span class="card-label">${item.pos}</span></div>
+        <div class="card-header"><span class="card-label" style="color:var(--ios-blue);">Kartu Hafalan · ${idx + 1}/${list.length}</span><span class="card-label">${item.pos}</span></div>
         <div id="flashcardBox" class="ios-card" style="min-height:190px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;background:var(--bg-grouped);margin:10px 0 14px;padding:24px;">
-          ${!flipped ? `<div style="font-size:12px;color:var(--text-tertiary);margin-bottom:8px;">Ketuk kartu untuk balik ↻</div><div style="font-size:28px;font-weight:800;margin-bottom:6px;">${item.word}</div><div style="font-size:15px;color:var(--text-secondary);">${item.phonetic}</div>`
-            : `<div style="font-size:12px;color:var(--ios-green);font-weight:700;margin-bottom:6px;">ARTI & KONTEKS</div><div style="font-size:19px;font-weight:700;color:var(--ios-blue);margin-bottom:10px;">${item.meaning}</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">"${item.example}"</div>`}
+          ${!flipped ? `<div style="font-size:12px;color:var(--text-tertiary);margin-bottom:8px;">Ketuk kartu untuk melihat arti</div><div style="font-size:28px;font-weight:800;margin-bottom:6px;">${item.word}</div><div style="font-size:15px;color:var(--text-secondary);">${item.phonetic}</div>`
+            : `<div style="font-size:12px;color:var(--ios-green);font-weight:700;margin-bottom:6px;">ARTI & CONTOH</div><div style="font-size:19px;font-weight:700;color:var(--ios-blue);margin-bottom:10px;">${item.meaning}</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">"${item.example}"</div>`}
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;">
-          <button class="btn-secondary" id="fcAudioBtn">🔊 Suara</button>
-          <button class="btn-secondary" id="fcNextBtn">Lanjut →</button>
-          <button class="btn-primary" id="fcMasterBtn">✓ Hafal (+10 XP)</button>
+          <button class="btn-secondary" id="fcAudioBtn">Dengar</button>
+          <button class="btn-secondary" id="fcNextBtn">Berikutnya</button>
+          <button class="btn-primary" id="fcMasterBtn">Sudah Hafal</button>
         </div>
       `);
       document.getElementById('flashcardBox').onclick = () => { flipped = !flipped; if (!flipped) speakText(item.word); renderCard(); };
@@ -119,17 +117,17 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
     const masked = target.example.replace(new RegExp(`\\b${target.word}\\b`, 'i'), '________');
     const options = [target.word, ...dictData.words.filter((w) => w.word !== target.word).sort(() => 0.5 - Math.random()).slice(0, 3).map((w) => w.word)].sort(() => 0.5 - Math.random());
     openSheet(`
-      <div class="card-label" style="color:var(--ios-orange);">Context Cloze Quiz</div>
-      <h3 style="font-size:18px;margin:6px 0 12px;">Lengkapi kalimat berikut:</h3>
-      <div class="ios-card" style="background:var(--bg-grouped);font-size:15.5px;line-height:1.55;margin-bottom:14px;">"${masked}"<div style="font-size:12px;color:var(--text-secondary);margin-top:8px;">Petunjuk: ${target.meaning}</div></div>
+      <div class="card-label" style="color:var(--ios-orange);">Kuis Tebak Konteks</div>
+      <h3 style="font-size:18px;margin:6px 0 12px;">Pilih kata yang tepat untuk melengkapi kalimat:</h3>
+      <div class="ios-card" style="background:var(--bg-grouped);font-size:15.5px;line-height:1.55;margin-bottom:14px;">"${masked}"<div style="font-size:12px;color:var(--text-secondary);margin-top:8px;">Arti kata: ${target.meaning}</div></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
         ${options.map((opt) => `<button class="word-token" style="padding:12px;text-align:center;" data-opt="${opt}">${opt}</button>`).join('')}
       </div>
     `);
     document.querySelectorAll('[data-opt]').forEach((btn) => {
       btn.onclick = () => {
-        if (btn.dataset.opt === target.word) { speakText(target.example); store.incrementRing('vocab', 1, 15); notifyIsland('Benar! Cincin Vocab +1'); setTimeout(() => openClozeQuiz(list), 900); }
-        else { btn.style.borderColor = 'var(--ios-red)'; btn.style.color = 'var(--ios-red)'; notifyIsland('Kurang tepat, coba lagi'); }
+        if (btn.dataset.opt === target.word) { speakText(target.example); store.incrementRing('vocab', 1, 15); notifyIsland('Tepat! Cincin Kosakata +1'); setTimeout(() => openClozeQuiz(list), 900); }
+        else { btn.style.borderColor = 'var(--ios-red)'; btn.style.color = 'var(--ios-red)'; notifyIsland('Belum pas, coba kata lain'); }
       };
     });
   }
@@ -138,18 +136,15 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
     const filtered = getFilteredWords();
     container.innerHTML = `
       <div class="ios-card" style="padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;">
-        <input id="dictSearchInput" type="search" value="${searchQuery}" placeholder="Cari ${dictData.words.length} kosakata..." style="flex:1;border:none;background:transparent;color:var(--text-primary);font-size:15px;outline:none;" />
+        <input id="dictSearchInput" type="search" value="${searchQuery}" placeholder="Cari slang, kata kerja, atau artinya..." style="flex:1;border:none;background:transparent;color:var(--text-primary);font-size:15px;outline:none;" />
         <span style="font-size:11.5px;font-weight:700;color:var(--ios-blue);background:var(--bg-secondary);padding:4px 9px;border-radius:99px;">${filtered.length} kata</span>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
-        <button class="btn-primary" id="startFlashcardBtn" style="padding:11px;font-size:13px;">🃏 Flashcard Mode</button>
-        <button class="btn-secondary" id="startClozeBtn" style="padding:11px;font-size:13px;">⚡ Kuis Konteks</button>
-      </div>
-      <div class="level-pills" style="margin-bottom:8px;">
-        ${posFilters.map((f) => `<button class="level-pill ${activePOS === f.id ? 'active' : ''}" data-pos="${f.id}">${f.label}</button>`).join('')}
+        <button class="btn-primary" id="startFlashcardBtn" style="padding:11px;font-size:13px;">Kartu Hafalan</button>
+        <button class="btn-secondary" id="startClozeBtn" style="padding:11px;font-size:13px;">Kuis Kalimat</button>
       </div>
       <div class="level-pills" style="margin-bottom:14px;">
-        ${[['ALL','Semua Level'],['BASIC','Basic (A1–A2)'],['ADV','Intermediate–Adv (B1–C1)']].map(([id, lbl]) => `<button class="level-pill ${activeTier === id ? 'active' : ''}" data-tier="${id}" style="font-size:11.5px;padding:5px 12px;">${lbl}</button>`).join('')}
+        ${posFilters.map((f) => `<button class="level-pill ${activePOS === f.id ? 'active' : ''}" data-pos="${f.id}">${f.label}</button>`).join('')}
       </div>
       <div>
         ${filtered.length ? filtered.map((w, idx) => `
@@ -162,18 +157,19 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
               </div>
               <div style="font-size:13px;color:var(--text-secondary);margin-top:3px;">${w.meaning}</div>
             </div>
-            <button class="btn-secondary" data-speak-word="${w.word}" style="padding:7px 10px;">🔊</button>
+            <button class="btn-secondary" data-speak-word="${w.word}" aria-label="Dengar" style="padding:8px 10px;">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
           </div>`).join('') : `
           <div class="ios-card" style="text-align:center;">
             <p style="font-size:14px;color:var(--text-secondary);margin-bottom:10px;">"${searchQuery}" belum ada di kamus offline.</p>
-            <button class="btn-primary" id="onlineLookupBtn">🌐 Cari "${searchQuery}" Online</button>
+            <button class="btn-primary" id="onlineLookupBtn">Cari "${searchQuery}" Online</button>
           </div>`}
       </div>
     `;
     const inp = document.getElementById('dictSearchInput');
     inp.oninput = (e) => { searchQuery = e.target.value; const pos = inp.selectionStart; render(); const r = document.getElementById('dictSearchInput'); r.focus(); r.setSelectionRange(pos, pos); };
     document.querySelectorAll('[data-pos]').forEach((b) => { b.onclick = () => { activePOS = b.dataset.pos; render(); }; });
-    document.querySelectorAll('[data-tier]').forEach((b) => { b.onclick = () => { activeTier = b.dataset.tier; render(); }; });
     document.querySelectorAll('[data-widx]').forEach((c) => { c.onclick = () => openWordDetail(filtered[Number(c.dataset.widx)]); });
     document.querySelectorAll('[data-speak-word]').forEach((b) => { b.onclick = (e) => { e.stopPropagation(); speakText(b.dataset.speakWord); }; });
     document.getElementById('startFlashcardBtn').onclick = () => openFlashcardMode(filtered);

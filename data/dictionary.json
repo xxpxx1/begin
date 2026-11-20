@@ -1,6 +1,609 @@
 {
   "words": [
     {
+      "word": "no cap",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Daily Chat",
+      "phonetic": "/no\u028a k\u00e6p/",
+      "meaning": "serius / tidak bohong (beneran)",
+      "example": "That new update is super fast, no cap.",
+      "collocations": [
+        "for real, no cap"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "lowkey",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Vibes",
+      "phonetic": "/\u02c8lo\u028aki\u02d0/",
+      "meaning": "diam-diam / agak / sebenarnya",
+      "example": "I am lowkey excited to try this feature.",
+      "collocations": [
+        "lowkey excited",
+        "lowkey tired"
+      ],
+      "wordFamily": [
+        "highkey"
+      ]
+    },
+    {
+      "word": "highkey",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Vibes",
+      "phonetic": "/\u02c8ha\u026aki\u02d0/",
+      "meaning": "terang-terangan / sangat",
+      "example": "I highkey love studying with lo-fi music.",
+      "collocations": [
+        "highkey agree"
+      ],
+      "wordFamily": [
+        "lowkey"
+      ]
+    },
+    {
+      "word": "my bad",
+      "pos": "slang",
+      "level": "A1",
+      "topic": "Apology",
+      "phonetic": "/ma\u026a b\u00e6d/",
+      "meaning": "maaf salahku / khilaf",
+      "example": "My bad, I forgot to reply to your text.",
+      "collocations": [
+        "oops, my bad"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "no worries",
+      "pos": "slang",
+      "level": "A1",
+      "topic": "Friendly",
+      "phonetic": "/no\u028a \u02c8w\u025c\u02d0riz/",
+      "meaning": "santai saja / tidak masalah",
+      "example": "No worries at all, take your time!",
+      "collocations": [
+        "no worries mate"
+      ],
+      "wordFamily": [
+        "worry"
+      ]
+    },
+    {
+      "word": "hit me up",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Social",
+      "phonetic": "/h\u026at mi\u02d0 \u028cp/",
+      "meaning": "kabari aku / hubungi aku nanti",
+      "example": "Hit me up whenever you are free tonight.",
+      "collocations": [
+        "hit me up later"
+      ],
+      "wordFamily": [
+        "HMU"
+      ]
+    },
+    {
+      "word": "burned out",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Work & Study",
+      "phonetic": "/b\u025c\u02d0rnd a\u028at/",
+      "meaning": "kelelahan mental akibat terlalu memforsir",
+      "example": "Take a short break so you do not get burned out.",
+      "collocations": [
+        "feeling burned out"
+      ],
+      "wordFamily": [
+        "burnout"
+      ]
+    },
+    {
+      "word": "ghosting",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Social",
+      "phonetic": "/\u02c8\u0261o\u028ast\u026a\u014b/",
+      "meaning": "menghilang tiba-tiba tanpa kabar",
+      "example": "He stopped replying and started ghosting the group.",
+      "collocations": [
+        "stop ghosting"
+      ],
+      "wordFamily": [
+        "ghost"
+      ]
+    },
+    {
+      "word": "down to",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Plans",
+      "phonetic": "/da\u028an tu\u02d0/",
+      "meaning": "mau banget / ayo ikut",
+      "example": "Are you down to grab some iced coffee?",
+      "collocations": [
+        "down to hang out"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "chill",
+      "pos": "slang",
+      "level": "A1",
+      "topic": "Mood",
+      "phonetic": "/t\u0283\u026al/",
+      "meaning": "santai / asyik / rileks",
+      "example": "Let us just have a chill evening at home.",
+      "collocations": [
+        "stay chill",
+        "chill vibe"
+      ],
+      "wordFamily": [
+        "chilling"
+      ]
+    },
+    {
+      "word": "on point",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Compliment",
+      "phonetic": "/\u0251\u02d0n p\u0254\u026ant/",
+      "meaning": "pas banget / keren & akurat",
+      "example": "Your pronunciation was completely on point today!",
+      "collocations": [
+        "always on point"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "piece of cake",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Idiom",
+      "phonetic": "/pi\u02d0s \u0259v ke\u026ak/",
+      "meaning": "gampang banget",
+      "example": "Once you practice daily, speaking becomes a piece of cake.",
+      "collocations": [
+        "total piece of cake"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "spill the tea",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Chat",
+      "phonetic": "/sp\u026al \u00f0\u0259 ti\u02d0/",
+      "meaning": "ceritakan gosip / rahasia serunya",
+      "example": "Come on, spill the tea\u2014what happened at the meeting?",
+      "collocations": [
+        "spill the tea"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "flexing",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Social",
+      "phonetic": "/\u02c8fleks\u026a\u014b/",
+      "meaning": "pamer pencapaian atau barang",
+      "example": "He is subtly flexing his 30-day study streak.",
+      "collocations": [
+        "stop flexing"
+      ],
+      "wordFamily": [
+        "flex"
+      ]
+    },
+    {
+      "word": "cringe",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Reaction",
+      "phonetic": "/kr\u026and\u0292/",
+      "meaning": "bikin geli / malu sendiri melihatnya",
+      "example": "Looking at my old English notes feels so cringe.",
+      "collocations": [
+        "so cringe"
+      ],
+      "wordFamily": [
+        "cringey"
+      ]
+    },
+    {
+      "word": "hyped",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Excitement",
+      "phonetic": "/ha\u026apt/",
+      "meaning": "semangat banget / antusias",
+      "example": "Everyone is hyped for the weekend match.",
+      "collocations": [
+        "super hyped"
+      ],
+      "wordFamily": [
+        "hype"
+      ]
+    },
+    {
+      "word": "clutch",
+      "pos": "slang",
+      "level": "B2",
+      "topic": "Sports & Gaming",
+      "phonetic": "/kl\u028ct\u0283/",
+      "meaning": "penyelamat di saat genting",
+      "example": "She scored a clutch goal in the final minute.",
+      "collocations": [
+        "came in clutch"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "salty",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Emotion",
+      "phonetic": "/\u02c8s\u0254\u02d0lti/",
+      "meaning": "kesal / baper karena kalah",
+      "example": "Do not be salty just because you missed one question.",
+      "collocations": [
+        "getting salty"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "GOAT",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Praise",
+      "phonetic": "/\u0261o\u028at/",
+      "meaning": "terbaik sepanjang masa (Greatest of All Time)",
+      "example": "Kipchoge is undeniably the GOAT of marathon running.",
+      "collocations": [
+        "the absolute GOAT"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "bet",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Agreement",
+      "phonetic": "/bet/",
+      "meaning": "oke siap / deal / setuju",
+      "example": "Meet at seven? Bet, see you there!",
+      "collocations": [
+        "alright, bet"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "slay",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Praise",
+      "phonetic": "/sle\u026a/",
+      "meaning": "tampil memukau / sukses besar",
+      "example": "You totally slayed that English presentation!",
+      "collocations": [
+        "slay the day"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "catch up",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Social",
+      "phonetic": "/k\u00e6t\u0283 \u028cp/",
+      "meaning": "ngobrol melepas rindu / update kabar",
+      "example": "Let us meet soon and catch up on life.",
+      "collocations": [
+        "catch up soon"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "hang out",
+      "pos": "slang",
+      "level": "A1",
+      "topic": "Social",
+      "phonetic": "/h\u00e6\u014b a\u028at/",
+      "meaning": "nongkrong / main bareng",
+      "example": "We usually hang out at the cafe after class.",
+      "collocations": [
+        "hang out together"
+      ],
+      "wordFamily": [
+        "hangout"
+      ]
+    },
+    {
+      "word": "wing it",
+      "pos": "slang",
+      "level": "B2",
+      "topic": "Action",
+      "phonetic": "/w\u026a\u014b \u026at/",
+      "meaning": "jalanin spontan tanpa persiapan panjang",
+      "example": "I did not prepare a script, so I will just wing it.",
+      "collocations": [
+        "just wing it"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "call it a day",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Work",
+      "phonetic": "/k\u0254\u02d0l \u026at \u0259 de\u026a/",
+      "meaning": "sudahi dulu aktivitas hari ini",
+      "example": "We finished five units\u2014let us call it a day!",
+      "collocations": [
+        "let's call it a day"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "under the weather",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Health",
+      "phonetic": "/\u02c8\u028cnd\u0259r \u00f0\u0259 \u02c8we\u00f0\u0259r/",
+      "meaning": "merasa kurang enak badan",
+      "example": "I am feeling a bit under the weather today.",
+      "collocations": [
+        "feeling under the weather"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "keep it real",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Honesty",
+      "phonetic": "/ki\u02d0p \u026at ri\u02d0l/",
+      "meaning": "jujur apa adanya / tidak dibuat-buat",
+      "example": "I appreciate friends who always keep it real.",
+      "collocations": [
+        "always keep it real"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "fair enough",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Agreement",
+      "phonetic": "/fer \u026a\u02c8n\u028cf/",
+      "meaning": "masuk akal juga / bisa dimengerti",
+      "example": "You prefer dark mode at night? Fair enough.",
+      "collocations": [
+        "that's fair enough"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "sounds good",
+      "pos": "slang",
+      "level": "A1",
+      "topic": "Agreement",
+      "phonetic": "/sa\u028andz \u0261\u028ad/",
+      "meaning": "oke sip / kedengarannya bagus",
+      "example": "Practice for five minutes? Sounds good to me!",
+      "collocations": [
+        "sounds good"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "my treat",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Friendly",
+      "phonetic": "/ma\u026a tri\u02d0t/",
+      "meaning": "aku yang traktir",
+      "example": "Put your wallet away\u2014today is my treat.",
+      "collocations": [
+        "lunch is my treat"
+      ],
+      "wordFamily": [
+        "treat"
+      ]
+    },
+    {
+      "word": "long story short",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Storytelling",
+      "phonetic": "/l\u0254\u02d0\u014b \u02c8st\u0254\u02d0ri \u0283\u0254\u02d0rt/",
+      "meaning": "singkat cerita",
+      "example": "Long story short, we missed the bus and walked.",
+      "collocations": [
+        "to make a long story short"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "out of the blue",
+      "pos": "slang",
+      "level": "B2",
+      "topic": "Surprise",
+      "phonetic": "/a\u028at \u0259v \u00f0\u0259 blu\u02d0/",
+      "meaning": "tiba-tiba tanpa diduga",
+      "example": "An old friend texted me out of the blue.",
+      "collocations": [
+        "came out of the blue"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "dead tired",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Energy",
+      "phonetic": "/ded \u02c8ta\u026a\u0259rd/",
+      "meaning": "capek banget",
+      "example": "I was dead tired after running ten kilometers.",
+      "collocations": [
+        "feeling dead tired"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "broke",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Finance",
+      "phonetic": "/bro\u028ak/",
+      "meaning": "lagi bokek / tidak punya uang",
+      "example": "I cannot buy a new phone right now, I am broke.",
+      "collocations": [
+        "dead broke"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "hangry",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Mood",
+      "phonetic": "/\u02c8h\u00e6\u014b\u0261ri/",
+      "meaning": "marah karena lapar",
+      "example": "Sorry I snapped earlier, I was just hangry.",
+      "collocations": [
+        "getting hangry"
+      ],
+      "wordFamily": [
+        "hungry + angry"
+      ]
+    },
+    {
+      "word": "FOMO",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Social",
+      "phonetic": "/\u02c8fo\u028amo\u028a/",
+      "meaning": "takut ketinggalan tren/momen",
+      "example": "Delete social media for a day to beat FOMO.",
+      "collocations": [
+        "pure FOMO"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "valid",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Validation",
+      "phonetic": "/\u02c8v\u00e6l\u026ad/",
+      "meaning": "masuk akal / dapat dibenarkan",
+      "example": "Feeling nervous before speaking is totally valid.",
+      "collocations": [
+        "that's so valid"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
+      "word": "vibe",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Atmosphere",
+      "phonetic": "/va\u026ab/",
+      "meaning": "suasana / aura / rasa nyaman",
+      "example": "This warm color palette gives off a calm vibe.",
+      "collocations": [
+        "good vibes",
+        "chill vibe"
+      ],
+      "wordFamily": [
+        "vibing"
+      ]
+    },
+    {
+      "word": "legit",
+      "pos": "slang",
+      "level": "B1",
+      "topic": "Authenticity",
+      "phonetic": "/l\u026a\u02c8d\u0292\u026at/",
+      "meaning": "asli / beneran keren / terpercaya",
+      "example": "This offline dictionary is legit helpful.",
+      "collocations": [
+        "legit good"
+      ],
+      "wordFamily": [
+        "legitimate"
+      ]
+    },
+    {
+      "word": "ASAP",
+      "pos": "slang",
+      "level": "A2",
+      "topic": "Urgency",
+      "phonetic": "/\u02cce\u026a es e\u026a \u02c8pi\u02d0/",
+      "meaning": "secepat mungkin (As Soon As Possible)",
+      "example": "Send me the link ASAP when it is live.",
+      "collocations": [
+        "reply ASAP"
+      ],
+      "wordFamily": [
+        "\u2014"
+      ]
+    },
+    {
       "word": "breakthrough",
       "pos": "noun",
       "level": "B2",

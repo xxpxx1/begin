@@ -6,12 +6,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Begin" />
-  <meta name="theme-color" content="#3F8A7C" />
-  <title>Begin — English Fluency</title>
+  <meta name="theme-color" content="#1A6DFF" />
+  <title>Begin — Speak English with Confidence</title>
   <link rel="manifest" href="./manifest.json" />
   <link rel="apple-touch-icon" href="./assets/icons/icon.svg" />
-  <link rel="stylesheet" href="./css/tokens.css?v=5" />
-  <link rel="stylesheet" href="./css/components.css?v=5" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/tokens.css?v=6" />
+  <link rel="stylesheet" href="./css/components.css?v=6" />
 </head>
 <body>
   <div class="app-shell">
@@ -20,9 +23,16 @@
       <span id="toastText"></span>
     </div>
 
+    <!-- Frosted Top Navbar -->
     <header class="top-bar">
-      <div class="brand-title">Begin</div>
+      <div class="brand-wrap" id="brandHomeBtn">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="brand-title">Begin</span>
+      </div>
       <div class="top-actions">
+        <button class="pill-nav-switch" id="modeSwitchBtn">Buka Aplikasi</button>
         <button class="icon-btn" id="voicePickerBtn" aria-label="Pilih Suara">
           <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
         </button>
@@ -32,80 +42,202 @@
       </div>
     </header>
 
-    <main class="view-container">
-      <section class="tab-view active" id="view-today">
+    <main class="view-container landing-active" id="mainContainer">
+      <!-- LANDING PAGE VIEW (AVELIS SKY-AZURE INSPIRED) -->
+      <section class="tab-view active" id="view-landing">
+        <div class="stagger-1">
+          <div class="hero-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>APLIKASI BELAJAR BAHASA INGGRIS PRAKTIS</span>
+          </div>
+          <h1 class="serif-display hero-headline">
+            Fluency in <span class="hero-gradient-text">Motion.</span>
+          </h1>
+          <p class="subtitle">
+            Kuasai kosakata <strong>slang sehari-hari</strong>, latih pengucapan langsung dengan AI Speech Coach, dan pahami berita dunia dalam 5 menit sehari.
+          </p>
+          <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:8px;margin-bottom:14px;">
+            <button class="btn-primary" id="heroStartBtn">
+              <span>Mulai Belajar</span>
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <button class="btn-secondary" id="heroExploreBtn">Lihat Slang</button>
+          </div>
+        </div>
+
+        <!-- KPI Strip -->
+        <div class="kpi-strip stagger-2">
+          <div class="kpi-pill"><div class="kpi-num">150+</div><div class="kpi-lbl">Slang & Kata</div></div>
+          <div class="kpi-pill"><div class="kpi-num">25</div><div class="kpi-lbl">Unit CEFR</div></div>
+          <div class="kpi-pill"><div class="kpi-num">100%</div><div class="kpi-lbl">Offline Ready</div></div>
+        </div>
+
+        <!-- Interactive Live Voice Sandbox on Hero -->
+        <div class="ios-card interactive stagger-2" style="border-color:rgba(26,109,255,0.22);">
+          <div class="card-header">
+            <span class="card-label" style="color:var(--ios-blue);">Coba Langsung · AI Voice Check</span>
+            <span style="font-size:11px;font-weight:700;color:var(--ios-green);">Live Demo</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--text-secondary);margin-bottom:6px;">
+            1. Dengarkan kalimat gaul berikut, lalu 2. Tekan Rekam untuk mengetes pelafalanmu:
+          </p>
+          <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;margin-bottom:10px;">
+            "No worries, let's grab a coffee and catch up!"
+          </div>
+          <div id="heroVoiceResult" style="margin-bottom:10px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1.2fr 0.8fr;gap:6px;">
+            <button class="btn-secondary" id="heroPlayBtn" style="font-size:12px;">
+              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Dengar
+            </button>
+            <button class="btn-primary" id="heroMicBtn" style="padding:10px;font-size:12px;">
+              <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>Rekam
+            </button>
+            <button class="btn-secondary" id="heroSimBtn" style="font-size:12px;">Simulasi</button>
+          </div>
+        </div>
+
+        <!-- 4-Column Feature Strip -->
+        <div class="card-label stagger-3" style="margin:16px 0 8px;">4 Pilar Utama di Begin</div>
+        <div class="feature-grid-4 stagger-3">
+          <div class="feature-card" data-jump="words">
+            <div class="feature-icon-box"><svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg></div>
+            <div style="font-weight:800;font-size:14.5px;margin-bottom:3px;">Slang & Words</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.4;">Ungkapan gaul harian, flashcard & kuis konteks.</div>
+          </div>
+          <div class="feature-card" data-jump="speak">
+            <div class="feature-icon-box" style="color:var(--ios-green);background:rgba(16,185,129,0.12);"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg></div>
+            <div style="font-weight:800;font-size:14.5px;margin-bottom:3px;">Speak Coach</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.4;">Tirukan native & simulasi percakapan AI.</div>
+          </div>
+          <div class="feature-card" data-jump="path">
+            <div class="feature-icon-box" style="color:var(--ios-orange);background:rgba(245,158,11,0.12);"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg></div>
+            <div style="font-weight:800;font-size:14.5px;margin-bottom:3px;">CEFR Path</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.4;">25 unit terstruktur dari pemula A1 hingga mahir C1.</div>
+          </div>
+          <div class="feature-card" data-jump="brief">
+            <div class="feature-icon-box" style="color:var(--ios-purple);background:rgba(99,102,241,0.12);"><svg viewBox="0 0 24 24"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Z"/><path d="M10 6h8v4h-8V6Z"/></svg></div>
+            <div style="font-weight:800;font-size:14.5px;margin-bottom:3px;">Daily Brief</div>
+            <div style="font-size:12px;color:var(--text-secondary);line-height:1.4;">Bacaan podcast, olahraga & sains dengan audio.</div>
+          </div>
+        </div>
+
+        <!-- Bottom Azure Banner -->
+        <div class="azure-cta-banner stagger-4">
+          <div style="font-size:11px;font-weight:800;letter-spacing:0.06em;opacity:0.85;margin-bottom:4px;">MULAI HARI INI · GRATIS</div>
+          <h3 class="jakarta-heading" style="font-size:21px;margin-bottom:6px;">Bangun kebiasaan bahasa Inggris 5 menit sehari.</h3>
+          <p style="font-size:13px;opacity:0.9;margin-bottom:14px;line-height:1.45;">Tanpa iklan, tersimpan offline di HP, dan dirancang khusus untuk percakapan nyata.</p>
+          <button id="bannerOpenAppBtn" style="background:#FFFFFF;color:#1A6DFF;border:none;padding:12px 18px;border-radius:14px;font-weight:800;font-size:14px;cursor:pointer;width:100%;">
+            Masuk ke Dashboard Belajar →
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 1: TODAY (SELF-EXPLANATORY DAILY MISSIONS) -->
+      <section class="tab-view" id="view-today">
         <h1 class="large-title">Today</h1>
-        <p class="subtitle">Start small, speak fluent every day.</p>
+        <p class="subtitle">Target latihan harianmu. Tutup ketiga cincin di bawah dengan 3 aktivitas singkat.</p>
+
         <div class="ios-card">
           <div class="card-header">
-            <span class="card-label">Daily Fluency Rings</span>
-            <span id="xpValue" style="font-size:13px;font-weight:700;color:var(--ios-blue);">120 XP</span>
+            <span class="card-label" style="color:var(--ios-blue);">Progress Cincin Harian</span>
+            <span id="xpValue" style="font-size:13px;font-weight:800;color:var(--ios-blue);">120 XP</span>
           </div>
           <div class="rings-layout">
             <svg class="rings-svg" viewBox="0 0 120 120">
-              <circle class="ring-track" cx="60" cy="60" r="48" stroke="#D96E48"></circle>
-              <circle class="ring-progress" id="ringVocab" cx="60" cy="60" r="48" stroke="#D96E48"></circle>
-              <circle class="ring-track" cx="60" cy="60" r="36" stroke="#4A9B7F"></circle>
-              <circle class="ring-progress" id="ringListen" cx="60" cy="60" r="36" stroke="#4A9B7F"></circle>
-              <circle class="ring-track" cx="60" cy="60" r="24" stroke="#DF953B"></circle>
-              <circle class="ring-progress" id="ringSpeak" cx="60" cy="60" r="24" stroke="#DF953B"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="48" stroke="#F43F5E"></circle>
+              <circle class="ring-progress" id="ringVocab" cx="60" cy="60" r="48" stroke="#F43F5E"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="36" stroke="#10B981"></circle>
+              <circle class="ring-progress" id="ringListen" cx="60" cy="60" r="36" stroke="#10B981"></circle>
+              <circle class="ring-track" cx="60" cy="60" r="24" stroke="#1A6DFF"></circle>
+              <circle class="ring-progress" id="ringSpeak" cx="60" cy="60" r="24" stroke="#1A6DFF"></circle>
             </svg>
             <div class="ring-legend">
-              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-red);"></i>Vocab</span><strong id="statVocab">2/5</strong></div>
-              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-green);"></i>Listening</span><strong id="statListen">1/3</strong></div>
-              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-orange);"></i>Speaking</span><strong id="statSpeak">1/3</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-red);"></i>Kosakata</span><strong id="statVocab">2/5</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-green);"></i>Menyimak</span><strong id="statListen">1/3</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-blue);"></i>Berbicara</span><strong id="statSpeak">1/3</strong></div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--separator);">
+            <div class="card-label" style="margin-bottom:6px;">Cara Mengisi Cincin Hari Ini (Ketuk untuk Mulai)</div>
+            <div class="mission-row" data-mission="words">
+              <div>
+                <div style="font-weight:700;font-size:13.5px;color:var(--ios-red);">1. Hafal 5 Kata / Slang</div>
+                <div style="font-size:12px;color:var(--text-secondary);">Buka kamus Words atau mainkan Flashcard</div>
+              </div>
+              <span style="font-weight:800;color:var(--ios-blue);font-size:13px;">Mulai ›</span>
+            </div>
+            <div class="mission-row" data-mission="brief">
+              <div>
+                <div style="font-weight:700;font-size:13.5px;color:var(--ios-green);">2. Simak 1 Cerita / Podcast</div>
+                <div style="font-size:12px;color:var(--text-secondary);">Putar audio narasi di menu Daily Brief</div>
+              </div>
+              <span style="font-weight:800;color:var(--ios-blue);font-size:13px;">Mulai ›</span>
+            </div>
+            <div class="mission-row" data-mission="speak">
+              <div>
+                <div style="font-weight:700;font-size:13.5px;color:var(--ios-blue);">3. Latih 3 Kalimat Suara</div>
+                <div style="font-size:12px;color:var(--text-secondary);">Tirukan pengucapan di studio Speak</div>
+              </div>
+              <span style="font-weight:800;color:var(--ios-blue);font-size:13px;">Mulai ›</span>
             </div>
           </div>
         </div>
-        <div class="bento-grid">
-          <div class="bento-tile">
-            <div class="card-label">Active Level</div>
-            <div class="bento-value" id="levelValue" style="color:var(--ios-blue);">A1</div>
-            <div style="font-size:12px;color:var(--text-secondary);">CEFR Standard</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
+          <div class="ios-card" style="margin:0;">
+            <div class="card-label">Level Aktif</div>
+            <div style="font-size:24px;font-weight:800;color:var(--ios-blue);margin:4px 0 2px;" id="levelValue">A1</div>
+            <div style="font-size:12px;color:var(--text-secondary);">Kurikulum CEFR</div>
           </div>
-          <div class="bento-tile">
-            <div class="card-label">Vocab Vault</div>
-            <div class="bento-value" id="vaultCount" style="color:var(--ios-green);">1 Kata</div>
-            <div style="font-size:12px;color:var(--text-secondary);">Offline Ready</div>
+          <div class="ios-card" style="margin:0;">
+            <div class="card-label">Kata Tersimpan</div>
+            <div style="font-size:24px;font-weight:800;color:var(--ios-green);margin:4px 0 2px;" id="vaultCount">1 Kata</div>
+            <div style="font-size:12px;color:var(--text-secondary);">Siap Diulang</div>
           </div>
         </div>
-        <button class="btn-primary" id="continueLearningBtn" style="margin-bottom:16px;">Lanjutkan Kurikulum Level →</button>
+
         <div class="ios-card">
           <div class="card-header">
-            <span class="card-label">Smart Vocab Vault</span>
-            <span style="font-size:12px;color:var(--text-secondary);">Saved Words</span>
+            <span class="card-label">Catatan Kosakata Tersimpan</span>
+            <span style="font-size:12px;color:var(--text-secondary);">Vocab Vault</span>
           </div>
           <div id="vaultPreviewList"></div>
         </div>
       </section>
 
+      <!-- TAB 2: PATH -->
       <section class="tab-view" id="view-path">
         <h1 class="large-title">Path</h1>
-        <p class="subtitle">25 unit kurikulum terstruktur dari A1 hingga C1.</p>
+        <p class="subtitle">Pilih levelmu (A1 pemula hingga C1 mahir), lalu selesaikan unit latihan susun kalimat & bicara.</p>
         <div class="level-pills" id="levelPills"></div>
         <div id="unitsList"></div>
       </section>
 
+      <!-- TAB 3: WORDS -->
       <section class="tab-view" id="view-words">
         <h1 class="large-title">Words</h1>
-        <p class="subtitle">115+ kosakata lengkap, flashcard & kuis konteks.</p>
+        <p class="subtitle">Kamus slang gaul sehari-hari, kata benda, sifat, kerja, flashcard & kuis.</p>
         <div id="lexiconContainer"></div>
       </section>
 
+      <!-- TAB 4: SPEAK -->
       <section class="tab-view" id="view-speak">
         <h1 class="large-title">Speak</h1>
-        <p class="subtitle">20 kalimat shadowing & roleplay interaktif.</p>
+        <p class="subtitle">Studio latihan bicara mandiri agar lidah terbiasa berbahasa Inggris.</p>
         <div id="speakStudioContainer"></div>
       </section>
 
+      <!-- TAB 5: BRIEF -->
       <section class="tab-view" id="view-brief">
         <h1 class="large-title">Daily Brief</h1>
-        <p class="subtitle">Narasi panjang podcast, olahraga, budaya & sains.</p>
+        <p class="subtitle">Baca & dengarkan cerita dunia nyata. Ketuk kata bergaris biru untuk melihat artinya.</p>
         <div id="briefList"></div>
       </section>
     </main>
 
-    <nav class="tab-bar">
+    <!-- 5-Column Floating Bottom Tab Bar -->
+    <nav class="tab-bar hidden" id="bottomTabBar">
       <button class="tab-btn active" data-tab="today"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>Today</span></button>
       <button class="tab-btn" data-tab="path"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg><span>Path</span></button>
       <button class="tab-btn" data-tab="words"><svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg><span>Words</span></button>
@@ -117,6 +249,6 @@
       <div class="bottom-sheet"><div class="sheet-grabber"></div><div id="sheetContent"></div></div>
     </div>
   </div>
-  <script type="module" src="./js/app.js?v=5"></script>
+  <script type="module" src="./js/app.js?v=6"></script>
 </body>
 </html>

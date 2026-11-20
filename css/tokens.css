@@ -1,119 +1,83 @@
 :root {
-  /* Main Warm Sunlit Cream Canvas */
-  --bg-grouped: #F6F2EA;
-  --bg-card: #FFFDF9;
-  --bg-secondary: #ECE7DC;
-  --text-primary: #232625;
-  --text-secondary: #686E6B;
-  --text-tertiary: #949996;
-  --separator: rgba(69, 147, 132, 0.14);
+  /* Sky-Azure & Frost Canvas (Inspired by AVELIS Reference) */
+  --bg-grouped: #F3F8FF;
+  --bg-hero-grad: linear-gradient(180deg, #E2EEFF 0%, #F4F8FF 48%, #FFFFFF 100%);
+  --bg-card: #FFFFFF;
+  --bg-secondary: #EBF2FC;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-tertiary: #64748B;
+  --separator: rgba(26, 109, 255, 0.11);
 
-  /* Airy Calming Sage & Warm Accents */
-  --ios-blue: #3F8A7C;     /* Calming Eucalyptus (Primary) */
-  --ios-green: #4A9B7F;    /* Botanical Sage (Listening) */
-  --ios-red: #D96E48;      /* Soft Terracotta (Vocab) */
-  --ios-orange: #DF953B;   /* Warm Honey (Speaking) */
-  --ios-purple: #6476B8;   /* Soft Periwinkle (Shadowing) */
+  /* Royal Cobalt & Semantic Accents */
+  --ios-blue: #1A6DFF;
+  --ios-azure: #0EA5E9;
+  --ios-green: #10B981;
+  --ios-red: #F43F5E;
+  --ios-orange: #F59E0B;
+  --ios-purple: #6366F1;
 
-  /* Distinct Harmonized Nav Surfaces */
-  --nav-top-bg: rgba(231, 239, 235, 0.90);
-  --nav-bottom-bg: rgba(231, 239, 235, 0.92);
-  --nav-border: rgba(63, 138, 124, 0.18);
+  --nav-top-bg: rgba(235, 243, 255, 0.88);
+  --nav-bottom-bg: rgba(255, 255, 255, 0.90);
+  --nav-border: rgba(26, 109, 255, 0.14);
 
-  --glass-bg: var(--nav-top-bg);
-  --glass-border: var(--nav-border);
-  --shadow-card: 0 4px 18px rgba(65, 75, 70, 0.05);
-  --shadow-float: 0 8px 26px rgba(45, 75, 68, 0.10);
+  --shadow-card: 0 6px 24px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --shadow-float: 0 12px 32px rgba(26, 109, 255, 0.14);
 
   --radius-card: 22px;
   --radius-pill: 999px;
   --safe-top: env(safe-area-inset-top, 12px);
   --safe-bottom: env(safe-area-inset-bottom, 16px);
-  --spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-theme="dark"] {
-  --bg-grouped: #141615;
-  --bg-card: #1D201F;
-  --bg-secondary: #282C2A;
-  --text-primary: #F2F4F3;
-  --text-secondary: #9CA3A0;
-  --text-tertiary: #68706C;
-  --separator: rgba(255, 255, 255, 0.09);
+  --bg-grouped: #0B1120;
+  --bg-hero-grad: linear-gradient(180deg, #0F1C36 0%, #0B1120 60%, #090D16 100%);
+  --bg-card: #131C31;
+  --bg-secondary: #1E293B;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+  --separator: rgba(148, 163, 184, 0.14);
 
-  --ios-blue: #52A898;
-  --ios-green: #58B594;
-  --ios-red: #E8825E;
-  --ios-orange: #EDA64E;
-  --ios-purple: #8796D4;
+  --ios-blue: #3B82F6;
+  --ios-azure: #38BDF8;
+  --ios-green: #34D399;
+  --ios-red: #FB7185;
+  --ios-orange: #FBBF24;
+  --ios-purple: #818CF8;
 
-  --nav-top-bg: rgba(26, 33, 31, 0.90);
-  --nav-bottom-bg: rgba(28, 36, 34, 0.94);
-  --nav-border: rgba(82, 168, 152, 0.20);
+  --nav-top-bg: rgba(15, 23, 42, 0.88);
+  --nav-bottom-bg: rgba(19, 28, 49, 0.92);
+  --nav-border: rgba(59, 130, 246, 0.22);
 
-  --glass-bg: var(--nav-top-bg);
-  --glass-border: var(--nav-border);
-  --shadow-card: 0 4px 18px rgba(0, 0, 0, 0.30);
-  --shadow-float: 0 10px 28px rgba(0, 0, 0, 0.50);
+  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --shadow-float: 0 12px 32px rgba(0, 0, 0, 0.55);
 }
-
-/* Top & Bottom Navigation Distinct Harmonized Blocks */
-.top-bar {
-  background: var(--nav-top-bg) !important;
-  border-bottom: 1px solid var(--nav-border) !important;
-}
-
-.dynamic-island {
-  background: #272E2C !important;
-  border: 0.5px solid rgba(255, 255, 255, 0.12) !important;
-  box-shadow: 0 3px 10px rgba(39, 46, 44, 0.18) !important;
-}
-
-.tab-bar {
-  background: var(--nav-bottom-bg) !important;
-  border: 1px solid var(--nav-border) !important;
-  box-shadow: var(--shadow-float) !important;
-}
-
-.tab-btn.active {
-  background: rgba(63, 138, 124, 0.16) !important;
-  color: var(--ios-blue) !important;
-}
-
-/* Airy, Integrated Primary Button (No Heavy Dark Block) */
-.btn-primary {
-  background: linear-gradient(135deg, #49998A 0%, #3D8577 100%) !important;
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 14px rgba(63, 138, 124, 0.20) !important;
-}
-
-[data-theme="dark"] .btn-primary {
-  background: linear-gradient(135deg, #52A898 0%, #439182 100%) !important;
-}
-
-/* Harmonized Bento Tiles */
-.bento-tile {
-  background: var(--bg-card) !important;
-}
-
-/* Activity Rings & Legend Sync */
-#ringVocab, .rings-svg circle:nth-child(1) { stroke: var(--ios-red) !important; }
-#ringListen, .rings-svg circle:nth-child(3) { stroke: var(--ios-green) !important; }
-#ringSpeak, .rings-svg circle:nth-child(5) { stroke: var(--ios-orange) !important; }
-.legend-item:nth-child(3) .legend-dot { background: var(--ios-orange) !important; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, sans-serif;
-  background-color: #161817;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  background-color: #090D16;
   color: var(--text-primary);
   display: flex;
   justify-content: center;
   min-height: 100dvh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
 }
 
-.tab-bar { grid-template-columns: repeat(5, 1fr) !important; }
-.tab-btn { font-size: 10px !important; }
+.serif-display {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.jakarta-heading {
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+  letter-spacing: -0.03em;
+}
