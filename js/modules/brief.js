@@ -1,15 +1,66 @@
 import { store } from '../state.js';
-import { speakText } from './speak.js';
+import { speakText, stopSpeech } from './speak.js';
 
 export function initBriefModule(briefsData, notifyIsland, openSheet) {
   const container = document.getElementById('briefList');
   let activeIdx = 0;
+  let playingMode = null; // null | 'normal' | 'slow'
+
+  function syncAudioButtons() {
+    const playBtn = document.getElementById('playBriefBtn');
+    const slowBtn = document.getElementById('slowBriefBtn');
+    if (!playBtn || !slowBtn) return;
+
+    if (playingMode) {
+      playBtn.className = 'btn-stop';
+      playBtn.innerHTML = `<svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></svg><span>Hentikan Audio</span>`;
+    } else {
+      playBtn.className = 'btn-primary';
+      playBtn.style.padding = '11px 14px';
+      playBtn.style.fontSize = '14px';
+      playBtn.innerHTML = `<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Putar Audio Narasi</span>`;
+    }
+
+    slowBtn.style.borderColor = playingMode === 'slow' ? 'var(--ios-blue)' : 'var(--separator)';
+    slowBtn.style.color = playingMode === 'slow' ? 'var(--ios-blue)' : 'var(--text-primary)';
+  }
+
+  function stopNarration(silent = false) {
+    stopSpeech();
+    const wasPlaying = Boolean(playingMode);
+    playingMode = null;
+    syncAudioButtons();
+    if (wasPlaying && !silent) notifyIsland('Narasi dihentikan');
+  }
+
+  window.__stopBriefAudio = () => stopNarration(true);
 
   function formatParagraph(text, glossary) {
     return text.split(' ').map((rawWord) => {
       const clean = rawWord.toLowerCase().replace(/[^a-z]/g, '');
       return glossary[clean] ? `<span class="tap-word" data-word="${clean}">${rawWord}</span>` : rawWord;
     }).join(' ');
+  }
+
+  function startNarration(mode, brief) {
+    if (playingMode === mode) {
+      stopNarration(false);
+      return;
+    }
+    stopSpeech();
+    playingMode = mode;
+    syncAudioButtons();
+    const rate = mode === 'slow' ? 0.8 : 1.0;
+    notifyIsland(mode === 'slow' ? 'Memutar narasi lambat (0.8x)...' : 'Memutar narasi...', true);
+
+    speakText(`${brief.title}. ${brief.paragraphs.join(' ')}`, rate, () => {
+      if (playingMode) {
+        playingMode = null;
+        syncAudioButtons();
+        store.incrementRing('listening', 1, 20);
+        notifyIsland('Listening selesai! Cincin Menyimak +1');
+      }
+    });
   }
 
   function render() {
@@ -25,8 +76,10 @@ export function initBriefModule(briefsData, notifyIsland, openSheet) {
         </div>
         <h2 style="font-size:21px;line-height:1.3;margin-bottom:14px;">${brief.title}</h2>
         <div style="display:flex;gap:8px;margin-bottom:16px;">
-          <button class="btn-primary" id="playBriefBtn" style="padding:10px 14px;font-size:14px;">🎧 Putar Audio Narasi</button>
-          <button class="btn-secondary" id="slowBriefBtn">0.8x</button>
+          <button class="btn-primary" id="playBriefBtn" style="padding:11px 14px;font-size:14px;">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Putar Audio Narasi</span>
+          </button>
+          <button class="btn-secondary" id="slowBriefBtn" style="min-width:64px;">0.8x</button>
         </div>
         <div class="brief-body">
           ${brief.paragraphs.map((p) => `<p style="margin-bottom:13px;">${formatParagraph(p, brief.glossary)}</p>`).join('')}
@@ -43,24 +96,22 @@ export function initBriefModule(briefsData, notifyIsland, openSheet) {
         </div>` : ''}
     `;
 
-    container.querySelectorAll('[data-bidx]').forEach((btn) => { btn.onclick = () => { activeIdx = Number(btn.dataset.bidx); render(); }; });
-    document.getElementById('playBriefBtn').onclick = () => {
-      notifyIsland('Memutar narasi...', true);
-      speakText(`${brief.title}. ${brief.paragraphs.join(' ')}`, 1.0, () => {
-        store.incrementRing('listening', 1, 20);
-        notifyIsland('Listening selesai! Cincin Listening +1');
-      });
-    };
-    document.getElementById('slowBriefBtn').onclick = () => {
-      notifyIsland('Mode lambat (0.8x)...', true);
-      speakText(`${brief.title}. ${brief.paragraphs.join(' ')}`, 0.8);
-    };
+    container.querySelectorAll('[data-bidx]').forEach((btn) => {
+      btn.onclick = () => {
+        stopNarration(true);
+        activeIdx = Number(btn.dataset.bidx);
+        render();
+      };
+    });
+
+    document.getElementById('playBriefBtn').onclick = () => startNarration('normal', brief);
+    document.getElementById('slowBriefBtn').onclick = () => startNarration('slow', brief);
 
     container.querySelectorAll('[data-qopt]').forEach((btn) => {
       btn.onclick = () => {
         const chosen = Number(btn.dataset.qopt);
         if (chosen === brief.quiz.answerIdx) {
-          btn.style.background = 'rgba(74, 155, 127, 0.18)';
+          btn.style.background = 'rgba(16, 185, 129, 0.16)';
           btn.style.borderColor = 'var(--ios-green)';
           btn.style.color = 'var(--ios-green)';
           store.incrementRing('listening', 1, 20);
@@ -75,6 +126,11 @@ export function initBriefModule(briefsData, notifyIsland, openSheet) {
 
     container.querySelectorAll('.tap-word').forEach((el) => {
       el.onclick = () => {
+        if (playingMode) {
+          playingMode = null;
+          syncAudioButtons();
+          notifyIsland('Narasi dijeda untuk kamus kata');
+        }
         const key = el.dataset.word;
         const info = brief.glossary[key];
         if (!info) return;
@@ -85,14 +141,14 @@ export function initBriefModule(briefsData, notifyIsland, openSheet) {
           <p style="font-size:17px;font-weight:600;color:var(--ios-blue);margin:8px 0;">${info.meaning}</p>
           <div class="ios-card" style="background:var(--bg-grouped);margin:12px 0;"><div style="font-size:12px;color:var(--text-secondary);">Contoh kalimat:</div><div style="font-size:14px;margin-top:4px;">"${info.example}"</div></div>
           <div style="display:grid;grid-template-columns:1fr 2fr;gap:10px;">
-            <button class="btn-secondary" id="pronounceWordBtn">🔊 Lafalkan</button>
+            <button class="btn-secondary" id="pronounceWordBtn">Dengar</button>
             <button class="btn-primary" id="saveVaultBtn">+ Simpan ke Vocab Vault</button>
           </div>
         `);
         document.getElementById('pronounceWordBtn').onclick = () => speakText(key);
         document.getElementById('saveVaultBtn').onclick = () => {
           const added = store.saveWord({ word: key, phonetic: info.phonetic, meaning: info.meaning });
-          notifyIsland(added ? `"${key}" tersimpan! Cincin Vocab +1` : `"${key}" sudah ada di Vault`);
+          notifyIsland(added ? `"${key}" tersimpan! Kosakata +1` : `"${key}" sudah tersimpan`);
         };
       };
     });

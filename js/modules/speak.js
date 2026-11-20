@@ -73,3 +73,5 @@ export function startRecognition({ onStart, onResult, onError, onEnd }) {
   recognition.start();
   return recognition;
 }
+
+export function stopSpeech() { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); }

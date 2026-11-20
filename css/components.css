@@ -186,7 +186,8 @@
   font-size: 10.5px; font-weight: 600; white-space: nowrap; transition: all 0.2s var(--spring);
 }
 .tab-btn svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-.tab-btn.active { color: var(--ios-blue); background: rgba(26, 109, 255, 0.12); }
+.tab-btn.active { color: var(--ios-blue); background: rgba(255, 255, 255, 0.88); box-shadow: 0 3px 10px rgba(26, 109, 255, 0.16); }
+[data-theme='dark'] .tab-btn.active { background: rgba(59, 130, 246, 0.24); color: #60A5FA; box-shadow: none; }
 
 /* Bottom Sheet Modal */
 .sheet-backdrop { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); backdrop-filter: blur(4px); z-index: 80; display: none; align-items: flex-end; justify-content: center; }
@@ -201,3 +202,13 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+.btn-stop {
+  width: 100%; padding: 11px 14px; border-radius: 15px; border: 1px solid rgba(244, 63, 94, 0.28);
+  background: linear-gradient(135deg, #F43F5E 0%, #E11D48 100%); color: #FFF;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 6px 18px rgba(244, 63, 94, 0.24); transition: transform 0.2s var(--spring);
+}
+.btn-stop:active { transform: scale(0.96); }
+.btn-stop svg { width: 15px; height: 15px; stroke: currentColor; fill: currentColor; }
