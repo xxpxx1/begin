@@ -1,8 +1,8 @@
-import { store } from './state.js?v=8';
-import { speakText, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=8';
-import { initPathModule } from './modules/path.js?v=8';
-import { initBriefModule } from './modules/brief.js?v=8';
-import { initLexiconModule } from './modules/lexicon.js?v=8';
+import { store } from './state.js?v=9';
+import { speakText, stopSpeech, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=9';
+import { initPathModule } from './modules/path.js?v=9';
+import { initBriefModule } from './modules/brief.js?v=9';
+import { initLexiconModule } from './modules/lexicon.js?v=9';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -11,6 +11,7 @@ function notifyIsland(message, persistent = false) {
   const toast = document.getElementById('floatingToast');
   const textEl = document.getElementById('toastText');
   const dotEl = document.getElementById('toastDot');
+  if (!toast) return;
   textEl.textContent = message;
   toast.classList.add('show');
   if (persistent) dotEl.classList.add('recording'); else dotEl.classList.remove('recording');
@@ -20,9 +21,13 @@ function notifyIsland(message, persistent = false) {
   }
 }
 
-function openSheet(html) { document.getElementById('sheetContent').innerHTML = html; document.getElementById('sheetBackdrop').classList.add('open'); }
-function closeSheet() { document.getElementById('sheetBackdrop').classList.remove('open'); }
-
+function openSheet(html) {
+  document.getElementById('sheetContent').innerHTML = html;
+  document.getElementById('sheetBackdrop').classList.add('open');
+}
+function closeSheet() {
+  document.getElementById('sheetBackdrop').classList.remove('open');
+}
 
 function updateTabGlider(targetTab) {
   const glider = document.getElementById('tabGlider');
@@ -37,9 +42,8 @@ function animateLandingCounters() {
     const target = Number(el.dataset.target);
     const suffix = el.dataset.suffix || '';
     const start = performance.now();
-    const duration = 850;
     const step = (now) => {
-      const p = Math.min((now - start) / duration, 1);
+      const p = Math.min((now - start) / 800, 1);
       const eased = 1 - Math.pow(1 - p, 3);
       el.textContent = `${Math.round(target * eased)}${suffix}`;
       if (p < 1) requestAnimationFrame(step);
@@ -50,7 +54,9 @@ function animateLandingCounters() {
 
 function setAppMode(openApp, targetTab = 'today') {
   if (navigator.vibrate) navigator.vibrate(8);
-  window.__stopBriefAudio?.();
+  if (typeof window.__stopBriefAudio === 'function') window.__stopBriefAudio();
+  else stopSpeech();
+
   isLandingMode = !openApp;
   const landingView = document.getElementById('view-landing');
   const tabBar = document.getElementById('bottomTabBar');
@@ -121,6 +127,7 @@ function renderDashboard() {
   const setRing = (id, cur, target, r) => {
     const c = 2 * Math.PI * r;
     const el = document.getElementById(id);
+    if (!el) return;
     el.style.strokeDasharray = `${c}`;
     el.style.strokeDashoffset = `${c * (1 - Math.min(cur / target, 1))}`;
   };
@@ -154,7 +161,7 @@ function initSpeakStudio(scenariosData) {
         <div class="card-label" style="color:var(--ios-blue);margin-bottom:4px;">Cara Latihan di Menu Speak</div>
         <div style="font-size:12.5px;color:var(--text-primary);line-height:1.5;">
           <strong>Langkah 1:</strong> Tekan <em>Dengar Contoh</em> untuk menyimak pelafalan asli.<br/>
-          <strong>Langkah 2:</strong> Tekan <em>Rekam & Tirukan</em> lalu ucapkan kalimatnya. Kata hijau = tepat, merah = ulangi.
+          <strong>Langkah 2:</strong> Tekan <em>Rekam & Tirukan</em> lalu ucapkan kalimatnya.
         </div>
       </div>
 
@@ -189,7 +196,7 @@ function initSpeakStudio(scenariosData) {
           <div style="font-size:14px;font-weight:600;margin-top:2px;">"${rp.aiPrompt}"</div>
         </div>
         <div style="background:rgba(16,185,129,0.08);padding:10px 12px;border-radius:12px;margin-bottom:12px;">
-          <div style="font-size:11px;font-weight:700;color:var(--ios-green);">GILIRAN KAMU MENJAWAB (BACA KALIMAT INI):</div>
+          <div style="font-size:11px;font-weight:700;color:var(--ios-green);">GILIRAN KAMU MENJAWAB:</div>
           <div style="font-size:13.5px;font-weight:600;margin-top:2px;">"${rp.suggestedReply}"</div>
         </div>
         <div id="rpResult" style="margin-bottom:10px;"></div>
@@ -230,10 +237,9 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=8').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=9').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
-  // Landing Page Controls
   const heroDemoSentence = "No worries, let's grab a coffee and catch up!";
   document.getElementById('heroPlayBtn').onclick = () => speakText(heroDemoSentence, 1.0);
   const runHeroEval = (spoken) => {
@@ -252,29 +258,14 @@ async function bootstrap() {
   document.getElementById('brandHomeBtn').onclick = () => setAppMode(false);
   document.getElementById('modeSwitchBtn').onclick = () => setAppMode(isLandingMode, 'today');
 
-  document.querySelectorAll('[data-jump]').forEach((card) => {
-    card.onclick = () => setAppMode(true, card.dataset.jump);
-  });
-  document.querySelectorAll('[data-mission]').forEach((row) => {
-    row.onclick = () => setAppMode(true, row.dataset.mission);
-  });
-
+  document.querySelectorAll('[data-jump]').forEach((card) => { card.onclick = () => setAppMode(true, card.dataset.jump); });
+  document.querySelectorAll('[data-mission]').forEach((row) => { row.onclick = () => setAppMode(true, row.dataset.mission); });
   document.querySelectorAll('.tab-btn').forEach((b) => { b.onclick = () => setAppMode(true, b.dataset.tab); });
+
   document.getElementById('voicePickerBtn').onclick = openVoicePicker;
   document.getElementById('themeToggleBtn').onclick = () => { store.toggleTheme(); notifyIsland(`Mode ${store.state.theme === 'dark' ? 'Dark' : 'Light'} aktif`); };
   document.getElementById('sheetBackdrop').onclick = (e) => { if (e.target.id === 'sheetBackdrop') closeSheet(); };
 
-  const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=8').then((r) => r.json()),
-    fetch('./data/briefs.json?v=8').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=8').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=8').then((r) => r.json())
-  ]);
-
-  initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
-  initBriefModule(briefsData, notifyIsland, openSheet);
-  initSpeakStudio(scenariosData);
-  initLexiconModule(dictData, notifyIsland, openSheet);
   window.addEventListener('begin:statechange', renderDashboard);
   renderDashboard();
   animateLandingCounters();
@@ -282,5 +273,20 @@ async function bootstrap() {
     const activeTab = document.querySelector('.tab-btn.active')?.dataset.tab;
     if (activeTab && !isLandingMode) updateTabGlider(activeTab);
   });
+
+  try {
+    const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
+      fetch('./data/levels.json?v=9').then((r) => r.json()),
+      fetch('./data/briefs.json?v=9').then((r) => r.json()),
+      fetch('./data/scenarios.json?v=9').then((r) => r.json()),
+      fetch('./data/dictionary.json?v=9').then((r) => r.json())
+    ]);
+    initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
+    initBriefModule(briefsData, notifyIsland, openSheet);
+    initSpeakStudio(scenariosData);
+    initLexiconModule(dictData, notifyIsland, openSheet);
+  } catch (err) {
+    notifyIsland('Memuat data offline...');
+  }
 }
 bootstrap();
