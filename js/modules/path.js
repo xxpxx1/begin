@@ -1,128 +1,190 @@
-import { store } from '../state.js';
-import { speakText, startRecognition, evaluateSpeech } from './speak.js';
+import { store } from '../state.js?v=10';
+import { speakText, playTone, startRecognition, evaluateSpeech } from './speak.js?v=10';
 
 export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) {
   const pillsEl = document.getElementById('levelPills');
   const unitsEl = document.getElementById('unitsList');
+  let activeLevel = store.state.currentLevel || 'A1';
+
+  const difficultyNote = {
+    A1: 'Pemula · Kosakata dasar & tempo santai',
+    A2: 'Dasar · Percakapan harian & rencana',
+    B1: 'Menengah · Opini & pemecahan masalah',
+    B2: 'Menengah Atas · Nuansa kerja & kata pengecoh',
+    C1: 'Mahir · Retorika strategis & akurasi tinggi'
+  };
 
   function render() {
-    const activeLvl = store.state.currentLevel;
-    pillsEl.innerHTML = levelsData.levels.map((lvl) =>
-      `<button class="level-pill ${lvl.id === activeLvl ? 'active' : ''}" data-lvl="${lvl.id}">${lvl.id} · ${lvl.title}</button>`
-    ).join('');
+    pillsEl.innerHTML = levelsData.levels.map((lvl) => `
+      <button class="level-pill ${lvl.id === activeLevel ? 'active' : ''}" data-lvl="${lvl.id}">${lvl.id} · ${lvl.title}</button>
+    `).join('');
+    pillsEl.querySelectorAll('[data-lvl]').forEach((btn) => {
+      btn.onclick = () => { activeLevel = btn.dataset.lvl; store.setLevel(activeLevel); render(); };
+    });
 
-    pillsEl.querySelectorAll('.level-pill').forEach((btn) => { btn.onclick = () => store.setLevel(btn.dataset.lvl); });
-
-    const currentLevelObj = levelsData.levels.find((l) => l.id === activeLvl) || levelsData.levels[0];
+    const levelObj = levelsData.levels.find((l) => l.id === activeLevel) || levelsData.levels[0];
     unitsEl.innerHTML = `
-      <div class="ios-card" style="background: linear-gradient(135deg, ${currentLevelObj.color}22, transparent);">
-        <div class="card-label" style="color:${currentLevelObj.color}">CEFR ${currentLevelObj.id}</div>
-        <h3 style="font-size:20px;margin:2px 0;">${currentLevelObj.title}</h3>
-        <p style="font-size:13px;color:var(--text-secondary);">${currentLevelObj.subtitle}</p>
+      <div class="ios-card" style="margin-bottom:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <div class="card-label" style="color:${levelObj.color};">CEFR ${levelObj.id}</div>
+          <span style="font-size:11px;font-weight:700;color:var(--ios-blue);">${difficultyNote[levelObj.id] || ''}</span>
+        </div>
+        <h2 style="font-size:21px;margin:4px 0 2px;">${levelObj.title}</h2>
+        <p style="font-size:13px;color:var(--text-secondary);">${levelObj.subtitle}</p>
       </div>
-      ${currentLevelObj.units.map((unit, idx) => {
-        const done = store.state.completedUnits.includes(unit.id);
+      ${levelObj.units.map((u, idx) => {
+        const done = store.state.completedUnits.includes(u.id);
         return `
-        <div class="ios-card unit-card" data-unit="${unit.id}">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <div class="unit-badge" style="background:${done ? 'var(--ios-green)' : currentLevelObj.color}">${done ? '✓' : idx + 1}</div>
-            <div>
-              <div style="font-weight:700;font-size:16px;">${unit.title}</div>
-              <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">${unit.duration} · +${unit.xp} XP</div>
+          <div class="ios-card unit-card interactive" data-uid="${u.id}">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div class="unit-badge" style="background:${done ? 'var(--ios-green)' : levelObj.color};">${done ? '✓' : idx + 1}</div>
+              <div>
+                <div style="font-weight:700;font-size:15px;">${u.title}</div>
+                <div style="font-size:12px;color:var(--text-secondary);">${u.duration} · +${u.xp} XP</div>
+              </div>
             </div>
-          </div>
-          <span style="color:var(--ios-blue);font-weight:700;font-size:18px;">›</span>
-        </div>`;
+            <span style="color:var(--ios-blue);font-weight:800;font-size:18px;">›</span>
+          </div>`;
       }).join('')}
     `;
-
-    unitsEl.querySelectorAll('.unit-card').forEach((card) => {
-      card.onclick = () => {
-        const unit = currentLevelObj.units.find((u) => u.id === card.dataset.unit);
-        if (unit) launchLesson(unit);
-      };
+    unitsEl.querySelectorAll('[data-uid]').forEach((card) => {
+      card.onclick = () => launchUnit(levelObj, levelObj.units.find((u) => u.id === card.dataset.uid));
     });
   }
 
-  function launchLesson(unit) {
+  function launchUnit(levelObj, unit) {
     let step = 0;
-    function renderStep() {
-      const ex = unit.exercises[step];
-      if (!ex) {
+    const isHard = ['B2', 'C1'].includes(levelObj.id);
+    const minPass = isHard ? 80 : 65;
+
+    function showAppreciation(sentence, xpGain, onContinue) {
+      playTone('fanfare');
+      if (navigator.vibrate) navigator.vibrate([15, 40, 25]);
+      openSheet(`
+        <div class="praise-stage">
+          <div class="praise-badge">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="card-label" style="color:var(--ios-green);">+${xpGain} XP EARNED</div>
+          <h2 class="jakarta-heading" style="font-size:26px;margin:4px 0 6px;">${isHard ? 'Outstanding!' : 'Perfect!'}</h2>
+          <p style="font-size:14.5px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">"${sentence}"</p>
+          <div style="display:grid;grid-template-columns:1fr 1.8fr;gap:8px;">
+            <button class="btn-secondary" id="replayPraiseBtn">Dengar Ulang</button>
+            <button class="btn-primary" id="nextAfterAudioBtn" disabled style="opacity:0.65;">Menyimak AI...</button>
+          </div>
+        </div>
+      `);
+      const nextBtn = document.getElementById('nextAfterAudioBtn');
+      const unlockNext = () => {
+        if (!nextBtn) return;
+        nextBtn.disabled = false;
+        nextBtn.style.opacity = '1';
+        nextBtn.textContent = step + 1 < unit.exercises.length ? 'Lanjut Soal Berikutnya →' : 'Selesaikan Unit ✓';
+      };
+      speakText(sentence, null, unlockNext);
+      document.getElementById('replayPraiseBtn').onclick = () => speakText(sentence);
+      nextBtn.onclick = onContinue;
+    }
+
+    function renderExercise() {
+      if (step >= unit.exercises.length) {
         store.completeUnit(unit.id, unit.xp);
-        store.incrementRing('vocab', 1, 0);
-        notifyIsland(`Unit selesai! +${unit.xp} XP`);
         closeSheet();
+        render();
         return;
       }
+      const ex = unit.exercises[step];
 
       if (ex.type === 'arrange') {
-        let selected = [];
-        const renderArrange = () => {
+        const distractors = isHard ? ['however', 'nearly'] : [];
+        const pool = [...ex.tokens, ...distractors].sort(() => Math.random() - 0.5);
+        let picked = []; // { token, idx }
+        let checked = false;
+
+        const drawArrange = () => {
           openSheet(`
-            <div class="card-label">Latihan ${step + 1}/${unit.exercises.length} · Susun Kalimat</div>
-            <h3 style="font-size:18px;margin:6px 0 14px;">${ex.prompt}</h3>
-            <div class="answer-box">
-              ${selected.length ? selected.map((w, i) => `<button class="word-token" data-rem="${i}">${w}</button>`).join('') : '<span style="color:var(--text-tertiary);font-size:13px;">Ketuk kata di bawah untuk menyusun...</span>'}
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="card-label" style="color:var(--ios-blue);">Soal ${step + 1} dari ${unit.exercises.length} · Susun Kalimat</span>
+              <span style="font-size:11px;font-weight:700;color:var(--text-secondary);">Level ${levelObj.id}</span>
             </div>
-            <div class="token-pool">
-              ${ex.tokens.map((tok, idx) => {
-                const isUsed = selected.filter((s) => s === tok).length >= ex.tokens.filter((t) => t === tok).length;
-                return `<button class="word-token ${isUsed ? 'used' : ''}" data-add="${idx}">${tok}</button>`;
-              }).join('')}
+            <h3 style="font-size:18px;margin:8px 0 6px;line-height:1.4;">${ex.prompt}</h3>
+            <p style="font-size:12px;color:var(--text-secondary);margin-bottom:12px;">Ketuk kata untuk menyusun. Hijau = posisi tepat, merah = urutan salah.</p>
+            <div class="answer-box" id="ansBox">
+              ${picked.length ? picked.map((item, i) => {
+                let cls = 'word-token';
+                if (checked) cls += item.token === ex.answer[i] ? ' token-correct' : ' token-wrong';
+                return `<span class="${cls}" data-rem="${i}">${item.token}</span>`;
+              }).join('') : '<span style="color:var(--text-tertiary);font-size:13px;">Ketuk kata di bawah untuk menyusun kalimat...</span>'}
             </div>
-            <button class="btn-primary" id="checkArrangeBtn">Periksa Jawaban</button>
+            <div class="token-pool" id="poolBox">
+              ${pool.map((tok, i) => `<span class="word-token ${picked.some((p) => p.idx === i) ? 'used' : ''}" data-add="${i}">${tok}</span>`).join('')}
+            </div>
+            <button class="btn-primary" id="checkArrangeBtn">Periksa Susunan</button>
           `);
-          document.querySelectorAll('[data-add]').forEach((b) => { b.onclick = () => { selected.push(ex.tokens[Number(b.dataset.add)]); renderArrange(); }; });
-          document.querySelectorAll('[data-rem]').forEach((b) => { b.onclick = () => { selected.splice(Number(b.dataset.rem), 1); renderArrange(); }; });
+
+          document.querySelectorAll('[data-add]').forEach((el) => {
+            el.onclick = () => { checked = false; const idx = Number(el.dataset.add); picked.push({ token: pool[idx], idx }); drawArrange(); };
+          });
+          document.querySelectorAll('[data-rem]').forEach((el) => {
+            el.onclick = () => { checked = false; picked.splice(Number(el.dataset.rem), 1); drawArrange(); };
+          });
           document.getElementById('checkArrangeBtn').onclick = () => {
-            if (selected.join(' ') === ex.answer.join(' ')) {
-              speakText(ex.answer.join(' '));
-              notifyIsland('Tepat sekali! +15 XP');
-              step++;
-              setTimeout(renderStep, 600);
-            } else { notifyIsland('Urutan belum pas, coba lagi'); }
+            if (!picked.length) return;
+            checked = true;
+            const isAllRight = picked.length === ex.answer.length && picked.every((p, i) => p.token === ex.answer[i]);
+            if (isAllRight) {
+              drawArrange();
+              setTimeout(() => showAppreciation(ex.answer.join(' '), 15, () => { step++; renderExercise(); }), 420);
+            } else {
+              playTone('error');
+              if (navigator.vibrate) navigator.vibrate(35);
+              drawArrange();
+            }
           };
         };
-        renderArrange();
-      } else if (ex.type === 'speak') {
+        drawArrange();
+      } else {
         openSheet(`
-          <div class="card-label">Latihan ${step + 1}/${unit.exercises.length} · Speaking Check</div>
-          <p style="font-size:13px;color:var(--text-secondary);margin-top:4px;">${ex.prompt}</p>
-          <div class="ios-card" style="margin-top:10px;background:var(--bg-grouped);">
-            <div style="font-size:18px;font-weight:700;line-height:1.4;">"${ex.target}"</div>
-            <button class="btn-secondary" id="listenTargetBtn" style="margin-top:10px;">🔊 Dengar Contoh</button>
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span class="card-label" style="color:var(--ios-green);">Soal ${step + 1} dari ${unit.exercises.length} · Pelafalan</span>
+            <span style="font-size:11px;font-weight:700;color:var(--text-secondary);">Min. Skor ${minPass}%</span>
           </div>
-          <div id="lessonSpeakFeedback" style="margin:12px 0;"></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-            <button class="btn-primary" id="lessonMicBtn">🎙️ Mulai Bicara</button>
-            <button class="btn-secondary" id="lessonSimBtn">⚡ Simulasi Suara</button>
+          <h3 style="font-size:17px;margin:8px 0 6px;">${ex.prompt}</h3>
+          <div class="ios-card" style="background:var(--bg-grouped);font-size:18px;font-weight:800;margin-bottom:10px;">"${ex.target}"</div>
+          <div class="waveform" id="unitWave"><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div></div>
+          <div id="unitSpeakFeedback" style="margin-bottom:10px;"></div>
+          <div style="display:grid;grid-template-columns:1fr 1.4fr 0.8fr;gap:8px;">
+            <button class="btn-secondary" id="unitListenBtn">Dengar</button>
+            <button class="btn-primary" id="unitRecBtn">Rekam Suara</button>
+            <button class="btn-secondary" id="unitSimBtn">Simulasi</button>
           </div>
         `);
-        document.getElementById('listenTargetBtn').onclick = () => speakText(ex.target);
-        const handleEvaluation = (transcript) => {
-          const res = evaluateSpeech(ex.target, transcript);
-          document.getElementById('lessonSpeakFeedback').innerHTML = `
-            <div style="font-size:13px;margin-bottom:6px;">Akurasi Pelafalan: <strong>${res.accuracy}%</strong></div>
+
+        const handleEval = (spoken) => {
+          const res = evaluateSpeech(ex.target, spoken);
+          const passed = res.accuracy >= minPass;
+          document.getElementById('unitSpeakFeedback').innerHTML = `
+            <div style="margin-bottom:6px;font-size:13px;">Skor: <strong style="color:${passed ? 'var(--ios-green)' : 'var(--ios-red)'};">${res.accuracy}%</strong></div>
             <div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div>
           `;
-          if (res.accuracy >= 70) {
-            store.incrementRing('speaking', 1, 20);
-            notifyIsland(`Akurasi ${res.accuracy}%! Cincin Speaking bertambah`);
-            step++;
-            setTimeout(renderStep, 1300);
+          if (passed) {
+            store.incrementRing('speaking', 1, 15);
+            setTimeout(() => showAppreciation(ex.target, 20, () => { step++; renderExercise(); }), 550);
+          } else {
+            playTone('error');
+            if (navigator.vibrate) navigator.vibrate(35);
           }
         };
-        document.getElementById('lessonMicBtn').onclick = () => {
-          notifyIsland('Mendengarkan suara...', true);
-          startRecognition({ onResult: (t) => handleEvaluation(t), onError: (err) => notifyIsland(`Mic info: ${err}`), onEnd: () => {} });
+
+        document.getElementById('unitListenBtn').onclick = () => speakText(ex.target);
+        document.getElementById('unitRecBtn').onclick = () => {
+          const w = document.getElementById('unitWave'); w.classList.add('active');
+          startRecognition({ onResult: handleEval, onError: () => {}, onEnd: () => w.classList.remove('active') });
         };
-        document.getElementById('lessonSimBtn').onclick = () => handleEvaluation(ex.target);
+        document.getElementById('unitSimBtn').onclick = () => handleEval(ex.target);
       }
     }
-    renderStep();
+    renderExercise();
   }
-
-  window.addEventListener('begin:statechange', render);
   render();
 }

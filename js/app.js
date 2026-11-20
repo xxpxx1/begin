@@ -1,8 +1,8 @@
-import { store } from './state.js?v=9';
-import { speakText, stopSpeech, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=9';
-import { initPathModule } from './modules/path.js?v=9';
-import { initBriefModule } from './modules/brief.js?v=9';
-import { initLexiconModule } from './modules/lexicon.js?v=9';
+import { store } from './state.js?v=10';
+import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=10';
+import { initPathModule } from './modules/path.js?v=10';
+import { initBriefModule } from './modules/brief.js?v=10';
+import { initLexiconModule } from './modules/lexicon.js?v=10';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -16,18 +16,11 @@ function notifyIsland(message, persistent = false) {
   toast.classList.add('show');
   if (persistent) dotEl.classList.add('recording'); else dotEl.classList.remove('recording');
   clearTimeout(toastTimer);
-  if (!persistent) {
-    toastTimer = setTimeout(() => { toast.classList.remove('show'); dotEl.classList.remove('recording'); }, 2600);
-  }
+  if (!persistent) toastTimer = setTimeout(() => { toast.classList.remove('show'); dotEl.classList.remove('recording'); }, 2400);
 }
 
-function openSheet(html) {
-  document.getElementById('sheetContent').innerHTML = html;
-  document.getElementById('sheetBackdrop').classList.add('open');
-}
-function closeSheet() {
-  document.getElementById('sheetBackdrop').classList.remove('open');
-}
+function openSheet(html) { document.getElementById('sheetContent').innerHTML = html; document.getElementById('sheetBackdrop').classList.add('open'); }
+function closeSheet() { document.getElementById('sheetBackdrop').classList.remove('open'); }
 
 function updateTabGlider(targetTab) {
   const glider = document.getElementById('tabGlider');
@@ -43,9 +36,8 @@ function animateLandingCounters() {
     const suffix = el.dataset.suffix || '';
     const start = performance.now();
     const step = (now) => {
-      const p = Math.min((now - start) / 800, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = `${Math.round(target * eased)}${suffix}`;
+      const p = Math.min((now - start) / 750, 1);
+      el.textContent = `${Math.round(target * (1 - Math.pow(1 - p, 3)))}${suffix}`;
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -86,34 +78,37 @@ function setAppMode(openApp, targetTab = 'today') {
 
 function openVoicePicker() {
   let accentFilter = 'ALL';
+  const speeds = [[0.65,'Sangat Lambat'],[0.85,'Lambat'],[1.0,'Normal'],[1.2,'Cepat']];
   const renderSheet = () => {
     const voices = getEnglishVoices();
     const filtered = voices.filter((v) => accentFilter === 'ALL' || v.lang.toUpperCase().includes(accentFilter));
     openSheet(`
-      <div class="card-label" style="color:var(--ios-blue);">Pengaturan Suara Native</div>
-      <h3 style="font-size:20px;margin:2px 0 4px;">Pilih Suara & Aksen</h3>
-      <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Aktif: <strong>${store.state.voiceName || 'Auto (Default)'}</strong></p>
-      <div class="level-pills" style="margin-bottom:12px;">
-        ${['ALL', 'US', 'GB', 'AU'].map((t) => `<button class="level-pill ${accentFilter === t ? 'active' : ''}" data-vfilter="${t}">${t === 'ALL' ? 'Semua' : t === 'US' ? 'US' : t === 'GB' ? 'UK' : 'AU'}</button>`).join('')}
+      <div class="card-label" style="color:var(--ios-blue);">Pengaturan Suara & Kecepatan AI</div>
+      <h3 style="font-size:20px;margin:2px 0 10px;">Kecepatan Bicara Global</h3>
+      <div class="speed-bar" style="margin-bottom:14px;">
+        ${speeds.map(([val, lbl]) => `<button class="speed-pill ${store.state.speechRate === val ? 'active' : ''}" data-gspeed="${val}">${val}x<br/><span style="font-size:9.5px;font-weight:500;">${lbl}</span></button>`).join('')}
       </div>
-      <div style="max-height:46dvh;overflow-y:auto;display:flex;flex-direction:column;gap:8px;">
-        ${filtered.length ? filtered.map((v) => {
+      <div class="level-pills" style="margin-bottom:10px;">
+        ${['ALL', 'US', 'GB', 'AU'].map((t) => `<button class="level-pill ${accentFilter === t ? 'active' : ''}" data-vfilter="${t}">${t === 'ALL' ? 'Semua Aksen' : t}</button>`).join('')}
+      </div>
+      <div style="max-height:38dvh;overflow-y:auto;display:flex;flex-direction:column;gap:8px;">
+        ${filtered.map((v) => {
           const isSel = store.state.voiceURI === v.voiceURI;
           const name = v.name.replace(/Microsoft |Google |Android /g, '');
-          return `<div class="ios-card" style="margin:0;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border:${isSel ? '1.5px solid var(--ios-blue)' : '1px solid var(--separator)'};">
+          return `<div class="ios-card" style="margin:0;padding:11px 14px;display:flex;justify-content:space-between;align-items:center;border:${isSel ? '1.5px solid var(--ios-blue)' : '1px solid var(--separator)'};">
             <div style="flex:1;cursor:pointer;" data-select-uri="${v.voiceURI}" data-select-name="${name}">
               <div style="font-weight:700;font-size:14px;">${isSel ? '✓ ' : ''}${name}</div>
-              <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">${formatAccentTag(v.lang)} · ${v.localService ? 'Offline' : 'Online'}</div>
+              <div style="font-size:11px;color:var(--text-secondary);">${formatAccentTag(v.lang)}</div>
             </div>
             <button class="btn-secondary" style="padding:6px 10px;font-size:12px;" data-preview-uri="${v.voiceURI}">Tes</button>
           </div>`;
-        }).join('') : `<div class="ios-card" style="text-align:center;font-size:13px;">Memuat daftar suara...<br/><button class="btn-secondary" id="reloadVoicesBtn" style="margin-top:10px;">Muat Ulang</button></div>`}
+        }).join('')}
       </div>
     `);
+    document.querySelectorAll('[data-gspeed]').forEach((b) => { b.onclick = () => { store.setSpeechRate(Number(b.dataset.gspeed)); speakText("Speed updated.", store.state.speechRate); renderSheet(); }; });
     document.querySelectorAll('[data-vfilter]').forEach((b) => { b.onclick = () => { accentFilter = b.dataset.vfilter; renderSheet(); }; });
-    document.querySelectorAll('[data-preview-uri]').forEach((b) => { b.onclick = (e) => { e.stopPropagation(); speakText("Hello! Let's practice English fluency together.", 1.0, null, b.dataset.previewUri); }; });
-    document.querySelectorAll('[data-select-uri]').forEach((el) => { el.onclick = () => { store.setVoice(el.dataset.selectUri, el.dataset.selectName); speakText("Voice updated.", 1.0, null, el.dataset.selectUri); notifyIsland(`Suara: ${el.dataset.selectName}`); renderSheet(); }; });
-    const rb = document.getElementById('reloadVoicesBtn'); if (rb) rb.onclick = renderSheet;
+    document.querySelectorAll('[data-preview-uri]').forEach((b) => { b.onclick = (e) => { e.stopPropagation(); speakText("Hello! Let's practice English fluency.", null, null, b.dataset.previewUri); }; });
+    document.querySelectorAll('[data-select-uri]').forEach((el) => { el.onclick = () => { store.setVoice(el.dataset.selectUri, el.dataset.selectName); speakText("Voice updated.", null, null, el.dataset.selectUri); renderSheet(); }; });
   };
   renderSheet();
 }
@@ -152,22 +147,27 @@ function renderDashboard() {
 function initSpeakStudio(scenariosData) {
   let shIdx = 0, rpIdx = 0;
   const studioEl = document.getElementById('speakStudioContainer');
+  const speeds = [[0.65,'0.65x'],[0.85,'0.85x'],[1.0,'1.0x'],[1.2,'1.2x']];
 
   function renderStudio() {
     const item = scenariosData.shadowing[shIdx];
     const rp = scenariosData.roleplays[rpIdx];
+    const curRate = store.state.speechRate || 1.0;
+
     studioEl.innerHTML = `
-      <div class="ios-card" style="background:rgba(26,109,255,0.06);border-color:rgba(26,109,255,0.22);padding:14px;">
-        <div class="card-label" style="color:var(--ios-blue);margin-bottom:4px;">Cara Latihan di Menu Speak</div>
-        <div style="font-size:12.5px;color:var(--text-primary);line-height:1.5;">
-          <strong>Langkah 1:</strong> Tekan <em>Dengar Contoh</em> untuk menyimak pelafalan asli.<br/>
-          <strong>Langkah 2:</strong> Tekan <em>Rekam & Tirukan</em> lalu ucapkan kalimatnya.
+      <div class="ios-card">
+        <div class="card-header">
+          <span class="card-label" style="color:var(--ios-blue);">Kecepatan Suara AI</span>
+          <span style="font-size:11.5px;font-weight:700;color:var(--text-secondary);">${curRate === 0.65 ? 'Sangat Lambat' : curRate === 0.85 ? 'Lambat' : curRate === 1.2 ? 'Cepat' : 'Normal'}</span>
+        </div>
+        <div class="speed-bar" style="margin-bottom:0;">
+          ${speeds.map(([val, lbl]) => `<button class="speed-pill ${curRate === val ? 'active' : ''}" data-sspeed="${val}">${lbl}</button>`).join('')}
         </div>
       </div>
 
       <div class="ios-card">
         <div class="card-header">
-          <span class="card-label" style="color:var(--ios-purple);">Latihan 1 · Tirukan Kalimat (${shIdx + 1}/${scenariosData.shadowing.length})</span>
+          <span class="card-label" style="color:var(--ios-purple);">Latihan Tirukan Kalimat · ${shIdx + 1}/${scenariosData.shadowing.length}</span>
           <button class="btn-secondary" id="nextShadowBtn" style="padding:5px 10px;font-size:12px;">Ganti Kalimat</button>
         </div>
         <p style="font-size:12px;color:var(--text-secondary);margin-bottom:6px;">Situasi: ${item.context} · Level ${item.level}</p>
@@ -175,59 +175,58 @@ function initSpeakStudio(scenariosData) {
         <p style="font-size:12px;color:var(--ios-blue);margin-bottom:10px;">Tips: ${item.tip}</p>
         <div class="waveform" id="speakWaveform"><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div></div>
         <div id="studioResult" style="margin-bottom:12px;"></div>
-        <div style="display:flex;gap:8px;margin-bottom:8px;">
-          <button class="btn-secondary" id="playNativeBtn" style="flex:1;">1. Dengar Normal</button>
-          <button class="btn-secondary" id="playSlowBtn" style="flex:1;">Dengar Lambat</button>
-        </div>
-        <div style="display:grid;grid-template-columns:2fr 1fr;gap:8px;">
-          <button class="btn-primary" id="recordShadowBtn">2. Rekam & Tirukan</button>
-          <button class="btn-secondary" id="demoShadowBtn">Tes Demo</button>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr 0.8fr;gap:7px;">
+          <button class="btn-secondary" id="playNativeBtn" style="font-size:12.5px;">Dengar AI</button>
+          <button class="btn-primary" id="recordShadowBtn" style="padding:11px;font-size:12.5px;">Rekam Suara</button>
+          <button class="btn-secondary" id="demoShadowBtn" style="font-size:12.5px;">Simulasi</button>
         </div>
       </div>
 
       <div class="ios-card">
         <div class="card-header">
-          <span class="card-label" style="color:var(--ios-green);">Latihan 2 · Simulasi Percakapan AI (${rpIdx + 1}/${scenariosData.roleplays.length})</span>
+          <span class="card-label" style="color:var(--ios-green);">Simulasi Percakapan · ${rpIdx + 1}/${scenariosData.roleplays.length}</span>
           <button class="btn-secondary" id="nextRpBtn" style="padding:5px 10px;font-size:12px;">Topik Lain</button>
         </div>
         <div style="font-weight:800;font-size:15px;margin-bottom:6px;">${rp.title}</div>
         <div style="background:var(--bg-grouped);padding:10px 12px;border-radius:12px;margin-bottom:8px;">
-          <div style="font-size:11px;font-weight:700;color:var(--text-secondary);">PERTANYAAN PARTNER AI:</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text-secondary);">PERTANYAAN AI:</div>
           <div style="font-size:14px;font-weight:600;margin-top:2px;">"${rp.aiPrompt}"</div>
         </div>
-        <div style="background:rgba(16,185,129,0.08);padding:10px 12px;border-radius:12px;margin-bottom:12px;">
-          <div style="font-size:11px;font-weight:700;color:var(--ios-green);">GILIRAN KAMU MENJAWAB:</div>
+        <div style="background:rgba(16,185,129,0.09);padding:10px 12px;border-radius:12px;margin-bottom:12px;">
+          <div style="font-size:11px;font-weight:700;color:var(--ios-green);">JAWABAN KAMU:</div>
           <div style="font-size:13.5px;font-weight:600;margin-top:2px;">"${rp.suggestedReply}"</div>
         </div>
         <div id="rpResult" style="margin-bottom:10px;"></div>
-        <div style="display:grid;grid-template-columns:1fr 1.4fr 0.8fr;gap:6px;">
-          <button class="btn-secondary" id="playRoleplayBtn" style="font-size:12px;">1. Dengar AI</button>
-          <button class="btn-primary" id="recordRpBtn" style="font-size:12px;padding:10px;">2. Rekam Jawaban</button>
-          <button class="btn-secondary" id="demoRpBtn" style="font-size:12px;">Demo</button>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr 0.8fr;gap:7px;">
+          <button class="btn-secondary" id="playRoleplayBtn" style="font-size:12.5px;">Dengar AI</button>
+          <button class="btn-primary" id="recordRpBtn" style="font-size:12.5px;padding:11px;">Jawab Suara</button>
+          <button class="btn-secondary" id="demoRpBtn" style="font-size:12.5px;">Simulasi</button>
         </div>
       </div>
     `;
 
+    studioEl.querySelectorAll('[data-sspeed]').forEach((b) => { b.onclick = () => { store.setSpeechRate(Number(b.dataset.sspeed)); renderStudio(); }; });
+
     const evalBlock = (target, spoken, elId) => {
       const res = evaluateSpeech(target, spoken);
-      document.getElementById(elId).innerHTML = `<div class="ios-card" style="background:var(--bg-grouped);padding:11px;margin:0;"><div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;"><span>Skor Pelafalan: <strong>${res.accuracy}%</strong></span><span>Kata Tepat</span></div><div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div></div>`;
-      if (res.accuracy >= 65) { store.incrementRing('speaking', 1, 20); notifyIsland(`Skor ${res.accuracy}%! Cincin Berbicara +1`); }
-      else notifyIsland(`Skor ${res.accuracy}%, coba ulangi perlahan`);
+      const ok = res.accuracy >= 65;
+      document.getElementById(elId).innerHTML = `<div class="ios-card" style="background:var(--bg-grouped);padding:11px;margin:0;"><div style="font-size:12.5px;margin-bottom:6px;">Akurasi Pelafalan: <strong style="color:${ok ? 'var(--ios-green)' : 'var(--ios-red)'};">${res.accuracy}%</strong></div><div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div></div>`;
+      if (ok) { playTone('success'); store.incrementRing('speaking', 1, 20); }
+      else { playTone('error'); if (navigator.vibrate) navigator.vibrate(35); }
     };
 
     document.getElementById('nextShadowBtn').onclick = () => { shIdx = (shIdx + 1) % scenariosData.shadowing.length; renderStudio(); };
-    document.getElementById('playNativeBtn').onclick = () => speakText(item.sentence, 1.0);
-    document.getElementById('playSlowBtn').onclick = () => speakText(item.sentence, 0.75);
+    document.getElementById('playNativeBtn').onclick = () => speakText(item.sentence);
     document.getElementById('recordShadowBtn').onclick = () => {
-      const wave = document.getElementById('speakWaveform'); wave.classList.add('active'); notifyIsland('Silakan ucapkan kalimatnya...', true);
+      const wave = document.getElementById('speakWaveform'); wave.classList.add('active'); notifyIsland('Mendengarkan...', true);
       startRecognition({ onResult: (t) => evalBlock(item.sentence, t, 'studioResult'), onError: (e) => notifyIsland(`Mic: ${e}`), onEnd: () => wave.classList.remove('active') });
     };
     document.getElementById('demoShadowBtn').onclick = () => evalBlock(item.sentence, item.sentence, 'studioResult');
 
     document.getElementById('nextRpBtn').onclick = () => { rpIdx = (rpIdx + 1) % scenariosData.roleplays.length; renderStudio(); };
-    document.getElementById('playRoleplayBtn').onclick = () => speakText(rp.aiPrompt, 1.0);
+    document.getElementById('playRoleplayBtn').onclick = () => speakText(rp.aiPrompt);
     document.getElementById('recordRpBtn').onclick = () => {
-      notifyIsland('Silakan ucapkan jawabanmu...', true);
+      notifyIsland('Ucapkan jawabanmu...', true);
       startRecognition({ onResult: (t) => evalBlock(rp.suggestedReply, t, 'rpResult'), onError: (e) => notifyIsland(`Mic: ${e}`), onEnd: () => {} });
     };
     document.getElementById('demoRpBtn').onclick = () => evalBlock(rp.suggestedReply, rp.suggestedReply, 'rpResult');
@@ -237,29 +236,23 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=9').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=10').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
-  const heroDemoSentence = "No worries, let's grab a coffee and catch up!";
-  document.getElementById('heroPlayBtn').onclick = () => speakText(heroDemoSentence, 1.0);
+  const heroSentence = "No worries, let's grab a coffee and catch up!";
+  document.getElementById('heroPlayBtn').onclick = () => speakText(heroSentence);
   const runHeroEval = (spoken) => {
-    const res = evaluateSpeech(heroDemoSentence, spoken);
-    document.getElementById('heroVoiceResult').innerHTML = `<div style="font-size:12px;margin-bottom:4px;">Akurasi Pelafalan: <strong>${res.accuracy}%</strong></div><div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div>`;
+    const res = evaluateSpeech(heroSentence, spoken);
+    document.getElementById('heroVoiceResult').innerHTML = `<div style="font-size:12px;margin-bottom:4px;">Akurasi: <strong>${res.accuracy}%</strong></div><div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div>`;
   };
-  document.getElementById('heroMicBtn').onclick = () => {
-    notifyIsland('Ucapkan kalimat di kartu...', true);
-    startRecognition({ onResult: runHeroEval, onError: (e) => notifyIsland(`Mic: ${e}`), onEnd: () => {} });
-  };
-  document.getElementById('heroSimBtn').onclick = () => runHeroEval(heroDemoSentence);
+  document.getElementById('heroMicBtn').onclick = () => { notifyIsland('Ucapkan kalimat...', true); startRecognition({ onResult: runHeroEval, onError: (e) => notifyIsland(`Mic: ${e}`), onEnd: () => {} }); };
+  document.getElementById('heroSimBtn').onclick = () => runHeroEval(heroSentence);
 
   document.getElementById('heroStartBtn').onclick = () => setAppMode(true, 'today');
-  document.getElementById('heroExploreBtn').onclick = () => setAppMode(true, 'words');
-  document.getElementById('bannerOpenAppBtn').onclick = () => setAppMode(true, 'today');
   document.getElementById('brandHomeBtn').onclick = () => setAppMode(false);
   document.getElementById('modeSwitchBtn').onclick = () => setAppMode(isLandingMode, 'today');
-
-  document.querySelectorAll('[data-jump]').forEach((card) => { card.onclick = () => setAppMode(true, card.dataset.jump); });
-  document.querySelectorAll('[data-mission]').forEach((row) => { row.onclick = () => setAppMode(true, row.dataset.mission); });
+  document.querySelectorAll('[data-jump]').forEach((el) => { el.onclick = () => setAppMode(true, el.dataset.jump); });
+  document.querySelectorAll('[data-mission]').forEach((el) => { el.onclick = () => setAppMode(true, el.dataset.mission); });
   document.querySelectorAll('.tab-btn').forEach((b) => { b.onclick = () => setAppMode(true, b.dataset.tab); });
 
   document.getElementById('voicePickerBtn').onclick = openVoicePicker;
@@ -274,19 +267,15 @@ async function bootstrap() {
     if (activeTab && !isLandingMode) updateTabGlider(activeTab);
   });
 
-  try {
-    const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-      fetch('./data/levels.json?v=9').then((r) => r.json()),
-      fetch('./data/briefs.json?v=9').then((r) => r.json()),
-      fetch('./data/scenarios.json?v=9').then((r) => r.json()),
-      fetch('./data/dictionary.json?v=9').then((r) => r.json())
-    ]);
-    initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
-    initBriefModule(briefsData, notifyIsland, openSheet);
-    initSpeakStudio(scenariosData);
-    initLexiconModule(dictData, notifyIsland, openSheet);
-  } catch (err) {
-    notifyIsland('Memuat data offline...');
-  }
+  const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
+    fetch('./data/levels.json?v=10').then((r) => r.json()),
+    fetch('./data/briefs.json?v=10').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=10').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=10').then((r) => r.json())
+  ]);
+  initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
+  initBriefModule(briefsData, notifyIsland, openSheet);
+  initSpeakStudio(scenariosData);
+  initLexiconModule(dictData, notifyIsland, openSheet);
 }
 bootstrap();

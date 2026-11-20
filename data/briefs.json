@@ -38,14 +38,16 @@
         }
       },
       "quiz": {
-        "question": "Apa solusi utama menurut narasi podcast di atas untuk menjaga motivasi belajar?",
+        "question": "Apa langkah praktis untuk menjaga motivasi belajar tetap tinggi?",
         "options": [
-          "Menunggu mood bagus sebelum mulai",
-          "Mengaitkan rasa puas pada usaha kecil yang konsisten",
-          "Belajar 5 jam sekaligus tanpa jeda"
+          "Menunggu suasana hati membaik sebelum membuka materi pelajaran",
+          "Memberi apresiasi pada usaha kecil yang dilakukan secara rutin",
+          "Memeriksa media sosial setiap jeda sepuluh menit saat belajar",
+          "Menghindari tantangan sulit agar kadar dopamin tetap rendah"
         ],
         "answerIdx": 1
-      }
+      },
+      "level": "B2"
     },
     {
       "id": "brief-02",
@@ -85,14 +87,16 @@
         }
       },
       "quiz": {
-        "question": "Sifat utama apa yang dimiliki atlet saat membalikkan keadaan (comeback)?",
+        "question": "Bagaimana atlet profesional membalikkan ketertinggalan skor?",
         "options": [
-          "Bermain terburu-buru",
-          "Composure (ketenangan) dan fokus per poin",
-          "Mengabaikan strategi tim"
+          "Mempercepat tempo permainan secara agresif tanpa arah taktis",
+          "Menjaga ketenangan mental dan fokus memenangkan poin demi poin",
+          "Mengganti seluruh susunan pemain utama pada menit-menit akhir",
+          "Menunggu lawan melakukan kesalahan sendiri hingga peluit akhir"
         ],
         "answerIdx": 1
-      }
+      },
+      "level": "B1"
     },
     {
       "id": "brief-03",
@@ -132,14 +136,16 @@
         }
       },
       "quiz": {
-        "question": "Mengapa resolusi belajar sering gagal menurut diskusi podcast tersebut?",
+        "question": "Mengapa kebiasaan kecil 1% lebih efektif daripada belajar maraton?",
         "options": [
-          "Karena kecanduan intensitas tinggi di awal hingga burnout",
-          "Karena durasinya terlalu singkat",
-          "Karena terlalu banyak istirahat"
+          "Karena efek akumulasi harian membangun identitas tanpa kelelahan",
+          "Karena otak manusia tidak mampu memproses informasi lebih dari sejam",
+          "Karena jadwal pagi hari selalu menjamin hasil ujian yang sempurna",
+          "Karena motivasi tinggi di awal tahun cukup untuk bertahan setahun"
         ],
         "answerIdx": 0
-      }
+      },
+      "level": "B2"
     },
     {
       "id": "brief-04",
@@ -179,14 +185,16 @@
         }
       },
       "quiz": {
-        "question": "Apa inti dari filosofi Kaizen dalam belajar bahasa?",
+        "question": "Apa pesan utama filosofi Kaizen bagi pembelajar bahasa?",
         "options": [
-          "Menunggu tata bahasa sempurna baru bicara",
-          "Perbaikan kecil terus-menerus & belajar dari koreksi",
-          "Menghafal kamus tanpa praktik"
+          "Menghafal seluruh aturan tata bahasa sebelum berani berbicara",
+          "Menunggu pengucapan terdengar sempurna agar terhindar dari malu",
+          "Berani praktik sejak awal dan memperbaiki kesalahan sedikit demi sedikit",
+          "Membandingkan kemajuan diri dengan penutur asli setiap harinya"
         ],
-        "answerIdx": 1
-      }
+        "answerIdx": 2
+      },
+      "level": "A2"
     },
     {
       "id": "brief-05",
@@ -226,14 +234,16 @@
         }
       },
       "quiz": {
-        "question": "Apa keunggulan utama arsitektur local-first software?",
+        "question": "Mengapa arsitektur aplikasi local-first terasa lebih responsif?",
         "options": [
-          "Harus selalu terhubung ke server",
-          "Respons instan tanpa jeda & tetap jalan saat offline",
-          "Membutuhkan ukuran file bergiga-giga"
+          "Karena seluruh data langsung tersimpan di perangkat sebelum sinkronisasi",
+          "Karena aplikasi hanya dapat dijalankan ketika terhubung ke Wi-Fi cepat",
+          "Karena ukuran berkas media dikompresi hingga kualitasnya menurun",
+          "Karena sistem menghapus riwayat latihan pengguna setiap kali ditutup"
         ],
-        "answerIdx": 1
-      }
+        "answerIdx": 0
+      },
+      "level": "B1"
     },
     {
       "id": "brief-06",
@@ -273,14 +283,16 @@
         }
       },
       "quiz": {
-        "question": "Pelajaran apa yang diambil dari strategi lari maraton Eliud Kipchoge?",
+        "question": "Pelajaran apa yang diterapkan Eliud Kipchoge dalam lari maraton?",
         "options": [
-          "Lari secepat mungkin di awal",
-          "Pacing (ritme stabil) setiap hari lebih efektif daripada ngebut sesaat",
-          "Berlatih hanya seminggu sekali"
+          "Berlari secepat mungkin di lima kilometer awal untuk menekan lawan",
+          "Menjaga ritme langkah yang stabil dan terukur di setiap kilometer",
+          "Menghemat tenaga dengan berjalan kaki pada paruh pertama perlombaan",
+          "Berlatih hanya menjelang pekan pertandingan agar otot tidak tegang"
         ],
         "answerIdx": 1
-      }
+      },
+      "level": "B2"
     },
     {
       "id": "brief-07",
@@ -320,14 +332,16 @@
         }
       },
       "quiz": {
-        "question": "Kapan otak memindahkan kosakata baru ke memori jangka panjang?",
+        "question": "Apa peran fase tidur nyenyak terhadap penguasaan kosakata baru?",
         "options": [
-          "Saat membaca sambil membuka media sosial",
-          "Saat fase tidur nyenyak (deep slow-wave sleep)",
-          "Hanya saat ujian berlangsung"
+          "Menghapus ingatan jangka pendek agar otak terasa lebih ringan",
+          "Memindahkan kosakata baru dari memori sementara ke penyimpanan permanen",
+          "Menggantikan kebutuhan mengulang pelajaran di keesokan paginya",
+          "Meningkatkan kecepatan membaca teks panjang tanpa perlu konsentrasi"
         ],
         "answerIdx": 1
-      }
+      },
+      "level": "B1"
     }
   ]
 }
