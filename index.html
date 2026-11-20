@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/tokens.css?v=7" />
-  <link rel="stylesheet" href="./css/components.css?v=7" />
+  <link rel="stylesheet" href="./css/tokens.css?v=8" />
+  <link rel="stylesheet" href="./css/components.css?v=8" />
 </head>
 <body>
   <div class="app-shell">
@@ -67,9 +67,9 @@
 
         <!-- KPI Strip -->
         <div class="kpi-strip stagger-2">
-          <div class="kpi-pill"><div class="kpi-num">150+</div><div class="kpi-lbl">Slang & Kata</div></div>
-          <div class="kpi-pill"><div class="kpi-num">25</div><div class="kpi-lbl">Unit CEFR</div></div>
-          <div class="kpi-pill"><div class="kpi-num">100%</div><div class="kpi-lbl">Offline Ready</div></div>
+          <div class="kpi-pill"><div class="kpi-num" data-target="155" data-suffix="+">155+</div><div class="kpi-lbl">Slang & Kata</div></div>
+          <div class="kpi-pill"><div class="kpi-num" data-target="25" data-suffix="">25</div><div class="kpi-lbl">Unit CEFR</div></div>
+          <div class="kpi-pill"><div class="kpi-num" data-target="100" data-suffix="%">100%</div><div class="kpi-lbl">Offline Ready</div></div>
         </div>
 
         <!-- Interactive Live Voice Sandbox on Hero -->
@@ -211,14 +211,14 @@
         <h1 class="large-title">Path</h1>
         <p class="subtitle">Pilih levelmu (A1 pemula hingga C1 mahir), lalu selesaikan unit latihan susun kalimat & bicara.</p>
         <div class="level-pills" id="levelPills"></div>
-        <div id="unitsList"></div>
+        <div id="unitsList"><div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div><div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
       </section>
 
       <!-- TAB 3: WORDS -->
       <section class="tab-view" id="view-words">
         <h1 class="large-title">Words</h1>
         <p class="subtitle">Kamus slang gaul sehari-hari, kata benda, sifat, kerja, flashcard & kuis.</p>
-        <div id="lexiconContainer"></div>
+        <div id="lexiconContainer"><div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div><div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
       </section>
 
       <!-- TAB 4: SPEAK -->
@@ -232,12 +232,13 @@
       <section class="tab-view" id="view-brief">
         <h1 class="large-title">Daily Brief</h1>
         <p class="subtitle">Baca & dengarkan cerita dunia nyata. Ketuk kata bergaris biru untuk melihat artinya.</p>
-        <div id="briefList"></div>
+        <div id="briefList"><div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div><div class="skeleton-card"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
       </section>
     </main>
 
     <!-- 5-Column Floating Bottom Tab Bar -->
     <nav class="tab-bar hidden" id="bottomTabBar">
+      <div class="tab-glider" id="tabGlider"></div>
       <button class="tab-btn active" data-tab="today"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg><span>Today</span></button>
       <button class="tab-btn" data-tab="path"><svg viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg><span>Path</span></button>
       <button class="tab-btn" data-tab="words"><svg viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg><span>Words</span></button>
@@ -249,6 +250,6 @@
       <div class="bottom-sheet"><div class="sheet-grabber"></div><div id="sheetContent"></div></div>
     </div>
   </div>
-  <script type="module" src="./js/app.js?v=7"></script>
+  <script type="module" src="./js/app.js?v=8"></script>
 </body>
 </html>

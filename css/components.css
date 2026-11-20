@@ -212,3 +212,78 @@
 }
 .btn-stop:active { transform: scale(0.96); }
 .btn-stop svg { width: 15px; height: 15px; stroke: currentColor; fill: currentColor; }
+
+/* === TACTILE MICRO-INTERACTIONS & SKELETON SHIMMER (v8) === */
+.tab-bar { position: fixed; overflow: hidden; }
+.tab-glider {
+  position: absolute; top: 6px; bottom: 6px; left: 6px;
+  border-radius: 19px; background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 4px 14px rgba(26, 109, 255, 0.18), inset 0 1px 0 #FFF;
+  transition: transform 0.42s var(--spring), width 0.35s var(--ease-out);
+  pointer-events: none; z-index: 0;
+}
+[data-theme="dark"] .tab-glider {
+  background: rgba(59, 130, 246, 0.26);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+.tab-btn { position: relative; z-index: 1; background: transparent !important; box-shadow: none !important; }
+.tab-btn:active { transform: scale(0.88); }
+.tab-btn svg { transition: transform 0.35s var(--spring), stroke-width 0.2s ease; }
+.tab-btn.active svg { animation: navIconPop 0.42s var(--spring) forwards; stroke-width: 2.2; }
+@keyframes navIconPop {
+  0% { transform: scale(0.85) translateY(0); }
+  55% { transform: scale(1.18) translateY(-2.5px); }
+  100% { transform: scale(1.04) translateY(-1px); }
+}
+
+/* Button Sheen & Spring Feedback */
+.btn-primary, #bannerOpenAppBtn { position: relative; overflow: hidden; }
+.btn-primary::after, #bannerOpenAppBtn::after {
+  content: ""; position: absolute; top: 0; left: -120%; width: 65%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  transform: skewX(-22deg); transition: left 0.65s var(--ease-out); pointer-events: none;
+}
+.btn-primary svg { transition: transform 0.28s var(--spring); }
+.icon-btn svg, .brand-logo { transition: transform 0.32s var(--spring); }
+.brand-wrap:active .brand-logo { transform: scale(0.9) rotate(-6deg); }
+.icon-btn:active svg { transform: scale(0.85) rotate(12deg); }
+#bannerOpenAppBtn { transition: transform 0.25s var(--spring), box-shadow 0.25s ease; }
+#bannerOpenAppBtn:active { transform: scale(0.96); }
+
+/* Desktop/Pointer Hover Elevation (Scoped so touchscreens never stick) */
+@media (hover: hover) {
+  .btn-primary:hover::after, #bannerOpenAppBtn:hover::after { left: 145%; }
+  .btn-primary:hover { transform: translateY(-1.5px); box-shadow: 0 10px 24px rgba(26, 109, 255, 0.32); }
+  .btn-primary:hover svg { transform: translateX(3px); }
+  .btn-secondary:hover { background: rgba(26, 109, 255, 0.09); border-color: rgba(26, 109, 255, 0.28); transform: translateY(-1px); }
+  .pill-nav-switch:hover { background: var(--ios-blue); color: #FFF; transform: translateY(-1px); }
+  .icon-btn:hover { border-color: rgba(26, 109, 255, 0.35); transform: translateY(-1.5px); }
+  .icon-btn:hover svg { transform: scale(1.1) rotate(-8deg); }
+  .feature-card:hover, .kpi-pill:hover, .unit-card:hover {
+    transform: translateY(-3px); border-color: rgba(26, 109, 255, 0.32);
+    box-shadow: 0 12px 28px rgba(26, 109, 255, 0.12);
+  }
+  .feature-card:hover .feature-icon-box { transform: scale(1.1) rotate(-4deg); }
+  .mission-row:hover { transform: translateX(3px); border-color: rgba(26, 109, 255, 0.32); background: var(--bg-card); }
+  .level-pill:not(.active):hover { border-color: var(--ios-blue); color: var(--ios-blue); transform: translateY(-1px); }
+}
+
+.feature-icon-box { transition: transform 0.32s var(--spring); }
+.kpi-pill { transition: transform 0.25s var(--spring), border-color 0.25s ease, box-shadow 0.25s ease; }
+.kpi-pill:active { transform: scale(0.95); }
+.unit-card:active { transform: scale(0.975); }
+
+/* Skeleton Shimmer Loader */
+.skeleton-card {
+  background: var(--bg-card); border: 1px solid var(--separator);
+  border-radius: var(--radius-card); padding: 16px; margin-bottom: 12px;
+}
+.skeleton-line {
+  height: 13px; border-radius: 8px; margin-bottom: 10px;
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, rgba(26, 109, 255, 0.12) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%; animation: shimmerSweep 1.35s infinite linear;
+}
+.skeleton-line.short { width: 42%; height: 10px; }
+.skeleton-line.title { width: 72%; height: 18px; }
+.skeleton-line:last-child { margin-bottom: 0; }
+@keyframes shimmerSweep { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }

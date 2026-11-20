@@ -1,8 +1,8 @@
-import { store } from './state.js?v=7';
-import { speakText, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=7';
-import { initPathModule } from './modules/path.js?v=7';
-import { initBriefModule } from './modules/brief.js?v=7';
-import { initLexiconModule } from './modules/lexicon.js?v=7';
+import { store } from './state.js?v=8';
+import { speakText, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=8';
+import { initPathModule } from './modules/path.js?v=8';
+import { initBriefModule } from './modules/brief.js?v=8';
+import { initLexiconModule } from './modules/lexicon.js?v=8';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -23,7 +23,33 @@ function notifyIsland(message, persistent = false) {
 function openSheet(html) { document.getElementById('sheetContent').innerHTML = html; document.getElementById('sheetBackdrop').classList.add('open'); }
 function closeSheet() { document.getElementById('sheetBackdrop').classList.remove('open'); }
 
+
+function updateTabGlider(targetTab) {
+  const glider = document.getElementById('tabGlider');
+  const btn = document.querySelector(`.tab-btn[data-tab="${targetTab}"]`);
+  if (!glider || !btn || !btn.offsetWidth) return;
+  glider.style.width = `${btn.offsetWidth}px`;
+  glider.style.transform = `translateX(${btn.offsetLeft - 6}px)`;
+}
+
+function animateLandingCounters() {
+  document.querySelectorAll('.kpi-num[data-target]').forEach((el) => {
+    const target = Number(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const start = performance.now();
+    const duration = 850;
+    const step = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = `${Math.round(target * eased)}${suffix}`;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+}
+
 function setAppMode(openApp, targetTab = 'today') {
+  if (navigator.vibrate) navigator.vibrate(8);
   window.__stopBriefAudio?.();
   isLandingMode = !openApp;
   const landingView = document.getElementById('view-landing');
@@ -41,11 +67,13 @@ function setAppMode(openApp, targetTab = 'today') {
     switchBtn.textContent = 'Beranda';
     document.getElementById(`view-${targetTab}`)?.classList.add('active');
     document.querySelector(`.tab-btn[data-tab="${targetTab}"]`)?.classList.add('active');
+    requestAnimationFrame(() => updateTabGlider(targetTab));
   } else {
     landingView.classList.add('active');
     tabBar.classList.add('hidden');
     mainContainer.classList.add('landing-active');
     switchBtn.textContent = 'Buka Aplikasi';
+    animateLandingCounters();
   }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -202,7 +230,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=7').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=8').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   // Landing Page Controls
@@ -237,10 +265,10 @@ async function bootstrap() {
   document.getElementById('sheetBackdrop').onclick = (e) => { if (e.target.id === 'sheetBackdrop') closeSheet(); };
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=7').then((r) => r.json()),
-    fetch('./data/briefs.json?v=7').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=7').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=7').then((r) => r.json())
+    fetch('./data/levels.json?v=8').then((r) => r.json()),
+    fetch('./data/briefs.json?v=8').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=8').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=8').then((r) => r.json())
   ]);
 
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
@@ -249,5 +277,10 @@ async function bootstrap() {
   initLexiconModule(dictData, notifyIsland, openSheet);
   window.addEventListener('begin:statechange', renderDashboard);
   renderDashboard();
+  animateLandingCounters();
+  window.addEventListener('resize', () => {
+    const activeTab = document.querySelector('.tab-btn.active')?.dataset.tab;
+    if (activeTab && !isLandingMode) updateTabGlider(activeTab);
+  });
 }
 bootstrap();
