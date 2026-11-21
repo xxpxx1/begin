@@ -319,3 +319,34 @@ async function bootstrap() {
   if (slangs.length) { landingSlangPool = slangs; showLandingSlang(); }
 }
 bootstrap();
+
+
+// === LANDING THEME SYNC ===
+(function attachLandingThemeSync() {
+  const apply = () => {
+    const root = document.documentElement;
+    const body = document.body;
+    const shell = document.getElementById('appShell');
+    if (!shell) return;
+    const stored = Object.keys(localStorage).some((k) => /theme|dark/i.test(k) && /dark|true|1/i.test(String(localStorage.getItem(k))));
+    const isDark =
+      root.getAttribute('data-theme') === 'dark' ||
+      body.getAttribute('data-theme') === 'dark' ||
+      root.classList.contains('dark') ||
+      root.classList.contains('dark-theme') ||
+      body.classList.contains('dark') ||
+      body.classList.contains('dark-theme') ||
+      body.classList.contains('dark-mode') ||
+      stored;
+    shell.setAttribute('data-landing-theme', isDark ? 'dark' : 'light');
+    const meta = document.getElementById('metaThemeColor');
+    if (meta) meta.setAttribute('content', isDark ? '#071326' : '#EFF6FF');
+  };
+  apply();
+  window.addEventListener('DOMContentLoaded', apply);
+  new MutationObserver(apply).observe(document.documentElement, { attributes: true });
+  if (document.body) new MutationObserver(apply).observe(document.body, { attributes: true });
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#themeToggleBtn')) setTimeout(apply, 25);
+  });
+})();
