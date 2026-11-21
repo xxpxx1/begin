@@ -320,33 +320,47 @@ async function bootstrap() {
 }
 bootstrap();
 
-
 // === LANDING THEME SYNC ===
 (function attachLandingThemeSync() {
-  const apply = () => {
+  const detectDark = () => {
     const root = document.documentElement;
     const body = document.body;
-    const shell = document.getElementById('appShell');
-    if (!shell) return;
-    const stored = Object.keys(localStorage).some((k) => /theme|dark/i.test(k) && /dark|true|1/i.test(String(localStorage.getItem(k))));
-    const isDark =
-      root.getAttribute('data-theme') === 'dark' ||
-      body.getAttribute('data-theme') === 'dark' ||
+    const attrTheme = (root.getAttribute('data-theme') || body.getAttribute('data-theme') || '').toLowerCase();
+    if (attrTheme === 'dark') return true;
+    if (attrTheme === 'light') return false;
+    if (
       root.classList.contains('dark') ||
       root.classList.contains('dark-theme') ||
       body.classList.contains('dark') ||
       body.classList.contains('dark-theme') ||
-      body.classList.contains('dark-mode') ||
-      stored;
+      body.classList.contains('dark-mode')
+    ) return true;
+    const bg = getComputedStyle(body).backgroundColor;
+    const m = bg && bg.match(/\d+/g);
+    if (m && m.length >= 3) {
+      const lum = (Number(m[0]) + Number(m[1]) + Number(m[2])) / 3;
+      return lum < 128;
+    }
+    return false;
+  };
+
+  const apply = () => {
+    const shell = document.getElementById('appShell');
+    if (!shell) return;
+    const isDark = detectDark();
     shell.setAttribute('data-landing-theme', isDark ? 'dark' : 'light');
     const meta = document.getElementById('metaThemeColor');
     if (meta) meta.setAttribute('content', isDark ? '#071326' : '#EFF6FF');
   };
+
   apply();
   window.addEventListener('DOMContentLoaded', apply);
   new MutationObserver(apply).observe(document.documentElement, { attributes: true });
   if (document.body) new MutationObserver(apply).observe(document.body, { attributes: true });
   document.addEventListener('click', (e) => {
-    if (e.target.closest('#themeToggleBtn')) setTimeout(apply, 25);
+    if (e.target.closest('#themeToggleBtn')) {
+      requestAnimationFrame(apply);
+      setTimeout(apply, 60);
+    }
   });
 })();

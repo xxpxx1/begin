@@ -1032,3 +1032,10 @@ body.dark-theme,
 }
 #appShell.is-landing[data-landing-theme="dark"] .ld-kpi-val { color: #FFFFFF !important; }
 #appShell.is-landing[data-landing-theme="dark"] .ld-kpi-sub { color: #94A3B8 !important; }
+
+/* === v16: EXACT PORTRAIT FRAMING === */
+.editorial-hero-photo {
+  right: -2% !important;
+  width: 74% !important;
+  object-position: 48% 18% !important;
+}
