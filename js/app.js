@@ -55,6 +55,21 @@ function setAppMode(openApp, targetTab = 'today') {
   const mainContainer = document.getElementById('mainContainer');
   const switchBtn = document.getElementById('modeSwitchBtn');
 
+  const syncLandingTheme = () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+                   document.body.getAttribute('data-theme') === 'dark' ||
+                   document.body.classList.contains('dark') ||
+                   document.body.classList.contains('dark-theme');
+    const shell = document.getElementById('appShell');
+    const meta = document.getElementById('metaThemeColor');
+    if (shell) shell.classList.toggle('theme-dark', isDark);
+    if (meta) meta.setAttribute('content', isDark ? '#071326' : '#EFF6FF');
+  };
+  syncLandingTheme();
+  new MutationObserver(syncLandingTheme).observe(document.documentElement, { attributes: true });
+  new MutationObserver(syncLandingTheme).observe(document.body, { attributes: true });
+
+
   document.querySelectorAll('.tab-view').forEach((v) => v.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
 

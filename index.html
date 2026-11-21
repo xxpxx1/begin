@@ -4,18 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="theme-color" content="#1A6DFF" />
-  <title>Begin — Speak English Naturally</title>
+  <meta name="theme-color" id="metaThemeColor" content="#EFF6FF" />
+  <title>Begin — Speak English with Confidence</title>
   <link rel="manifest" href="./manifest.json" />
   <link rel="apple-touch-icon" href="./assets/icons/icon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/tokens.css?v=12" />
-  <link rel="stylesheet" href="./css/components.css?v=12" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/tokens.css?v=14" />
+  <link rel="stylesheet" href="./css/components.css?v=14" />
 </head>
 <body>
-  <div class="app-shell">
+  <div class="app-shell is-landing" id="appShell">
     <div class="floating-toast" id="floatingToast">
       <span class="island-dot" id="toastDot"></span>
       <span id="toastText"></span>
@@ -38,64 +38,106 @@
     </header>
 
     <main class="view-container landing-active" id="mainContainer">
-      <!-- ONE-SCREEN EDITORIAL PHOTO LANDING PAGE -->
+      <!-- ADAPTIVE EDITORIAL LANDING PAGE (LIGHT & DARK) -->
       <section class="tab-view active" id="view-landing">
-        <div class="photo-hero-card stagger-1">
+        <div class="editorial-split-hero stagger-1">
           <img
-            class="photo-hero-img"
-            src="./assets/img/hero-woman.jpg"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=85';"
-            alt="Belajar bahasa Inggris praktis dengan headset di Begin"
+            class="editorial-hero-photo"
+            src="./assets/img/hero-girl.png"
+            onerror="this.onerror=null;this.src='./assets/img/hero-woman.jpg';"
+            alt="Belajar bahasa Inggris dengan headset di Begin"
           />
-          <div class="photo-hero-overlay"></div>
+          <div class="editorial-hero-vignette"></div>
 
-          <div class="hero-top-pill">
-            <span class="hero-live-dot"></span>
-            <span>Slang Harian · AI Speak · Daily Brief</span>
-          </div>
-
-          <div class="hero-bottom-content">
-            <h1 class="serif-display" style="font-size:33px;line-height:1.06;margin-bottom:6px;">
-              Speak English with <em>Real Confidence.</em>
+          <div class="editorial-hero-copy">
+            <h1 class="editorial-title">
+              Speak English<br/>with <span>Confidence.</span>
             </h1>
-            <p style="font-size:12.5px;line-height:1.4;color:rgba(241,245,249,0.92);margin-bottom:13px;">
-              Kuasai kosakata gaul sehari-hari, koreksi pelafalan AI, dan narasi audio dalam 5 menit.
+            <p class="editorial-sub">
+              Learn everyday expressions, improve your pronunciation, and practice English in just 5 minutes a day.
             </p>
-            <button class="hero-cta-clean" id="heroStartBtn">
+            <button class="editorial-cta-pill" id="heroStartBtn">
               <span>Mulai Belajar</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
           </div>
         </div>
 
-        <!-- Compact Slang Card -->
-        <div class="ios-card interactive stagger-2" style="margin-bottom:0;padding:13px 15px;">
-          <div class="card-header" style="margin-bottom:4px;">
-            <span class="card-label" style="color:var(--ios-orange);">Slang Hari Ini</span>
-            <button class="btn-secondary" id="shuffleLandingSlangBtn" style="padding:4px 10px;font-size:11px;">Acak Kata</button>
-          </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <div style="min-width:0;">
-              <div>
-                <span id="landingSlangWord" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:800;">no cap</span>
-                <span id="landingSlangPhonetic" style="font-size:12px;color:var(--text-secondary);margin-left:5px;">/noʊ kæp/</span>
-              </div>
-              <div id="landingSlangMeaning" style="font-size:12.5px;font-weight:700;color:var(--ios-blue);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">serius / tidak bohong (beneran)</div>
+        <!-- Frosted Glass Slang Card -->
+        <div class="midnight-slang-card stagger-2">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+            <div style="display:flex;align-items:center;gap:7px;">
+              <span class="ld-slang-dot" style="width:8px;height:8px;border-radius:50%;display:inline-block;"></span>
+              <span class="ld-slang-tag" style="font-size:11px;font-weight:800;letter-spacing:0.06em;">SLANG HARI INI</span>
             </div>
-            <button class="btn-secondary" id="playLandingSlangBtn" style="padding:7px 11px;font-size:12px;flex-shrink:0;">
-              <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Dengar</span>
+            <div style="display:flex;align-items:center;gap:4px;">
+              <span id="landingSlangCounter" class="ld-slang-counter" style="font-size:12px;font-weight:600;">1 / 40</span>
+              <button class="slang-icon-mini" id="refreshLandingSlangBtn" aria-label="Ganti Slang">
+                <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;">
+            <div style="min-width:0;">
+              <div id="landingSlangWord" class="ld-slang-word" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:25px;font-weight:800;line-height:1.15;">No cap</div>
+              <div style="display:flex;align-items:center;gap:7px;margin:4px 0 6px;">
+                <span id="landingSlangPhonetic" class="ld-slang-phonetic" style="font-size:13px;">/nəʊ kæp/</span>
+                <span class="ld-slang-phonetic">•</span>
+                <span class="ld-slang-chip" style="font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;">Slang</span>
+              </div>
+              <div id="landingSlangMeaning" class="ld-slang-meaning" style="font-size:13.5px;font-weight:700;margin-bottom:4px;">Serius / tidak bohong (beneran)</div>
+              <div id="landingSlangExample" class="ld-slang-example" style="font-size:12.5px;font-style:italic;line-height:1.4;">“That new update is super fast, no cap.”</div>
+            </div>
+
+            <button class="slang-audio-circle" id="playLandingSlangBtn" aria-label="Dengarkan Pelafalan">
+              <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
             </button>
           </div>
-          <div id="landingSlangExample" style="font-size:11.5px;color:var(--text-secondary);font-style:italic;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">"That new update is super fast, no cap."</div>
+
+          <div class="ld-slang-footer" style="padding-top:10px;display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <div class="ld-slang-hint" style="display:flex;align-items:center;gap:7px;font-size:11.5px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg>
+              <span>Contoh penggunaan sehari-hari</span>
+            </div>
+            <button class="slang-shuffle-pill" id="shuffleLandingSlangBtn">
+              <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+              <span>Acak Kata</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Slim Bottom Telemetry Strip -->
-        <div class="ios-card stagger-3" style="margin-bottom:0;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px;">
-          <div style="display:flex;align-items:center;gap:9px;min-width:0;">
-            <div class="eq-mini"><span></span><span></span><span></span><span></span></div>
-            <div style="font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">25 Unit CEFR · 155+ Slang · Offline</div>
+        <!-- Bottom 3-Column KPI Strip -->
+        <div class="midnight-kpi-grid stagger-3">
+          <div class="midnight-kpi-box" data-jump="path">
+            <div class="midnight-kpi-icon">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div>
+              <div class="ld-kpi-val" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;line-height:1.1;">25</div>
+              <div class="ld-kpi-sub" style="font-size:11px;margin-top:2px;">Unit CEFR</div>
+            </div>
           </div>
-          <button class="btn-secondary" id="landingBriefSampleBtn" style="padding:6px 10px;font-size:11px;flex-shrink:0;">Tes Audio</button>
+
+          <div class="midnight-kpi-box" data-jump="words">
+            <div class="midnight-kpi-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg>
+            </div>
+            <div>
+              <div class="ld-kpi-val" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;line-height:1.1;">155+</div>
+              <div class="ld-kpi-sub" style="font-size:11px;margin-top:2px;">Slang</div>
+            </div>
+          </div>
+
+          <div class="midnight-kpi-box" id="offlineBadgeBtn">
+            <div class="midnight-kpi-icon">
+              <svg viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+            </div>
+            <div>
+              <div class="ld-kpi-val" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;line-height:1.1;">Offline</div>
+              <div class="ld-kpi-sub" style="font-size:11px;margin-top:2px;">Ready</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -179,6 +221,6 @@
       <div class="bottom-sheet"><div class="sheet-grabber"></div><div id="sheetContent"></div></div>
     </div>
   </div>
-  <script type="module" src="./js/app.js?v=12"></script>
+  <script type="module" src="./js/app.js?v=14"></script>
 </body>
 </html>
