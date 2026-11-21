@@ -64,7 +64,7 @@ function setAppMode(openApp, targetTab = 'today') {
     const shell = document.getElementById('appShell');
     const meta = document.getElementById('metaThemeColor');
     if (shell) shell.classList.toggle('theme-dark', isDark);
-    if (meta) meta.setAttribute('content', isDark ? '#071326' : '#F3EFE6');
+    if (meta) meta.setAttribute('content', isDark ? '#071326' : '#E2DBD0');
   };
   syncLandingTheme();
   new MutationObserver(syncLandingTheme).observe(document.documentElement, { attributes: true });
@@ -358,7 +358,7 @@ bootstrap();
     const isDark = detectDark();
     shell.setAttribute('data-landing-theme', isDark ? 'dark' : 'light');
     const meta = document.getElementById('metaThemeColor');
-    if (meta) meta.setAttribute('content', isDark ? '#071326' : '#F3EFE6');
+    if (meta) meta.setAttribute('content', isDark ? '#071326' : '#E2DBD0');
   };
 
   apply();

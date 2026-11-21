@@ -1260,3 +1260,143 @@ body.dark-theme,
   color: #475569 !important;
   font-weight: 600 !important;
 }
+
+/* === v19: SOFT WARM-STONE LIGHT MODE (LOW GLARE, BALANCED GRADIENT) === */
+#appShell.is-landing[data-landing-theme="light"] {
+  background: radial-gradient(circle at 82% 22%, #D6CEC0 0%, #E2DBD0 48%, #D8D0C3 100%) !important;
+  color: #111827 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .top-bar {
+  background: rgba(226, 219, 208, 0.88) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(82, 70, 54, 0.16) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .brand-title {
+  color: #111827 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .pill-nav-switch {
+  background: #F4EFE6 !important;
+  border: 1px solid rgba(26, 86, 219, 0.34) !important;
+  color: #1D4ED8 !important;
+  box-shadow: 0 2px 6px rgba(58, 48, 35, 0.08) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .icon-btn {
+  background: #F4EFE6 !important;
+  border: 1px solid rgba(82, 70, 54, 0.18) !important;
+  color: #111827 !important;
+  box-shadow: 0 2px 6px rgba(58, 48, 35, 0.07) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-hero-photo {
+  filter: contrast(1.06) saturate(1.08) brightness(0.95) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-hero-vignette {
+  background:
+    linear-gradient(90deg, #E1DAD0 0%, #E1DAD0 35%, rgba(225, 218, 208, 0.86) 49%, rgba(225, 218, 208, 0.16) 66%, rgba(225, 218, 208, 0.02) 100%),
+    linear-gradient(180deg, rgba(225, 218, 208, 0.24) 0%, rgba(225, 218, 208, 0) 20%, rgba(225, 218, 208, 0) 74%, #DDD5C8 100%) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-title {
+  color: #111827 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-title span {
+  color: #1D4ED8 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-sub {
+  color: #293241 !important;
+  font-weight: 500 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-slang-card {
+  background: linear-gradient(155deg, #F5F1E8 0%, #ECE5D8 100%) !important;
+  border: 1px solid rgba(82, 70, 54, 0.22) !important;
+  box-shadow: 0 12px 26px rgba(48, 39, 28, 0.11), inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+  color: #111827 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-tag {
+  color: #B45309 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-dot {
+  background: #D97706 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangWord,
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-word {
+  color: #0F172A !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangCounter,
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-counter,
+#appShell.is-landing[data-landing-theme="light"] #landingSlangPhonetic,
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-phonetic {
+  color: #374151 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-chip {
+  background: rgba(29, 78, 216, 0.12) !important;
+  color: #1E3A8A !important;
+  border: 1px solid rgba(29, 78, 216, 0.22) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangMeaning,
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-meaning {
+  color: #1D4ED8 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangExample,
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-example {
+  color: #1F2937 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-footer {
+  border-top: 1px solid rgba(82, 70, 54, 0.16) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-hint {
+  color: #374151 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .slang-icon-mini {
+  color: #1D4ED8 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .slang-audio-circle {
+  background: rgba(29, 78, 216, 0.13) !important;
+  border: 1px solid rgba(29, 78, 216, 0.28) !important;
+  color: #1D4ED8 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .slang-shuffle-pill {
+  background: rgba(29, 78, 216, 0.11) !important;
+  border: 1px solid rgba(29, 78, 216, 0.30) !important;
+  color: #1D4ED8 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-box {
+  background: #F4EFE6 !important;
+  border: 1px solid rgba(82, 70, 54, 0.20) !important;
+  box-shadow: 0 8px 18px rgba(48, 39, 28, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.68) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-icon {
+  color: #1D4ED8 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .ld-kpi-val {
+  color: #0F172A !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .ld-kpi-sub {
+  color: #374151 !important;
+  font-weight: 600 !important;
+}

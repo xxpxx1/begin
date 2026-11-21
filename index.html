@@ -13,6 +13,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/tokens.css?v=13" />
   <link rel="stylesheet" href="./css/components.css?v=13" />
+<script>
+if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v19') {
+  caches.keys().then(ks => Promise.all(ks.map(k => caches.delete(k)))).then(() => {
+    localStorage.setItem('begin_ui_ver', 'v19');
+    location.reload();
+  });
+}
+</script>
 </head>
 <body>
   <div class="app-shell is-landing" id="appShell" data-landing-theme="light">
@@ -41,7 +49,7 @@
       <!-- EDITORIAL LANDING PAGE MATCHING MOCKUP -->
       <section class="tab-view active" id="view-landing">
         <div class="editorial-split-hero stagger-1">
-          <img class="editorial-hero-photo" src="./assets/img/hero-girl.png?v=18" alt="Belajar bahasa Inggris dengan headset di Begin" />
+          <img class="editorial-hero-photo" src="./assets/img/hero-girl.png?v=19" alt="Belajar bahasa Inggris dengan headset di Begin" />
           <div class="editorial-hero-vignette"></div>
 
           <div class="editorial-hero-copy">
@@ -75,7 +83,7 @@
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px;">
             <div style="min-width:0;">
-              <div id="landingSlangWord" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:25px;font-weight:800;line-height:1.15;color:#FFFFFF;">No cap</div>
+              <div id="landingSlangWord" style="font-family:'Plus Jakarta Sans',sans-serif;font-size:25px;font-weight:800;line-height:1.15;">No cap</div>
               <div style="display:flex;align-items:center;gap:7px;margin:4px 0 6px;">
                 <span id="landingSlangPhonetic" style="font-size:13px;color:#CBD5E1;">/nəʊ kæp/</span>
                 <span style="color:#64748B;">•</span>
@@ -109,7 +117,7 @@
               <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             </div>
             <div>
-              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:#FFFFFF;line-height:1.1;">25</div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;line-height:1.1;">25</div>
               <div style="font-size:11px;color:#94A3B8;margin-top:2px;">Unit CEFR</div>
             </div>
           </div>
@@ -119,7 +127,7 @@
               <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg>
             </div>
             <div>
-              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;color:#FFFFFF;line-height:1.1;">155+</div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:800;line-height:1.1;">155+</div>
               <div style="font-size:11px;color:#94A3B8;margin-top:2px;">Slang</div>
             </div>
           </div>
@@ -129,7 +137,7 @@
               <svg viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.58 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
             </div>
             <div>
-              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#FFFFFF;line-height:1.1;">Offline</div>
+              <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;line-height:1.1;">Offline</div>
               <div style="font-size:11px;color:#94A3B8;margin-top:2px;">Ready</div>
             </div>
           </div>
