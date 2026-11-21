@@ -1,8 +1,8 @@
-import { store } from './state.js?v=12';
-import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=12';
-import { initPathModule } from './modules/path.js?v=12';
-import { initBriefModule } from './modules/brief.js?v=12';
-import { initLexiconModule } from './modules/lexicon.js?v=12';
+import { store } from './state.js?v=13';
+import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=13';
+import { initPathModule } from './modules/path.js?v=13';
+import { initBriefModule } from './modules/brief.js?v=13';
+import { initLexiconModule } from './modules/lexicon.js?v=13';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -54,6 +54,7 @@ function setAppMode(openApp, targetTab = 'today') {
   const tabBar = document.getElementById('bottomTabBar');
   const mainContainer = document.getElementById('mainContainer');
   const switchBtn = document.getElementById('modeSwitchBtn');
+  const appShell = document.getElementById('appShell');
 
   const syncLandingTheme = () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
@@ -77,6 +78,7 @@ function setAppMode(openApp, targetTab = 'today') {
     landingView.classList.remove('active');
     tabBar.classList.remove('hidden');
     mainContainer.classList.remove('landing-active');
+    appShell?.classList.remove('is-landing');
     switchBtn.textContent = 'Beranda';
     document.getElementById(`view-${targetTab}`)?.classList.add('active');
     document.querySelector(`.tab-btn[data-tab="${targetTab}"]`)?.classList.add('active');
@@ -85,6 +87,7 @@ function setAppMode(openApp, targetTab = 'today') {
     landingView.classList.add('active');
     tabBar.classList.add('hidden');
     mainContainer.classList.add('landing-active');
+    appShell?.classList.add('is-landing');
     switchBtn.textContent = 'Buka Aplikasi';
     animateLandingCounters();
   }
@@ -251,7 +254,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=12').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=13').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   let landingSlangPool = [
@@ -260,20 +263,28 @@ async function bootstrap() {
     { word: "hit me up", phonetic: "/hɪt miː ʌp/", meaning: "kabari aku / hubungi aku nanti", example: "Hit me up whenever you are free tonight." }
   ];
   let slangCursor = 0;
+  const capFirst = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
   const showLandingSlang = () => {
-    const cur = landingSlangPool[slangCursor % landingSlangPool.length];
-    document.getElementById('landingSlangWord').textContent = cur.word;
+    const idx = slangCursor % landingSlangPool.length;
+    const cur = landingSlangPool[idx];
+    document.getElementById('landingSlangWord').textContent = capFirst(cur.word);
     document.getElementById('landingSlangPhonetic').textContent = cur.phonetic;
-    document.getElementById('landingSlangMeaning').textContent = cur.meaning;
-    document.getElementById('landingSlangExample').textContent = `"${cur.example}"`;
+    document.getElementById('landingSlangMeaning').textContent = capFirst(cur.meaning);
+    document.getElementById('landingSlangExample').textContent = `“${cur.example}”`;
+    const cnt = document.getElementById('landingSlangCounter');
+    if (cnt) cnt.textContent = `${idx + 1} / ${landingSlangPool.length}`;
   };
-  document.getElementById('shuffleLandingSlangBtn').onclick = () => {
+  const nextSlangAction = () => {
     slangCursor = (slangCursor + 1) % landingSlangPool.length;
     showLandingSlang();
     speakText(landingSlangPool[slangCursor].word);
   };
-  document.getElementById('playLandingSlangBtn').onclick = () => speakText(landingSlangPool[slangCursor].example);
-  document.getElementById('landingBriefSampleBtn').onclick = () => speakText("Small daily habits build real English fluency.");
+  document.getElementById('shuffleLandingSlangBtn').onclick = nextSlangAction;
+  const refBtn = document.getElementById('refreshLandingSlangBtn');
+  if (refBtn) refBtn.onclick = nextSlangAction;
+  document.getElementById('playLandingSlangBtn').onclick = () => speakText(`${landingSlangPool[slangCursor].word}. ${landingSlangPool[slangCursor].example}`);
+  const offBtn = document.getElementById('offlineBadgeBtn');
+  if (offBtn) offBtn.onclick = () => notifyIsland('100% Siap Offline di perangkatmu');
 
   document.getElementById('heroStartBtn').onclick = () => setAppMode(true, 'today');
   document.getElementById('brandHomeBtn').onclick = () => setAppMode(false);
@@ -295,10 +306,10 @@ async function bootstrap() {
   });
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=12').then((r) => r.json()),
-    fetch('./data/briefs.json?v=12').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=12').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=12').then((r) => r.json())
+    fetch('./data/levels.json?v=13').then((r) => r.json()),
+    fetch('./data/briefs.json?v=13').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=13').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=13').then((r) => r.json())
   ]);
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);
