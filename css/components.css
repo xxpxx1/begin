@@ -1039,3 +1039,84 @@ body.dark-theme,
   width: 74% !important;
   object-position: 48% 18% !important;
 }
+
+/* === v17: POLISHED LIGHT MODE & INSTANT THEME SWITCH === */
+#appShell.is-landing[data-landing-theme="light"] {
+  background: radial-gradient(circle at 84% 20%, #DBEAFE 0%, #EFF6FF 48%, #F8FAFC 100%) !important;
+  color: #0F172A !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .top-bar {
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.07) !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .brand-title {
+  color: #0F172A !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .pill-nav-switch {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(26, 109, 255, 0.28) !important;
+  color: #1A6DFF !important;
+  box-shadow: 0 2px 8px rgba(26, 109, 255, 0.08) !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .icon-btn {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(15, 23, 42, 0.09) !important;
+  color: #0F172A !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05) !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .editorial-hero-photo {
+  filter: contrast(1.02) saturate(1.04) brightness(1.02);
+}
+#appShell.is-landing[data-landing-theme="light"] .editorial-hero-vignette {
+  background:
+    linear-gradient(90deg, #EFF6FF 0%, #EFF6FF 36%, rgba(239, 246, 255, 0.86) 55%, rgba(239, 246, 255, 0.06) 82%, rgba(239, 246, 255, 0.14) 100%),
+    linear-gradient(180deg, rgba(239, 246, 255, 0.32) 0%, rgba(239, 246, 255, 0) 24%, rgba(239, 246, 255, 0) 68%, #F4F8FE 100%) !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .editorial-title {
+  color: #0F172A !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .editorial-title span {
+  color: #1A6DFF !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .editorial-sub {
+  color: #475569 !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .midnight-slang-card {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.97) 0%, rgba(244, 249, 255, 0.98) 100%) !important;
+  border: 1px solid rgba(26, 109, 255, 0.15) !important;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07), inset 0 1px 0 #FFFFFF !important;
+  color: #0F172A !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-tag { color: #D97706 !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-dot { background: #D97706 !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-word { color: #0F172A !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-counter,
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-phonetic,
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-hint { color: #64748B !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-chip {
+  background: rgba(26, 109, 255, 0.10) !important;
+  color: #1D4ED8 !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-meaning { color: #1A6DFF !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-example { color: #334155 !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-slang-footer { border-top-color: rgba(15, 23, 42, 0.08) !important; }
+#appShell.is-landing[data-landing-theme="light"] .slang-audio-circle {
+  background: rgba(26, 109, 255, 0.11) !important;
+  border-color: rgba(26, 109, 255, 0.22) !important;
+  color: #1A6DFF !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .slang-shuffle-pill {
+  background: rgba(26, 109, 255, 0.08) !important;
+  border-color: rgba(26, 109, 255, 0.24) !important;
+  color: #1A6DFF !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-box {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05), inset 0 1px 0 #FFFFFF !important;
+}
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-icon { color: #1A6DFF !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-kpi-val { color: #0F172A !important; }
+#appShell.is-landing[data-landing-theme="light"] .ld-kpi-sub { color: #64748B !important; }

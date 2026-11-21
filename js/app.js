@@ -328,6 +328,7 @@ bootstrap();
     const attrTheme = (root.getAttribute('data-theme') || body.getAttribute('data-theme') || '').toLowerCase();
     if (attrTheme === 'dark') return true;
     if (attrTheme === 'light') return false;
+
     if (
       root.classList.contains('dark') ||
       root.classList.contains('dark-theme') ||
@@ -335,11 +336,18 @@ bootstrap();
       body.classList.contains('dark-theme') ||
       body.classList.contains('dark-mode')
     ) return true;
+
+    const btn = document.getElementById('themeToggleBtn');
+    if (btn && btn.querySelector('circle')) return true;
+
     const bg = getComputedStyle(body).backgroundColor;
-    const m = bg && bg.match(/\d+/g);
+    const m = bg && bg.match(/[\d.]+/g);
     if (m && m.length >= 3) {
-      const lum = (Number(m[0]) + Number(m[1]) + Number(m[2])) / 3;
-      return lum < 128;
+      const alpha = m.length >= 4 ? Number(m[3]) : 1;
+      if (alpha > 0.1) {
+        const lum = (Number(m[0]) + Number(m[1]) + Number(m[2])) / 3;
+        return lum < 128;
+      }
     }
     return false;
   };
@@ -355,12 +363,18 @@ bootstrap();
 
   apply();
   window.addEventListener('DOMContentLoaded', apply);
-  new MutationObserver(apply).observe(document.documentElement, { attributes: true });
-  if (document.body) new MutationObserver(apply).observe(document.body, { attributes: true });
+  new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+  if (document.body) {
+    new MutationObserver(apply).observe(document.body, { attributes: true, attributeFilter: ['data-theme', 'class'] });
+  }
+  const btn = document.getElementById('themeToggleBtn');
+  if (btn) {
+    new MutationObserver(apply).observe(btn, { childList: true, subtree: true });
+  }
   document.addEventListener('click', (e) => {
     if (e.target.closest('#themeToggleBtn')) {
       requestAnimationFrame(apply);
-      setTimeout(apply, 60);
+      setTimeout(apply, 30);
     }
   });
 })();
