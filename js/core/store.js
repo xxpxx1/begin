@@ -361,6 +361,71 @@ class BeginStore {
     this._save();
   }
 
+
+  recordSpeechAttempt(entry) {
+    if (!entry || typeof entry.target !== 'string') return;
+    if (!Array.isArray(this.state.speechHistory)) this.state.speechHistory = [];
+    if (!this.state.analytics || typeof this.state.analytics !== 'object') {
+      this.state.analytics = { vocabTests: [], readingTests: [], listeningTests: [], speakingTests: [] };
+    }
+    const cleanEntry = {
+      id: String(entry.id || Date.now()).slice(0, 48),
+      target: escapeHTML(entry.target).slice(0, 240),
+      transcript: escapeHTML(entry.transcript || '').slice(0, 240),
+      scenario: escapeHTML(entry.scenario || 'Latihan Kalimat').slice(0, 80),
+      wordMatching: clampInt(entry.wordMatching, 0, 100, 0),
+      sentenceAccuracy: clampInt(entry.sentenceAccuracy, 0, 100, 0),
+      pronunciation: clampInt(entry.pronunciation, 0, 100, 0),
+      ts: Date.now()
+    };
+    this.state.speechHistory.push(cleanEntry);
+    if (this.state.speechHistory.length > 100) {
+      this.state.speechHistory = this.state.speechHistory.slice(-100);
+    }
+    this.state.analytics.speakingTests.push({
+      wordMatching: cleanEntry.wordMatching,
+      sentenceAccuracy: cleanEntry.sentenceAccuracy,
+      pronunciation: cleanEntry.pronunciation,
+      ts: cleanEntry.ts
+    });
+    if (this.state.analytics.speakingTests.length > 200) {
+      this.state.analytics.speakingTests = this.state.analytics.speakingTests.slice(-200);
+    }
+    this._save();
+  }
+
+  recordBriefCompletion(storyId, { scorePercent = 0, correctCount = 0, totalQuestions = 0, listened = false } = {}) {
+    if (!storyId || typeof storyId !== 'string') return;
+    const cleanId = storyId.slice(0, 48);
+    if (!this.state.briefHistory || typeof this.state.briefHistory !== 'object') {
+      this.state.briefHistory = {};
+    }
+    if (!this.state.analytics || typeof this.state.analytics !== 'object') {
+      this.state.analytics = { vocabTests: [], readingTests: [], listeningTests: [], speakingTests: [] };
+    }
+    const pct = clampInt(scorePercent, 0, 100, 0);
+    const now = Date.now();
+    this.state.briefHistory[cleanId] = {
+      completed: true,
+      scorePercent: pct,
+      correctCount: clampInt(correctCount, 0, 20, 0),
+      totalQuestions: clampInt(totalQuestions, 1, 20, 1),
+      listened: Boolean(listened),
+      ts: now
+    };
+    this.state.analytics.readingTests.push({ storyId: cleanId, score: pct, ts: now });
+    if (this.state.analytics.readingTests.length > 200) {
+      this.state.analytics.readingTests = this.state.analytics.readingTests.slice(-200);
+    }
+    if (listened) {
+      this.state.analytics.listeningTests.push({ storyId: cleanId, score: pct, ts: now });
+      if (this.state.analytics.listeningTests.length > 200) {
+        this.state.analytics.listeningTests = this.state.analytics.listeningTests.slice(-200);
+      }
+    }
+    this._save();
+  }
+
   resetAllProgress() {
     this.state = defaultState();
     this._save();
