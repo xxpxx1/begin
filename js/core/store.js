@@ -228,6 +228,7 @@ class BeginStore {
 
   setTheme(theme) {
     this.state.theme = theme === 'dark' ? 'dark' : 'light';
+    if (typeof document !== 'undefined' && document.documentElement) document.documentElement.setAttribute('data-theme', this.state.theme);
     this._save();
   }
 
