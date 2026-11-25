@@ -2826,35 +2826,64 @@ body.dark-theme,
   color: var(--ios-blue, #1A6DFF);
 }
 
-
-/* === SURFACE PALETTE REFINEMENT (#F2E6EE & INDIGO-ROYAL ACCENT) === */
-:root .ios-card,
-:root .p3-card,
-:root .mem-card,
-:root .mem-dict-item,
-:root .mem-kpi-pill,
-:root .mem-smart-banner,
-[data-theme="light"] .ios-card,
-[data-theme="light"] .p3-card,
-[data-theme="light"] .mem-card,
-[data-theme="light"] .mem-dict-item,
-[data-theme="light"] .mem-kpi-pill,
-[data-theme="light"] .mem-smart-banner {
+/* === SURFACE PALETTE REFINEMENT: LIGHT MODE ONLY (#F2E6EE) === */
+:root:not([data-theme="dark"]) .ios-card,
+:root:not([data-theme="dark"]) .p3-card,
+:root:not([data-theme="dark"]) .mem-card,
+:root:not([data-theme="dark"]) .mem-dict-item,
+:root:not([data-theme="dark"]) .mem-kpi-pill,
+:root:not([data-theme="dark"]) .mem-smart-banner {
   background: linear-gradient(160deg, #FAF4F8 0%, #F2E6EE 100%) !important;
   border: 1px solid rgba(151, 125, 255, 0.24) !important;
   box-shadow: 0 6px 22px rgba(45, 28, 64, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.88) !important;
+  color: #0F172A;
 }
 
-:root .tdy-goal-item,
-:root .tdy-skill-card,
-[data-theme="light"] .tdy-goal-item,
-[data-theme="light"] .tdy-skill-card {
-  background: rgba(255, 255, 255, 0.62) !important;
+:root:not([data-theme="dark"]) .tdy-goal-item,
+:root:not([data-theme="dark"]) .tdy-skill-card {
+  background: rgba(255, 255, 255, 0.65) !important;
   border: 1px solid rgba(151, 125, 255, 0.22) !important;
+  color: #0F172A;
 }
 
-:root .tdy-hero,
-[data-theme="light"] .tdy-hero {
+:root:not([data-theme="dark"]) .tdy-hero {
   background: linear-gradient(135deg, #2952FF 0%, #5B4CE6 55%, #1624B8 100%) !important;
   box-shadow: 0 14px 30px rgba(41, 82, 255, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* === DARK MODE SURFACE ISOLATION === */
+[data-theme="dark"] .ios-card,
+[data-theme="dark"] .p3-card,
+[data-theme="dark"] .mem-card,
+[data-theme="dark"] .mem-dict-item,
+[data-theme="dark"] .mem-kpi-pill,
+[data-theme="dark"] .mem-smart-banner {
+  background: linear-gradient(160deg, #16233D 0%, #0F182B 100%) !important;
+  border: 1px solid rgba(96, 165, 250, 0.2) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .tdy-goal-item,
+[data-theme="dark"] .tdy-skill-card,
+[data-theme="dark"] .mem-reveal-box,
+[data-theme="dark"] .mem-personal-box {
+  background: rgba(26, 40, 68, 0.78) !important;
+  border: 1px solid rgba(96, 165, 250, 0.18) !important;
+  color: #F8FAFC;
+}
+
+[data-theme="dark"] .mem-input,
+[data-theme="dark"] .mem-choice-btn,
+[data-theme="dark"] .mem-filter-chip:not(.active),
+[data-theme="dark"] .mem-tab-btn:not(.active) {
+  background: #131E36 !important;
+  border-color: rgba(96, 165, 250, 0.24) !important;
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .tdy-hero {
+  background: linear-gradient(135deg, #1E40AF 0%, #3730A3 55%, #0F172A 100%) !important;
+  border: 1px solid rgba(96, 165, 250, 0.28) !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
 }

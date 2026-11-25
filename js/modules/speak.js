@@ -1,7 +1,7 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { evaluateSpeechAttempt, AudioRecorderController } from '../engines/speech-eval.js?v=27';
-import { getDifficultSentences } from '../engines/smart-engine.js?v=27';
+import { evaluateSpeechAttempt, AudioRecorderController } from '../engines/speech-eval.js?v=28';
+import { getDifficultSentences } from '../engines/smart-engine.js?v=28';
 
 const PRACTICE_DRILLS = [
   { id: 'd1', level: 'A1', topic: 'Perkenalan', target: 'I want to learn English every day.', idHint: 'Saya ingin belajar bahasa Inggris setiap hari.' },

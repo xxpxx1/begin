@@ -11,12 +11,12 @@ import {
   savePersonalExample,
   evaluateRecallAnswer,
   normalizeWordKey
-} from '../engines/memory-srs.js?v=27';
+} from '../engines/memory-srs.js?v=28';
 import {
   analyzeVocabularyState,
   buildSmartWordQueue,
   buildRecallOptions
-} from '../engines/smart-engine.js?v=27';
+} from '../engines/smart-engine.js?v=28';
 
 let externalDictData = null;
 
