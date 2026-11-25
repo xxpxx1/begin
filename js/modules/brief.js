@@ -1,6 +1,6 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=23';
+import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=24';
 
 const CONTEXTUAL_STORIES = [
   {
@@ -179,6 +179,7 @@ function svgIcon(name) {
 export function renderBrief(containerEl) {
   const root =
     containerEl ||
+    document.getElementById('briefList') ||
     document.getElementById('briefContainer') ||
     document.getElementById('briefView') ||
     document.getElementById('view-brief') ||

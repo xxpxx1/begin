@@ -1,11 +1,11 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { getAllVocabularyPool } from './lexicon.js?v=23';
+import { getAllVocabularyPool } from './lexicon.js?v=24';
 import {
   computeRealLearningAnalytics,
   exportProgressSnapshot,
   importProgressSnapshot
-} from '../engines/analytics-engine.js?v=23';
+} from '../engines/analytics-engine.js?v=24';
 
 const tdyState = {
   selectedDayKey: null,
@@ -54,15 +54,29 @@ function svgIcon(name) {
 }
 
 export function renderToday(containerEl) {
-  const root =
+  const host =
     containerEl ||
     document.getElementById('todayContainer') ||
-    document.getElementById('todayView') ||
     document.getElementById('view-today') ||
-    document.getElementById('panel-today') ||
     document.querySelector('[data-view="today"]');
 
-  if (!root) return;
+  if (!host) return;
+
+  let root = document.getElementById('todayAnalyticsContainer');
+  if (!root) {
+    const legacyNodes = Array.from(host.children);
+    if (legacyNodes.length > 0) {
+      const legacyVault = document.createElement('div');
+      legacyVault.id = 'todayLegacyCompat';
+      legacyVault.style.display = 'none';
+      legacyVault.setAttribute('aria-hidden', 'true');
+      legacyNodes.forEach((el) => legacyVault.appendChild(el));
+      host.appendChild(legacyVault);
+    }
+    root = document.createElement('div');
+    root.id = 'todayAnalyticsContainer';
+    host.appendChild(root);
+  }
 
   const state = Store.getState();
   const pool = typeof getAllVocabularyPool === 'function' ? getAllVocabularyPool() : [];
