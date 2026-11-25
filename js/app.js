@@ -1,9 +1,9 @@
 import { escapeHTML } from './core/security.js';
-import { store } from './state.js?v=22';
-import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=22';
-import { initPathModule } from './modules/path.js?v=22';
-import { initBriefModule } from './modules/brief.js?v=22';
-import { initLexiconModule } from './modules/lexicon.js?v=22';
+import { store } from './state.js?v=23';
+import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=23';
+import { initPathModule } from './modules/path.js?v=23';
+import { initBriefModule } from './modules/brief.js?v=23';
+import { initLexiconModule } from './modules/lexicon.js?v=23';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -255,7 +255,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=22').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=23').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   let landingSlangPool = [
@@ -307,10 +307,10 @@ async function bootstrap() {
   });
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=22').then((r) => r.json()),
-    fetch('./data/briefs.json?v=22').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=22').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=22').then((r) => r.json())
+    fetch('./data/levels.json?v=23').then((r) => r.json()),
+    fetch('./data/briefs.json?v=23').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=23').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=23').then((r) => r.json())
   ]);
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);
