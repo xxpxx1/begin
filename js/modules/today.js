@@ -1,11 +1,11 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { getAllVocabularyPool } from './lexicon.js?v=25';
+import { getAllVocabularyPool } from './lexicon.js?v=26';
 import {
   computeRealLearningAnalytics,
   exportProgressSnapshot,
   importProgressSnapshot
-} from '../engines/analytics-engine.js?v=25';
+} from '../engines/analytics-engine.js?v=26';
 
 const tdyState = {
   selectedDayKey: null,
@@ -15,7 +15,8 @@ const tdyState = {
 };
 
 function navigateToSection(tabName) {
-  const clean = String(tabName || '').toLowerCase();
+  let clean = String(tabName || '').toLowerCase();
+  if (clean === 'word') clean = 'words';
   if (!clean) return;
   const selectors = [
     `[data-tab="${clean}"]`,
@@ -55,7 +56,7 @@ function svgIcon(name) {
 
 export function renderToday(containerEl) {
   const host =
-    containerEl ||
+    (containerEl && containerEl.nodeType === 1 ? containerEl : null) ||
     document.getElementById('todayContainer') ||
     document.getElementById('view-today') ||
     document.querySelector('[data-view="today"]');

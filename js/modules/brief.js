@@ -1,6 +1,6 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=25';
+import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=26';
 
 const CONTEXTUAL_STORIES = [
   {
@@ -178,7 +178,7 @@ function svgIcon(name) {
 
 export function renderBrief(containerEl) {
   const root =
-    containerEl ||
+    (containerEl && containerEl.nodeType === 1 ? containerEl : null) ||
     document.getElementById('briefList') ||
     document.getElementById('briefContainer') ||
     document.getElementById('briefView') ||
@@ -456,6 +456,37 @@ function bindBriefEvents(root) {
   });
 }
 
-export const initBrief = renderBrief;
-export const initBriefModule = renderBrief;
-export default { renderBrief, initBrief };
+
+export function initBriefModule(briefsData) {
+  const list = Array.isArray(briefsData) ? briefsData : briefsData?.briefs;
+  if (Array.isArray(list)) {
+    const existingIds = new Set(CONTEXTUAL_STORIES.map((s) => s.id));
+    list.forEach((b, idx) => {
+      const id = b.id || `brief-json-${idx}`;
+      if (existingIds.has(id)) return;
+      const rawSentences = Array.isArray(b.sentences)
+        ? b.sentences
+        : String(b.content || b.body || b.text || '')
+            .split(/(?<=[.!?])\s+/)
+            .filter(Boolean)
+            .map((en) => ({ en, id: '' }));
+      if (!rawSentences.length) return;
+      CONTEXTUAL_STORIES.push({
+        id,
+        level: b.level || 'A2',
+        category: b.category || b.topic || 'Daily Brief',
+        title: b.title || `Story ${idx + 1}`,
+        summarySimple: b.summary || b.subtitle || rawSentences[0].en,
+        sentences: rawSentences.map((s) =>
+          typeof s === 'string' ? { en: s, id: '' } : { en: s.en || s.text || '', id: s.id || s.translation || '' }
+        ),
+        keyVocab: Array.isArray(b.vocab || b.keyVocab) ? (b.vocab || b.keyVocab) : [],
+        questions: Array.isArray(b.questions || b.quiz) ? (b.questions || b.quiz) : []
+      });
+    });
+  }
+  renderBrief(document.getElementById('briefList'));
+}
+
+export const initBrief = initBriefModule;
+export default { renderBrief, initBrief, initBriefModule };

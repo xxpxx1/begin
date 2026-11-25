@@ -1,9 +1,10 @@
 import { escapeHTML } from './core/security.js';
-import { store } from './state.js?v=25';
-import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=25';
-import { initPathModule } from './modules/path.js?v=25';
-import { initBriefModule } from './modules/brief.js?v=25';
-import { initLexiconModule } from './modules/lexicon.js?v=25';
+import { store } from './state.js?v=26';
+import { initSpeak, speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=26';
+import { initPathModule } from './modules/path.js?v=26';
+import { initBriefModule } from './modules/brief.js?v=26';
+import { initLexiconModule } from './modules/lexicon.js?v=26';
+import { renderToday } from './modules/today.js?v=26';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -46,6 +47,7 @@ function animateLandingCounters() {
 }
 
 function setAppMode(openApp, targetTab = 'today') {
+  if (targetTab === 'word') targetTab = 'words';
   if (navigator.vibrate) navigator.vibrate(8);
   if (typeof window.__stopBriefAudio === 'function') window.__stopBriefAudio();
   else stopSpeech();
@@ -161,6 +163,7 @@ function renderDashboard() {
     </div>`
   ).join('');
   vaultList.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speakText(b.dataset.say); });
+  renderToday();
 }
 
 function initSpeakStudio(scenariosData) {
@@ -255,7 +258,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=25').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=26').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   let landingSlangPool = [
@@ -307,14 +310,14 @@ async function bootstrap() {
   });
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=25').then((r) => r.json()),
-    fetch('./data/briefs.json?v=25').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=25').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=25').then((r) => r.json())
+    fetch('./data/levels.json?v=26').then((r) => r.json()),
+    fetch('./data/briefs.json?v=26').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=26').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=26').then((r) => r.json())
   ]);
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);
-  initSpeakStudio(scenariosData);
+  initSpeak(scenariosData);
   initLexiconModule(dictData, notifyIsland, openSheet);
   const slangs = dictData.words.filter((w) => w.pos === 'slang');
   if (slangs.length) { landingSlangPool = slangs; showLandingSlang(); }

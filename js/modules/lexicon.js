@@ -11,14 +11,15 @@ import {
   savePersonalExample,
   evaluateRecallAnswer,
   normalizeWordKey
-} from '../engines/memory-srs.js?v=25';
+} from '../engines/memory-srs.js?v=26';
 import {
   analyzeVocabularyState,
   buildSmartWordQueue,
   buildRecallOptions
-} from '../engines/smart-engine.js?v=25';
+} from '../engines/smart-engine.js?v=26';
 
 
+let externalDictData = null;
 const FALLBACK_WORDS = [
   { word: 'No cap', phonetic: '/noʊ kæp/', category: 'Slang', level: 'A2', meaning: 'Serius / tidak bohong (beneran)', example: 'That new update is super fast, no cap.' },
   { word: 'Figure out', phonetic: '/ˈfɪɡjər aʊt/', category: 'Phrasal Verb', level: 'B1', meaning: 'Memahami atau menemukan solusi', example: 'We need to figure out why the request failed.' },
@@ -168,7 +169,7 @@ function advanceCard() {
 
 export function renderLexicon(containerEl) {
   const root =
-    containerEl ||
+    (containerEl && containerEl.nodeType === 1 ? containerEl : null) ||
     document.getElementById('lexiconContainer') ||
     document.getElementById('lexiconList') ||
     document.getElementById('wordView') ||
@@ -685,6 +686,13 @@ function bindLexiconEvents(root) {
   });
 }
 
-export const initLexicon = renderLexicon;
-export const initLexiconModule = renderLexicon;
-export default { renderLexicon, initLexicon, getAllVocabularyPool };
+
+export function initLexiconModule(dictData) {
+  if (dictData && typeof dictData === 'object') {
+    externalDictData = dictData;
+  }
+  renderLexicon(document.getElementById('lexiconContainer'));
+}
+
+export const initLexicon = initLexiconModule;
+export default { renderLexicon, initLexicon, initLexiconModule, getAllVocabularyPool };
