@@ -345,6 +345,22 @@ class BeginStore {
     return { awarded: true, xpAwarded: safeXp, totalXp: this.state.xp };
   }
 
+
+  updateMemory(mutatorFn) {
+    if (typeof mutatorFn !== 'function') return;
+    if (!this.state.memory || typeof this.state.memory !== 'object') {
+      this.state.memory = {};
+    }
+    if (!this.state.analytics || typeof this.state.analytics !== 'object') {
+      this.state.analytics = { vocabTests: [], readingTests: [], listeningTests: [], speakingTests: [] };
+    }
+    mutatorFn(this.state.memory, this.state.analytics);
+    if (Array.isArray(this.state.analytics.vocabTests) && this.state.analytics.vocabTests.length > 250) {
+      this.state.analytics.vocabTests = this.state.analytics.vocabTests.slice(-250);
+    }
+    this._save();
+  }
+
   resetAllProgress() {
     this.state = defaultState();
     this._save();
