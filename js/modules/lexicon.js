@@ -1,5 +1,5 @@
-import { store } from '../state.js?v=10';
-import { speakText, playTone } from './speak.js?v=10';
+import { store } from '../state.js?v=21';
+import { speakText, playTone } from './speak.js?v=21';
 
 function shuffleNoRepeatSlot(options, correctVal, prevSlot) {
   let arr = [...options];

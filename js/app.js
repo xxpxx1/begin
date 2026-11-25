@@ -1,8 +1,8 @@
-import { store } from './state.js?v=13';
-import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=13';
-import { initPathModule } from './modules/path.js?v=13';
-import { initBriefModule } from './modules/brief.js?v=13';
-import { initLexiconModule } from './modules/lexicon.js?v=13';
+import { store } from './state.js?v=21';
+import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=21';
+import { initPathModule } from './modules/path.js?v=21';
+import { initBriefModule } from './modules/brief.js?v=21';
+import { initLexiconModule } from './modules/lexicon.js?v=21';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -254,7 +254,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=13').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=21').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   let landingSlangPool = [
