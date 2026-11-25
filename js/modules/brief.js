@@ -1,5 +1,6 @@
-import { store } from '../state.js?v=21';
-import { speakText, stopSpeech, playTone } from './speak.js?v=21';
+import { escapeHTML } from '../core/security.js';
+import { store } from '../state.js?v=20';
+import { speakText, stopSpeech, playTone } from './speak.js?v=20';
 
 const SPEEDS = [
   { val: 0.65, label: '0.65x' },

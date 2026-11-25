@@ -11,12 +11,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./css/tokens.css?v=22" />
-  <link rel="stylesheet" href="./css/components.css?v=22" />
+  <link rel="stylesheet" href="./css/tokens.css?v=20" />
+  <link rel="stylesheet" href="./css/components.css?v=20" />
 <script>
-if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v19') {
+if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v20') {
   caches.keys().then(ks => Promise.all(ks.map(k => caches.delete(k)))).then(() => {
-    localStorage.setItem('begin_ui_ver', 'v19');
+    localStorage.setItem('begin_ui_ver', 'v20');
     location.reload();
   });
 }
@@ -49,7 +49,7 @@ if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v19') {
       <!-- EDITORIAL LANDING PAGE MATCHING MOCKUP -->
       <section class="tab-view active" id="view-landing">
         <div class="editorial-split-hero stagger-1">
-          <img class="editorial-hero-photo" src="./assets/img/hero-girl.png?v=19" alt="Belajar bahasa Inggris dengan headset di Begin" />
+          <img class="editorial-hero-photo" src="./assets/img/hero-girl.png?v=20" alt="Belajar bahasa Inggris dengan headset di Begin" />
           <div class="editorial-hero-vignette"></div>
 
           <div class="editorial-hero-copy">
@@ -151,7 +151,7 @@ if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v19') {
         <div class="ios-card">
           <div class="card-header">
             <span class="card-label" style="color:var(--ios-blue);">Progress Harian</span>
-            <span id="xpValue" style="font-size:13px;font-weight:800;color:var(--ios-blue);">120 XP</span>
+            <span id="xpValue" style="font-size:13px;font-weight:800;color:var(--ios-blue);">0 XP</span>
           </div>
           <div class="rings-layout">
             <svg class="rings-svg" viewBox="0 0 120 120">
@@ -163,9 +163,9 @@ if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v19') {
               <circle class="ring-progress" id="ringSpeak" cx="60" cy="60" r="24" stroke="#1A6DFF"></circle>
             </svg>
             <div class="ring-legend">
-              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-red);"></i>Kosakata</span><strong id="statVocab">2/5</strong></div>
-              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-green);"></i>Menyimak</span><strong id="statListen">1/3</strong></div>
-              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-blue);"></i>Berbicara</span><strong id="statSpeak">1/3</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-red);"></i>Kosakata</span><strong id="statVocab">0/5</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-green);"></i>Menyimak</span><strong id="statListen">0/3</strong></div>
+              <div class="legend-item"><span><i class="legend-dot" style="background:var(--ios-blue);"></i>Berbicara</span><strong id="statSpeak">0/3</strong></div>
             </div>
           </div>
           <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--separator);">
@@ -176,7 +176,7 @@ if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v19') {
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;">
           <div class="ios-card" style="margin:0;"><div class="card-label">Level Aktif</div><div style="font-size:24px;font-weight:800;color:var(--ios-blue);margin:4px 0 2px;" id="levelValue">A1</div><div style="font-size:12px;color:var(--text-secondary);">Standar CEFR</div></div>
-          <div class="ios-card" style="margin:0;"><div class="card-label">Kata Tersimpan</div><div style="font-size:24px;font-weight:800;color:var(--ios-green);margin:4px 0 2px;" id="vaultCount">1 Kata</div><div style="font-size:12px;color:var(--text-secondary);">Vocab Vault</div></div>
+          <div class="ios-card" style="margin:0;"><div class="card-label">Kata Tersimpan</div><div style="font-size:24px;font-weight:800;color:var(--ios-green);margin:4px 0 2px;" id="vaultCount">0 Kata</div><div style="font-size:12px;color:var(--text-secondary);">Vocab Vault</div></div>
         </div>
         <div class="ios-card"><div class="card-header"><span class="card-label">Kata Tersimpan Terbaru</span></div><div id="vaultPreviewList"></div></div>
       </section>
@@ -224,6 +224,6 @@ if ('caches' in window && localStorage.getItem('begin_ui_ver') !== 'v19') {
       <div class="bottom-sheet"><div class="sheet-grabber"></div><div id="sheetContent"></div></div>
     </div>
   </div>
-  <script type="module" src="./js/app.js?v=22"></script>
+  <script type="module" src="./js/app.js?v=20"></script>
 </body>
 </html>

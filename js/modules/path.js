@@ -1,5 +1,6 @@
-import { store } from '../state.js?v=21';
-import { speakText, playTone, startRecognition, evaluateSpeech } from './speak.js?v=21';
+import { escapeHTML } from '../core/security.js';
+import { store } from '../state.js?v=20';
+import { speakText, playTone, startRecognition, evaluateSpeech } from './speak.js?v=20';
 
 export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) {
   const pillsEl = document.getElementById('levelPills');
@@ -39,7 +40,7 @@ export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) 
             <div style="display:flex;align-items:center;gap:12px;">
               <div class="unit-badge" style="background:${done ? 'var(--ios-green)' : levelObj.color};">${done ? '✓' : idx + 1}</div>
               <div>
-                <div style="font-weight:700;font-size:15px;">${u.title}</div>
+                <div style="font-weight:700;font-size:15px;">${escapeHTML(u.title)}</div>
                 <div style="font-size:12px;color:var(--text-secondary);">${u.duration} · +${u.xp} XP</div>
               </div>
             </div>
@@ -165,7 +166,7 @@ export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) 
           const passed = res.accuracy >= minPass;
           document.getElementById('unitSpeakFeedback').innerHTML = `
             <div style="margin-bottom:6px;font-size:13px;">Skor: <strong style="color:${passed ? 'var(--ios-green)' : 'var(--ios-red)'};">${res.accuracy}%</strong></div>
-            <div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div>
+            <div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${escapeHTML(w.word)}</span>`).join('')}</div>
           `;
           if (passed) {
             store.incrementRing('speaking', 1, 15);

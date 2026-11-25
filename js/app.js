@@ -1,8 +1,9 @@
-import { store } from './state.js?v=21';
-import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=21';
-import { initPathModule } from './modules/path.js?v=21';
-import { initBriefModule } from './modules/brief.js?v=21';
-import { initLexiconModule } from './modules/lexicon.js?v=21';
+import { escapeHTML } from './core/security.js';
+import { store } from './state.js?v=20';
+import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=20';
+import { initPathModule } from './modules/path.js?v=20';
+import { initBriefModule } from './modules/brief.js?v=20';
+import { initLexiconModule } from './modules/lexicon.js?v=20';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -155,8 +156,8 @@ function renderDashboard() {
   const vaultList = document.getElementById('vaultPreviewList');
   vaultList.innerHTML = vocabVault.slice(0, 4).map((item) => `
     <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--separator);">
-      <div><span style="font-weight:700;">${item.word}</span><span style="font-size:12px;color:var(--text-secondary);margin-left:6px;">${item.phonetic}</span><div style="font-size:13px;color:var(--text-secondary);">${item.meaning}</div></div>
-      <button class="btn-secondary" data-say="${item.word}" style="padding:7px 9px;"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+      <div><span style="font-weight:700;">${escapeHTML(item.word)}</span><span style="font-size:12px;color:var(--text-secondary);margin-left:6px;">${item.phonetic}</span><div style="font-size:13px;color:var(--text-secondary);">${escapeHTML(item.meaning)}</div></div>
+      <button class="btn-secondary" data-say="${escapeHTML(item.word)}" style="padding:7px 9px;"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
     </div>`
   ).join('');
   vaultList.querySelectorAll('[data-say]').forEach((b) => { b.onclick = () => speakText(b.dataset.say); });
@@ -228,7 +229,7 @@ function initSpeakStudio(scenariosData) {
     const evalBlock = (target, spoken, elId) => {
       const res = evaluateSpeech(target, spoken);
       const ok = res.accuracy >= 65;
-      document.getElementById(elId).innerHTML = `<div class="ios-card" style="background:var(--bg-grouped);padding:11px;margin:0;"><div style="font-size:12.5px;margin-bottom:6px;">Akurasi Pelafalan: <strong style="color:${ok ? 'var(--ios-green)' : 'var(--ios-red)'};">${res.accuracy}%</strong></div><div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${w.word}</span>`).join('')}</div></div>`;
+      document.getElementById(elId).innerHTML = `<div class="ios-card" style="background:var(--bg-grouped);padding:11px;margin:0;"><div style="font-size:12.5px;margin-bottom:6px;">Akurasi Pelafalan: <strong style="color:${ok ? 'var(--ios-green)' : 'var(--ios-red)'};">${res.accuracy}%</strong></div><div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${escapeHTML(w.word)}</span>`).join('')}</div></div>`;
       if (ok) { playTone('success'); store.incrementRing('speaking', 1, 20); }
       else { playTone('error'); if (navigator.vibrate) navigator.vibrate(35); }
     };
@@ -254,7 +255,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=21').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=20').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   let landingSlangPool = [
@@ -306,10 +307,10 @@ async function bootstrap() {
   });
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=13').then((r) => r.json()),
-    fetch('./data/briefs.json?v=13').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=13').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=13').then((r) => r.json())
+    fetch('./data/levels.json?v=20').then((r) => r.json()),
+    fetch('./data/briefs.json?v=20').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=20').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=20').then((r) => r.json())
   ]);
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);

@@ -1,5 +1,6 @@
-import { store } from '../state.js?v=21';
-import { speakText, playTone } from './speak.js?v=21';
+import { escapeHTML } from '../core/security.js';
+import { store } from '../state.js?v=20';
+import { speakText, playTone } from './speak.js?v=20';
 
 function shuffleNoRepeatSlot(options, correctVal, prevSlot) {
   let arr = [...options];
@@ -48,8 +49,8 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
         <span class="card-label" style="color:${posBadgeColor(item.pos)};">${item.pos.toUpperCase()} · ${item.level}</span>
         <span style="font-size:12px;color:var(--text-secondary);">${item.topic}</span>
       </div>
-      <div style="display:flex;align-items:baseline;gap:10px;margin:6px 0;"><h2 style="font-size:28px;">${item.word}</h2><span style="color:var(--text-secondary);font-size:15px;">${item.phonetic}</span></div>
-      <p style="font-size:17px;font-weight:700;color:var(--ios-blue);margin-bottom:12px;">${item.meaning}</p>
+      <div style="display:flex;align-items:baseline;gap:10px;margin:6px 0;"><h2 style="font-size:28px;">${escapeHTML(item.word)}</h2><span style="color:var(--text-secondary);font-size:15px;">${item.phonetic}</span></div>
+      <p style="font-size:17px;font-weight:700;color:var(--ios-blue);margin-bottom:12px;">${escapeHTML(item.meaning)}</p>
       <div class="ios-card" style="background:var(--bg-grouped);margin-bottom:12px;padding:14px;">
         <div class="card-label" style="margin-bottom:4px;">Contoh Kalimat</div>
         <div style="font-size:14px;line-height:1.5;">"${item.example}"</div>
@@ -62,7 +63,7 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
     document.getElementById('dictSpeakBtn').onclick = () => speakText(item.word);
     document.getElementById('dictSaveBtn').onclick = () => {
       const added = store.saveWord({ word: item.word, phonetic: item.phonetic, meaning: item.meaning });
-      notifyIsland(added ? `"${item.word}" tersimpan!` : `"${item.word}" sudah ada di Vault`);
+      notifyIsland(added ? `"${escapeHTML(item.word)}" tersimpan!` : `"${escapeHTML(item.word)}" sudah ada di Vault`);
     };
   }
 
@@ -74,8 +75,8 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
       openSheet(`
         <div class="card-header"><span class="card-label" style="color:var(--ios-blue);">Kartu Hafalan · ${idx + 1}/${list.length}</span><span class="card-label">${item.pos}</span></div>
         <div id="flashcardBox" class="ios-card" style="min-height:185px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;cursor:pointer;background:var(--bg-grouped);margin:10px 0 14px;padding:24px;">
-          ${!flipped ? `<div style="font-size:12px;color:var(--text-tertiary);margin-bottom:8px;">Ketuk kartu untuk melihat arti</div><div style="font-size:28px;font-weight:800;margin-bottom:6px;">${item.word}</div><div style="font-size:15px;color:var(--text-secondary);">${item.phonetic}</div>`
-            : `<div style="font-size:19px;font-weight:700;color:var(--ios-blue);margin-bottom:10px;">${item.meaning}</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">"${item.example}"</div>`}
+          ${!flipped ? `<div style="font-size:12px;color:var(--text-tertiary);margin-bottom:8px;">Ketuk kartu untuk melihat arti</div><div style="font-size:28px;font-weight:800;margin-bottom:6px;">${escapeHTML(item.word)}</div><div style="font-size:15px;color:var(--text-secondary);">${item.phonetic}</div>`
+            : `<div style="font-size:19px;font-weight:700;color:var(--ios-blue);margin-bottom:10px;">${escapeHTML(item.meaning)}</div><div style="font-size:13px;color:var(--text-secondary);line-height:1.5;">"${item.example}"</div>`}
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;">
           <button class="btn-secondary" id="fcAudioBtn">Dengar</button>
@@ -89,7 +90,7 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
       document.getElementById('fcMasterBtn').onclick = () => {
         playTone('success');
         store.saveWord({ word: item.word, phonetic: item.phonetic, meaning: item.meaning });
-        store.incrementRing('vocab', 1, 10);
+        store.incrementRing('vocab', 1, 10, `action:${Date.now()}:${Math.random().toString(36).slice(2,7)}`);
         idx = (idx + 1) % list.length; flipped = false; speakText(list[idx].word); renderCard();
       };
     };
@@ -153,7 +154,7 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
             btn.classList.add('opt-correct');
             playTone('success');
             if (navigator.vibrate) navigator.vibrate(12);
-            store.incrementRing('vocab', 1, 10);
+            store.incrementRing('vocab', 1, 10, `action:${Date.now()}:${Math.random().toString(36).slice(2,7)}`);
             speakText(target.example, null, () => { qIdx++; renderQuestion(); });
           } else {
             btn.classList.add('opt-wrong');
@@ -186,13 +187,13 @@ export function initLexiconModule(dictData, notifyIsland, openSheet) {
           <div class="ios-card unit-card interactive" data-widx="${idx}" style="padding:13px 15px;">
             <div style="flex:1;">
               <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;">
-                <span style="font-weight:800;font-size:16px;">${w.word}</span>
+                <span style="font-weight:800;font-size:16px;">${escapeHTML(w.word)}</span>
                 <span style="font-size:11px;font-weight:700;color:${posBadgeColor(w.pos)};background:var(--bg-secondary);padding:2px 7px;border-radius:6px;">${w.pos}</span>
                 <span style="font-size:11px;color:var(--text-tertiary);">${w.level}</span>
               </div>
-              <div style="font-size:13px;color:var(--text-secondary);margin-top:3px;">${w.meaning}</div>
+              <div style="font-size:13px;color:var(--text-secondary);margin-top:3px;">${escapeHTML(w.meaning)}</div>
             </div>
-            <button class="btn-secondary" data-speak-word="${w.word}" style="padding:8px 10px;"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+            <button class="btn-secondary" data-speak-word="${escapeHTML(w.word)}" style="padding:8px 10px;"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
           </div>`).join('')}
       </div>
     `;
