@@ -1,4 +1,4 @@
-import { Store, getLocalDateKey } from './core/store.js?v=26';
+import { Store, getLocalDateKey } from './core/store.js?v=27';
 
 function buildCompatState() {
   const s = Store.getState();

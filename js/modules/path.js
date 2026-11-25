@@ -1,6 +1,6 @@
 import { escapeHTML } from '../core/security.js';
-import { store } from '../state.js?v=26';
-import { speakText, playTone, startRecognition, evaluateSpeech } from './speak.js?v=26';
+import { store } from '../state.js?v=27';
+import { speakText, playTone, startRecognition, evaluateSpeech } from './speak.js?v=27';
 
 export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) {
   const pillsEl = document.getElementById('levelPills');

@@ -1,5 +1,5 @@
 import { Store } from '../core/store.js';
-import { analyzeVocabularyState } from './smart-engine.js?v=26';
+import { analyzeVocabularyState } from './smart-engine.js?v=27';
 
 function average(nums) {
   if (!Array.isArray(nums) || nums.length === 0) return null;

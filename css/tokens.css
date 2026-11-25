@@ -1,27 +1,27 @@
 :root {
-  --bg-grouped: #EBF3FE;
-  --bg-hero-grad: linear-gradient(180deg, #DCEBFF 0%, #EDF5FF 52%, #F6FAFF 100%);
-  --bg-card: linear-gradient(155deg, #FAFDFE 0%, #EEF5FF 100%);
-  --bg-card-solid: #F4F9FF;
-  --bg-secondary: #E2EEFD;
+  --bg-grouped: #F7F2F6;
+  --bg-hero-grad: linear-gradient(180deg, #EFE3EC 0%, #F5EEF4 52%, #FAF7FA 100%);
+  --bg-card: linear-gradient(160deg, #FAF4F8 0%, #F2E6EE 100%);
+  --bg-card-solid: #F2E6EE;
+  --bg-secondary: #EAE0E8;
   --text-primary: #0F172A;
   --text-secondary: #475569;
   --text-tertiary: #64748B;
-  --separator: rgba(26, 109, 255, 0.14);
+  --separator: rgba(151, 125, 255, 0.22);
 
   --ios-blue: #1A6DFF;
-  --ios-azure: #0EA5E9;
+  --ios-azure: #5B4CE6;
   --ios-green: #10B981;
   --ios-red: #F43F5E;
   --ios-orange: #F59E0B;
-  --ios-purple: #6366F1;
+  --ios-purple: #977DFF;
 
-  --nav-top-bg: linear-gradient(135deg, rgba(212, 231, 255, 0.94) 0%, rgba(232, 243, 255, 0.94) 100%);
-  --nav-bottom-bg: linear-gradient(135deg, rgba(212, 231, 255, 0.95) 0%, rgba(230, 242, 255, 0.95) 100%);
-  --nav-border: rgba(26, 109, 255, 0.22);
+  --nav-top-bg: linear-gradient(135deg, rgba(242, 230, 238, 0.94) 0%, rgba(235, 224, 245, 0.94) 100%);
+  --nav-bottom-bg: linear-gradient(135deg, rgba(242, 230, 238, 0.96) 0%, rgba(234, 224, 246, 0.96) 100%);
+  --nav-border: rgba(151, 125, 255, 0.26);
 
-  --shadow-card: 0 6px 22px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.85);
-  --shadow-float: 0 12px 30px rgba(26, 109, 255, 0.16);
+  --shadow-card: 0 6px 22px rgba(45, 28, 64, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  --shadow-float: 0 12px 30px rgba(91, 76, 230, 0.16);
   --radius-card: 22px;
   --radius-pill: 999px;
   --safe-top: env(safe-area-inset-top, 12px);
