@@ -1,4 +1,4 @@
-import { store } from '../state.js?v=20';
+import { store } from '../state.js?v=21';
 
 export function getEnglishVoices() {
   if (!('speechSynthesis' in window)) return [];
