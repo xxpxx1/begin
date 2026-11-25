@@ -1,11 +1,11 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { getAllVocabularyPool } from './lexicon.js?v=24';
+import { getAllVocabularyPool } from './lexicon.js?v=25';
 import {
   computeRealLearningAnalytics,
   exportProgressSnapshot,
   importProgressSnapshot
-} from '../engines/analytics-engine.js?v=24';
+} from '../engines/analytics-engine.js?v=25';
 
 const tdyState = {
   selectedDayKey: null,
@@ -82,7 +82,7 @@ export function renderToday(containerEl) {
   const pool = typeof getAllVocabularyPool === 'function' ? getAllVocabularyPool() : [];
   const report = computeRealLearningAnalytics(pool);
 
-  const dp = state.dailyProgress || { wordsReviewed: 0, speakCompleted: 0, storiesRead: 0 };
+  const d = state.daily || { vocab: 0, listen: 0, speak: 0 }; const dp = { wordsReviewed: d.vocab || 0, speakCompleted: d.speak || 0, storiesRead: d.listen || 0 };
   const dailyTargets = [
     {
       label: 'Uji Kosakata (SRS / Recall)',
@@ -150,7 +150,7 @@ export function renderToday(containerEl) {
 
         <div class="tdy-stat-row">
           <div class="tdy-stat-box">
-            <div class="tdy-stat-num">${Number(state.streak || 0)}</div>
+            <div class="tdy-stat-num">${Number(state.streak || (report.weeklyActivity.filter(x => x.count > 0).length))}</div>
             <div class="tdy-stat-lbl">Hari Streak</div>
           </div>
           <div class="tdy-stat-box">

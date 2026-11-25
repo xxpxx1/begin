@@ -11,12 +11,12 @@ import {
   savePersonalExample,
   evaluateRecallAnswer,
   normalizeWordKey
-} from '../engines/memory-srs.js?v=24';
+} from '../engines/memory-srs.js?v=25';
 import {
   analyzeVocabularyState,
   buildSmartWordQueue,
   buildRecallOptions
-} from '../engines/smart-engine.js?v=24';
+} from '../engines/smart-engine.js?v=25';
 
 
 const FALLBACK_WORDS = [

@@ -1,5 +1,5 @@
 import { Store } from '../core/store.js';
-import { analyzeVocabularyState } from './smart-engine.js?v=24';
+import { analyzeVocabularyState } from './smart-engine.js?v=25';
 
 function average(nums) {
   if (!Array.isArray(nums) || nums.length === 0) return null;
@@ -33,7 +33,7 @@ function dayKeyFromTs(ts) {
  */
 export function computeRealLearningAnalytics(allWords = []) {
   const state = Store.getState();
-  const memEntries = Object.values(state.vocabMemory || {});
+  const memEntries = Object.values(state.memory || {});
   const buckets = analyzeVocabularyState(allWords);
 
   // 1. Vocabulary Skill

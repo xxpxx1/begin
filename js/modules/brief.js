@@ -1,6 +1,6 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=24';
+import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=25';
 
 const CONTEXTUAL_STORIES = [
   {

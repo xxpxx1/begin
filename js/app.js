@@ -1,9 +1,9 @@
 import { escapeHTML } from './core/security.js';
-import { store } from './state.js?v=24';
-import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=24';
-import { initPathModule } from './modules/path.js?v=24';
-import { initBriefModule } from './modules/brief.js?v=24';
-import { initLexiconModule } from './modules/lexicon.js?v=24';
+import { store } from './state.js?v=25';
+import { speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=25';
+import { initPathModule } from './modules/path.js?v=25';
+import { initBriefModule } from './modules/brief.js?v=25';
+import { initLexiconModule } from './modules/lexicon.js?v=25';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -255,7 +255,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=24').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=25').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   let landingSlangPool = [
@@ -307,10 +307,10 @@ async function bootstrap() {
   });
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=24').then((r) => r.json()),
-    fetch('./data/briefs.json?v=24').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=24').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=24').then((r) => r.json())
+    fetch('./data/levels.json?v=25').then((r) => r.json()),
+    fetch('./data/briefs.json?v=25').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=25').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=25').then((r) => r.json())
   ]);
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);
@@ -376,6 +376,33 @@ bootstrap();
     if (e.target.closest('#themeToggleBtn')) {
       requestAnimationFrame(apply);
       setTimeout(apply, 30);
+    }
+  });
+})();
+
+// === LANDING ENTRY GUARD ===
+(function ensureLandingEntry() {
+  const enterApp = () => {
+    const shell = document.getElementById('appShell');
+    const landing = document.getElementById('view-landing');
+    const today = document.getElementById('view-today');
+    const tabBar = document.getElementById('bottomTabBar');
+    if (shell) shell.classList.remove('is-landing');
+    if (landing) landing.style.display = 'none';
+    if (today) {
+      today.style.display = '';
+      today.classList.add('active');
+    }
+    if (tabBar) tabBar.style.display = '';
+  };
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#modeSwitchBtn') || e.target.closest('#heroStartBtn')) {
+      setTimeout(() => {
+        const shell = document.getElementById('appShell');
+        if (shell && shell.classList.contains('is-landing')) {
+          enterApp();
+        }
+      }, 60);
     }
   });
 })();
