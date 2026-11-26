@@ -1,10 +1,10 @@
 import { escapeHTML } from './core/security.js';
-import { store } from './state.js?v=32';
-import { initSpeak, speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=32';
-import { initPathModule } from './modules/path.js?v=32';
-import { initBriefModule } from './modules/brief.js?v=32';
-import { initLexiconModule } from './modules/lexicon.js?v=32';
-import { renderToday } from './modules/today.js?v=32';
+import { store } from './state.js?v=33';
+import { initSpeak, speakText, stopSpeech, playTone, startRecognition, evaluateSpeech, getEnglishVoices, formatAccentTag } from './modules/speak.js?v=33';
+import { initPathModule } from './modules/path.js?v=33';
+import { initBriefModule } from './modules/brief.js?v=33';
+import { initLexiconModule } from './modules/lexicon.js?v=33';
+import { renderToday } from './modules/today.js?v=33';
 
 let toastTimer = null;
 let isLandingMode = true;
@@ -263,7 +263,7 @@ function initSpeakStudio(scenariosData) {
 
 async function bootstrap() {
   document.documentElement.setAttribute('data-theme', store.state.theme);
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=32').catch(() => {});
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js?v=33').catch(() => {});
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => getEnglishVoices();
 
   let landingSlangPool = [
@@ -315,10 +315,10 @@ async function bootstrap() {
   });
 
   const [levelsData, briefsData, scenariosData, dictData] = await Promise.all([
-    fetch('./data/levels.json?v=32').then((r) => r.json()),
-    fetch('./data/briefs.json?v=32').then((r) => r.json()),
-    fetch('./data/scenarios.json?v=32').then((r) => r.json()),
-    fetch('./data/dictionary.json?v=32').then((r) => r.json())
+    fetch('./data/levels.json?v=33').then((r) => r.json()),
+    fetch('./data/briefs.json?v=33').then((r) => r.json()),
+    fetch('./data/scenarios.json?v=33').then((r) => r.json()),
+    fetch('./data/dictionary.json?v=33').then((r) => r.json())
   ]);
   initPathModule(levelsData, notifyIsland, openSheet, closeSheet);
   initBriefModule(briefsData, notifyIsland, openSheet);

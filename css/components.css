@@ -3010,3 +3010,24 @@ body.dark-theme,
 :root:not([data-theme="dark"]) .tab-btn.active span {
   color: #FFFFFF !important;
 }
+
+/* === SOLID ACTION BUTTONS IN TARGET TERUKUR HARI INI (LIGHT MODE ONLY) === */
+:root:not([data-theme="dark"]) .tdy-goal-item button,
+:root:not([data-theme="dark"]) .tdy-goal-btn {
+  background: #4741A6 !important;
+  border: 1px solid #4741A6 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  padding: 8px 16px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 4px 12px rgba(71, 65, 166, 0.22) !important;
+}
+
+:root:not([data-theme="dark"]) .tdy-goal-item button.is-done,
+:root:not([data-theme="dark"]) .tdy-goal-item button:disabled {
+  background: #0F9D6E !important;
+  border-color: #0F9D6E !important;
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+}
