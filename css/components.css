@@ -2911,26 +2911,31 @@ body.dark-theme,
   color: #16193B;
 }
 
-/* 5. KPI STRIP 4 WARNA DI MODUL WORDS (Sesuai urutan 4 swatch referensi) */
-:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(1) {
-  background: #F9CE69;
-  border: 1px solid rgba(22, 25, 59, 0.12);
+/* 5. KPI STRIP BERSIH & TENANG DI MODUL WORDS (Khusus Light Mode) */
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(71, 65, 166, 0.15) !important;
+  box-shadow: 0 4px 12px rgba(22, 25, 59, 0.04) !important;
 }
-:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(2) {
-  background: #9BBBFC;
-  border: 1px solid rgba(71, 65, 166, 0.18);
+
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill .mem-kpi-num {
+  color: #16193B !important;
 }
-:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(3) {
-  background: #D9EFF7;
-  border: 1px solid rgba(71, 65, 166, 0.16);
+
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill .mem-kpi-num.is-weak {
+  color: #D97706 !important;
 }
-:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(4) {
-  background: #4741A6;
-  border: 1px solid #4741A6;
+
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill .mem-kpi-num.is-due {
+  color: #4741A6 !important;
 }
-:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(4) .mem-kpi-num,
-:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(4) .mem-kpi-lbl {
-  color: #FFFFFF;
+
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill .mem-kpi-num.is-mastered {
+  color: #0F9D6E !important;
+}
+
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill .mem-kpi-lbl {
+  color: #475569 !important;
 }
 
 /* Sub-blok di dalam kartu berwarna dibuat putih bersih agar hierarki teks sangat jelas */

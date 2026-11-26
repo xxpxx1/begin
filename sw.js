@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'begin-pwa-';
-const CACHE_NAME = 'begin-pwa-v5.0.1-nav-glider';
+const CACHE_NAME = 'begin-pwa-v5.0.2-clean-kpi';
 
 self.addEventListener('install', () => {
   self.skipWaiting();
