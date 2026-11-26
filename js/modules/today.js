@@ -54,6 +54,32 @@ function svgIcon(name) {
   return icons[name] || '';
 }
 
+function getFriendlyProgressCopy(overallScore) {
+  if (overallScore === null || overallScore === undefined) {
+    return {
+      title: 'Mulai Langkah Pertamamu',
+      subtitle: 'Selesaikan 1 latihan singkat hari ini untuk melihat perkembangan belajarmu.'
+    };
+  }
+  const pct = Math.max(0, Math.min(100, Math.round(Number(overallScore) || 0)));
+  if (pct < 50) {
+    return {
+      title: 'Progres Terus Bertumbuh',
+      subtitle: 'Gabungan latihan kosakata, pelafalan, dan pemahaman cerita.'
+    };
+  }
+  if (pct < 80) {
+    return {
+      title: 'Ritme Belajarmu Bagus!',
+      subtitle: 'Gabungan latihan kosakata, pelafalan, dan pemahaman cerita.'
+    };
+  }
+  return {
+    title: 'Siap Naik Level!',
+    subtitle: 'Penguasaan kosakata, pelafalan, dan bacaanmu sudah sangat konsisten.'
+  };
+}
+
 export function renderToday(containerEl) {
   const host =
     (containerEl && containerEl.nodeType === 1 ? containerEl : null) ||
@@ -139,14 +165,19 @@ export function renderToday(containerEl) {
           </span>
         </div>
         <div style="font-size:21px;font-weight:800;line-height:1.25;">
-          ${report.overallScore !== null ? `Indeks Kemampuan Nyata: ${report.overallScore}%` : 'Mulai Pemetaan Kemampuanmu'}
+          ${getFriendlyProgressCopy(report.overallScore).title}
         </div>
         <div style="font-size:13px;opacity:0.9;margin-top:4px;line-height:1.45;">
-          ${
-            report.overallScore !== null
-              ? 'Dihitung otomatis dari akurasi recall kosakata, evaluasi bicara 3 metrik, dan kuis pemahaman.'
-              : 'Skor kemampuan dihitung murni dari hasil uji nyata — bukan dari sekadar membuka aplikasi.'
-          }
+          ${getFriendlyProgressCopy(report.overallScore).subtitle}
+        </div>
+        <div style="margin:12px 0 4px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;margin-bottom:6px;">
+            <span style="opacity:0.92;">Progres Level ${escapeHTML(report.estimatedCEFR)}</span>
+            <span style="color:#F9CE69;font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;">${report.overallScore !== null ? `${report.overallScore}%` : '0%'}</span>
+          </div>
+          <div style="height:10px;border-radius:999px;background:rgba(255,255,255,0.2);overflow:hidden;">
+            <div style="width:${report.overallScore !== null ? Math.max(6, Math.min(100, Number(report.overallScore))) : 4}%;height:100%;border-radius:999px;background:#F9CE69;transition:width 0.6s cubic-bezier(0.22,1,0.36,1);"></div>
+          </div>
         </div>
 
         <div class="tdy-stat-row">
