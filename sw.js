@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'begin-pwa-';
-const CACHE_NAME = 'begin-pwa-v5.0.0-light-blocks';
+const CACHE_NAME = 'begin-pwa-v5.0.1-nav-glider';
 
 self.addEventListener('install', () => {
   self.skipWaiting();

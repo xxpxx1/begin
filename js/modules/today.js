@@ -1,11 +1,11 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { getAllVocabularyPool } from './lexicon.js?v=30';
+import { getAllVocabularyPool } from './lexicon.js?v=31';
 import {
   computeRealLearningAnalytics,
   exportProgressSnapshot,
   importProgressSnapshot
-} from '../engines/analytics-engine.js?v=30';
+} from '../engines/analytics-engine.js?v=31';
 
 const tdyState = {
   selectedDayKey: null,
