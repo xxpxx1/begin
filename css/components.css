@@ -3031,3 +3031,156 @@ body.dark-theme,
   opacity: 1 !important;
   box-shadow: none !important;
 }
+
+/* === LANDING LIGHT MODE WARM #F9CE69 LIGHTING === */
+/* Terkunci mutlak pada #appShell.is-landing[data-landing-theme="light"] saja */
+
+#appShell.is-landing[data-landing-theme="light"] {
+  background: linear-gradient(180deg, #FBF8F1 0%, #F4F6FB 56%, #EDF2FA 100%) !important;
+  color: #16193B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .top-bar {
+  background: rgba(251, 248, 241, 0.92) !important;
+  border-bottom: 1px solid rgba(71, 65, 166, 0.14) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .pill-nav-switch {
+  background: #4741A6 !important;
+  border-color: #4741A6 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(71, 65, 166, 0.2) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .icon-btn {
+  background: #FFFDF8 !important;
+  border-color: rgba(71, 65, 166, 0.18) !important;
+  color: #16193B !important;
+}
+
+/* HERO: Pancaran cahaya hangat #F9CE69 di area ilustrasi wanita */
+#appShell.is-landing[data-landing-theme="light"] .editorial-split-hero {
+  background:
+    radial-gradient(circle at 78% 42%, rgba(249, 206, 105, 0.85) 0%, rgba(249, 206, 105, 0.36) 42%, rgba(251, 248, 241, 0) 74%),
+    linear-gradient(125deg, #FBF8F1 0%, #FFF4D6 58%, #F9CE69 100%) !important;
+  border: 1px solid rgba(249, 206, 105, 0.55) !important;
+  box-shadow: 0 14px 32px rgba(180, 130, 30, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-hero-photo {
+  filter: brightness(1.03) contrast(1.04) saturate(1.08) drop-shadow(-6px 8px 18px rgba(249, 206, 105, 0.45)) !important;
+  opacity: 1 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-hero-vignette {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(251, 248, 241, 0.97) 0%,
+      rgba(251, 248, 241, 0.92) 34%,
+      rgba(255, 246, 222, 0.68) 50%,
+      rgba(249, 206, 105, 0.14) 68%,
+      transparent 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(251, 248, 241, 0.05) 0%,
+      transparent 65%,
+      rgba(251, 248, 241, 0.45) 100%
+    ) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-title {
+  color: #16193B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-title span {
+  color: #4741A6 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-sub {
+  color: #3B426B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .editorial-cta-pill {
+  background: #4741A6 !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid rgba(249, 206, 105, 0.65) !important;
+  box-shadow: 0 10px 22px rgba(71, 65, 166, 0.28) !important;
+}
+
+/* SLANG CARD: Permukaan Ice Mist (#D9EFF7) lembut & nyaman di mata */
+#appShell.is-landing[data-landing-theme="light"] .midnight-slang-card {
+  background: linear-gradient(155deg, #E8F5FA 0%, #D9EFF7 100%) !important;
+  border: 1px solid rgba(71, 65, 166, 0.16) !important;
+  box-shadow: 0 10px 24px rgba(22, 25, 59, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+  color: #16193B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-slang-card [style*="color:#FBBF24"] {
+  color: #B45309 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangWord {
+  color: #16193B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangPhonetic,
+#appShell.is-landing[data-landing-theme="light"] #landingSlangCounter {
+  color: #475569 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-slang-card span[style*="rgba(148,163,184,0.18)"] {
+  background: rgba(71, 65, 166, 0.12) !important;
+  color: #4741A6 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangMeaning {
+  color: #4741A6 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] #landingSlangExample {
+  color: #2B305C !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .slang-audio-circle {
+  background: #4741A6 !important;
+  border-color: #4741A6 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 16px rgba(71, 65, 166, 0.24) !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .slang-shuffle-pill,
+#appShell.is-landing[data-landing-theme="light"] .slang-icon-mini {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(71, 65, 166, 0.18) !important;
+  color: #4741A6 !important;
+}
+
+/* BOTTOM 3 KPI BOXES: Palet lembut selaras (#F9CE69, #D9EFF7, #9BBBFC) */
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-grid .midnight-kpi-box:nth-child(1) {
+  background: linear-gradient(155deg, #FFFDF7 0%, #FFF3D1 100%) !important;
+  border: 1px solid rgba(249, 206, 105, 0.65) !important;
+  color: #16193B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-grid .midnight-kpi-box:nth-child(2) {
+  background: linear-gradient(155deg, #F5FBFE 0%, #D9EFF7 100%) !important;
+  border: 1px solid rgba(71, 65, 166, 0.16) !important;
+  color: #16193B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-grid .midnight-kpi-box:nth-child(3) {
+  background: linear-gradient(155deg, #F4F7FF 0%, #DCE7FE 100%) !important;
+  border: 1px solid rgba(155, 187, 252, 0.55) !important;
+  color: #16193B !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-icon {
+  background: rgba(71, 65, 166, 0.12) !important;
+  color: #4741A6 !important;
+}
+
+#appShell.is-landing[data-landing-theme="light"] .midnight-kpi-box div[style*="color:#94A3B8"] {
+  color: #475569 !important;
+}
