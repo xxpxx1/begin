@@ -1,27 +1,27 @@
 :root {
-  --bg-grouped: #F7F2F6;
-  --bg-hero-grad: linear-gradient(180deg, #EFE3EC 0%, #F5EEF4 52%, #FAF7FA 100%);
-  --bg-card: linear-gradient(160deg, #FAF4F8 0%, #F2E6EE 100%);
-  --bg-card-solid: #F2E6EE;
-  --bg-secondary: #EAE0E8;
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-tertiary: #64748B;
-  --separator: rgba(151, 125, 255, 0.22);
+  --bg-grouped: #F7F9FC;
+  --bg-hero-grad: linear-gradient(180deg, #EEF4FB 0%, #F7F9FC 55%, #FFFFFF 100%);
+  --bg-card: #D9EFF7;
+  --bg-card-solid: #D9EFF7;
+  --bg-secondary: #E6F2FA;
+  --text-primary: #16193B;
+  --text-secondary: #3B426B;
+  --text-tertiary: #5C648E;
+  --separator: rgba(71, 65, 166, 0.16);
 
-  --ios-blue: #1A6DFF;
-  --ios-azure: #5B4CE6;
-  --ios-green: #10B981;
-  --ios-red: #F43F5E;
-  --ios-orange: #F59E0B;
-  --ios-purple: #977DFF;
+  --ios-blue: #4741A6;
+  --ios-azure: #5B54C7;
+  --ios-green: #0F9D6E;
+  --ios-red: #E11D48;
+  --ios-orange: #D97706;
+  --ios-purple: #4741A6;
 
-  --nav-top-bg: linear-gradient(135deg, rgba(242, 230, 238, 0.94) 0%, rgba(235, 224, 245, 0.94) 100%);
-  --nav-bottom-bg: linear-gradient(135deg, rgba(242, 230, 238, 0.96) 0%, rgba(234, 224, 246, 0.96) 100%);
-  --nav-border: rgba(151, 125, 255, 0.26);
+  --nav-top-bg: rgba(255, 255, 255, 0.92);
+  --nav-bottom-bg: rgba(255, 255, 255, 0.94);
+  --nav-border: rgba(71, 65, 166, 0.16);
 
-  --shadow-card: 0 6px 22px rgba(45, 28, 64, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.88);
-  --shadow-float: 0 12px 30px rgba(91, 76, 230, 0.16);
+  --shadow-card: 0 6px 20px rgba(22, 25, 59, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  --shadow-float: 0 12px 28px rgba(71, 65, 166, 0.16);
   --radius-card: 22px;
   --radius-pill: 999px;
   --safe-top: env(safe-area-inset-top, 12px);

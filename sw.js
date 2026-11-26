@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'begin-pwa-';
-const CACHE_NAME = 'begin-pwa-v4.7.0-p4';
+const CACHE_NAME = 'begin-pwa-v5.0.0-light-blocks';
 
 self.addEventListener('install', () => {
   self.skipWaiting();

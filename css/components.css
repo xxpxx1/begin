@@ -2826,40 +2826,162 @@ body.dark-theme,
   color: var(--ios-blue, #1A6DFF);
 }
 
-/* === TOKEN-BOUND SURFACES: LIGHT (#F2E6EE) & ORIGINAL DARK (#16223B) === */
-.ios-card,
-.p3-card,
-.mem-card,
-.mem-dict-item,
-.mem-kpi-pill,
-.mem-smart-banner {
+/* === LIGHT MODE EDITORIAL BLOCKS (#D9EFF7, #9BBBFC, #4741A6, #F9CE69) === */
+/* Seluruh aturan di bawah ini terkunci pada :root:not([data-theme="dark"]) sehingga Dark Mode 100% tidak tersentuh */
+
+:root:not([data-theme="dark"]) body,
+:root:not([data-theme="dark"]) .app-shell {
+  background: #F7F9FC;
+  color: #16193B;
+}
+
+/* 1. DEEP INDIGO (#4741A6) — Blok Hero, Banner Engine & Tombol Aksi Utama */
+:root:not([data-theme="dark"]) .tdy-hero,
+:root:not([data-theme="dark"]) .mem-smart-banner,
+:root:not([data-theme="dark"]) .hero-banner-card {
+  background: #4741A6;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 14px 30px rgba(71, 65, 166, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+}
+
+:root:not([data-theme="dark"]) .tdy-hero *,
+:root:not([data-theme="dark"]) .mem-smart-banner * {
+  color: #FFFFFF;
+}
+
+:root:not([data-theme="dark"]) .tdy-hero .tdy-stat-box,
+:root:not([data-theme="dark"]) .tdy-hero [style*="background: rgba(255"] {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+:root:not([data-theme="dark"]) .mem-banner-title svg {
+  color: #F9CE69;
+}
+
+/* Tombol Aksi Utama & Tab Aktif memakai #4741A6 */
+:root:not([data-theme="dark"]) .btn-primary,
+:root:not([data-theme="dark"]) .mem-btn-primary,
+:root:not([data-theme="dark"]) .mem-tab-btn.active,
+:root:not([data-theme="dark"]) .mem-filter-chip.active,
+:root:not([data-theme="dark"]) .tab-btn.active {
+  background: #4741A6;
+  border-color: #4741A6;
+  color: #FFFFFF;
+}
+
+/* 2. WARM MARIGOLD (#F9CE69) — Blok Prioritas, Kartu Latihan Aktif & Sorotan */
+:root:not([data-theme="dark"]) #todayAnalyticsContainer > .ios-card:nth-of-type(1),
+:root:not([data-theme="dark"]) .mem-card,
+:root:not([data-theme="dark"]) #speakStudioContainer .p3-card:nth-of-type(3),
+:root:not([data-theme="dark"]) .landing-card-highlight {
+  background: #F9CE69;
+  border: 1px solid rgba(22, 25, 59, 0.12);
+  box-shadow: 0 8px 22px rgba(249, 206, 105, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  color: #16193B;
+}
+
+:root:not([data-theme="dark"]) #todayAnalyticsContainer > .ios-card:nth-of-type(1) .eyebrow,
+:root:not([data-theme="dark"]) #todayAnalyticsContainer > .ios-card:nth-of-type(1) p,
+:root:not([data-theme="dark"]) .mem-card .mem-phonetic {
+  color: #2B305C;
+}
+
+/* 3. ICE MIST (#D9EFF7) — Blok Materi, Daftar Kosakata, Bacaan & Kartu Dasar */
+:root:not([data-theme="dark"]) .ios-card,
+:root:not([data-theme="dark"]) .p3-card,
+:root:not([data-theme="dark"]) .mem-dict-item,
+:root:not([data-theme="dark"]) .unit-card,
+:root:not([data-theme="dark"]) .brief-card {
+  background: #D9EFF7;
+  border: 1px solid rgba(71, 65, 166, 0.14);
+  box-shadow: 0 6px 20px rgba(22, 25, 59, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+  color: #16193B;
+}
+
+/* 4. PERIWINKLE BLUE (#9BBBFC) — Blok Audio Speak, Kuis & Kartu Selang-Seling */
+:root:not([data-theme="dark"]) #todayAnalyticsContainer > .ios-card:nth-of-type(3),
+:root:not([data-theme="dark"]) #speakStudioContainer .p3-card:nth-of-type(2),
+:root:not([data-theme="dark"]) #unitsList > *:nth-child(even),
+:root:not([data-theme="dark"]) #briefList > *:nth-child(even) {
+  background: #9BBBFC;
+  border: 1px solid rgba(71, 65, 166, 0.2);
+  box-shadow: 0 8px 22px rgba(155, 187, 252, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  color: #16193B;
+}
+
+/* 5. KPI STRIP 4 WARNA DI MODUL WORDS (Sesuai urutan 4 swatch referensi) */
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(1) {
+  background: #F9CE69;
+  border: 1px solid rgba(22, 25, 59, 0.12);
+}
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(2) {
+  background: #9BBBFC;
+  border: 1px solid rgba(71, 65, 166, 0.18);
+}
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(3) {
+  background: #D9EFF7;
+  border: 1px solid rgba(71, 65, 166, 0.16);
+}
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(4) {
+  background: #4741A6;
+  border: 1px solid #4741A6;
+}
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(4) .mem-kpi-num,
+:root:not([data-theme="dark"]) .mem-kpi-strip .mem-kpi-pill:nth-child(4) .mem-kpi-lbl {
+  color: #FFFFFF;
+}
+
+/* Sub-blok di dalam kartu berwarna dibuat putih bersih agar hierarki teks sangat jelas */
+:root:not([data-theme="dark"]) .tdy-goal-item,
+:root:not([data-theme="dark"]) .tdy-skill-card,
+:root:not([data-theme="dark"]) .mem-reveal-box,
+:root:not([data-theme="dark"]) .mem-personal-box,
+:root:not([data-theme="dark"]) .mem-input,
+:root:not([data-theme="dark"]) .mem-choice-btn,
+:root:not([data-theme="dark"]) .mem-btn-ghost {
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(71, 65, 166, 0.18);
+  color: #16193B;
+}
+
+:root:not([data-theme="dark"]) .mem-filter-chip:not(.active),
+:root:not([data-theme="dark"]) .mem-tab-btn:not(.active) {
+  background: #FFFFFF;
+  border: 1px solid rgba(71, 65, 166, 0.18);
+  color: #16193B;
+}
+
+/* === DARK MODE TETAP ASLI 100% SEPERTI v2.0-baseline === */
+[data-theme="dark"] .ios-card,
+[data-theme="dark"] .p3-card,
+[data-theme="dark"] .mem-card,
+[data-theme="dark"] .mem-dict-item,
+[data-theme="dark"] .mem-kpi-pill,
+[data-theme="dark"] .mem-smart-banner {
   background: var(--bg-card);
   border: 1px solid var(--separator);
   box-shadow: var(--shadow-card);
   color: var(--text-primary);
 }
 
-.tdy-goal-item,
-.tdy-skill-card,
-.mem-reveal-box,
-.mem-personal-box {
+[data-theme="dark"] .tdy-goal-item,
+[data-theme="dark"] .tdy-skill-card,
+[data-theme="dark"] .mem-reveal-box,
+[data-theme="dark"] .mem-personal-box {
   background: var(--bg-grouped);
   border: 1px solid var(--separator);
   color: var(--text-primary);
 }
 
-.mem-input,
-.mem-choice-btn,
-.mem-filter-chip:not(.active),
-.mem-tab-btn:not(.active) {
+[data-theme="dark"] .mem-input,
+[data-theme="dark"] .mem-choice-btn,
+[data-theme="dark"] .mem-filter-chip:not(.active),
+[data-theme="dark"] .mem-tab-btn:not(.active) {
   background: var(--bg-card-solid);
   border-color: var(--separator);
   color: var(--text-primary);
-}
-
-.tdy-hero {
-  background: linear-gradient(135deg, #2952FF 0%, #5B4CE6 55%, #1624B8 100%);
-  box-shadow: 0 14px 30px rgba(41, 82, 255, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 [data-theme="dark"] .tdy-hero {
