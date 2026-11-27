@@ -1,6 +1,6 @@
 import { Store } from '../core/store.js';
 import { escapeHTML } from '../core/security.js';
-import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=34';
+import { recordWordReview, getWordRecord } from '../engines/memory-srs.js?v=35';
 
 const CONTEXTUAL_STORIES = [
   {
@@ -400,6 +400,7 @@ function bindBriefEvents(root) {
 
     const optBtn = e.target.closest('[data-brf-q]');
     if (optBtn) {
+      if (brfState.quizFeedback[story.id]?.passed) return;
       const qIdx = Number(optBtn.getAttribute('data-brf-q'));
       const optIdx = Number(optBtn.getAttribute('data-brf-opt'));
       if (!brfState.answers[story.id]) brfState.answers[story.id] = {};
@@ -425,6 +426,7 @@ function bindBriefEvents(root) {
         playStoryWithSubtitles(story, root);
       }
     } else if (action === 'submit-quiz') {
+      if (brfState.quizFeedback[story.id]?.passed) return;
       const ans = brfState.answers[story.id] || {};
       let correctCount = 0;
       story.questions.forEach((qObj, idx) => {

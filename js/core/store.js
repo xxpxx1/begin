@@ -53,6 +53,7 @@ export function defaultState() {
     },
     vault: [],
     completedUnits: [],
+    eventLog: [],
     rewardLedger: {},
     memory: {},
     speechHistory: [],
@@ -257,6 +258,7 @@ class BeginStore {
       note: '',
       savedAt: Date.now()
     });
+    this.logEvent({ type: 'word_saved', entityId: cleanWord, xp: 0, simulated: false });
     this._save();
     return true;
   }
@@ -266,6 +268,24 @@ class BeginStore {
    * - Satu activityId hanya memberi XP 1x (atau 1x per hari jika dailyScoped = true).
    * - Tanpa activityId yang valid, XP tidak akan bertambah.
    */
+  logEvent({ type, entityId = '', xp = 0, simulated = false } = {}) {
+    if (!type) return;
+    if (!Array.isArray(this.state.eventLog)) this.state.eventLog = [];
+    this.state.eventLog.push({
+      eventId: `${type}:${String(entityId).slice(0, 48)}:${Date.now()}`,
+      type: String(type).slice(0, 40),
+      entityId: String(entityId).slice(0, 64),
+      xp: simulated ? 0 : clampInt(xp, 0, MAX_XP_PER_ACTION, 0),
+      simulated: Boolean(simulated),
+      dateKey: getLocalDateKey(),
+      ts: Date.now(),
+      synced: false
+    });
+    if (this.state.eventLog.length > 400) {
+      this.state.eventLog = this.state.eventLog.slice(-400);
+    }
+  }
+
   claimActivityReward({ activityId, type = 'vocab', amount = 1, xpBonus = 15, dailyScoped = true } = {}) {
     this._ensureLocalDay();
     if (!activityId || typeof activityId !== 'string') {
@@ -295,6 +315,7 @@ class BeginStore {
       RING_CAPS[type],
       (this.state.daily[type] || 0) + safeAmount
     );
+    this.logEvent({ type: `${type}_verified`, entityId: activityId, xp: safeXp, simulated: false });
 
     this._save();
     return { awarded: true, xpAwarded: safeXp, totalXp: this.state.xp };
@@ -342,6 +363,7 @@ class BeginStore {
       type: 'unit'
     };
     this.state.xp += safeXp;
+    this.logEvent({ type: 'unit_completed', entityId: cleanId, xp: safeXp, simulated: false });
     this._save();
     return { awarded: true, xpAwarded: safeXp, totalXp: this.state.xp };
   }
@@ -365,6 +387,12 @@ class BeginStore {
 
   recordSpeechAttempt(entry) {
     if (!entry || typeof entry.target !== 'string') return;
+    if (entry.simulated) {
+      this.logEvent({ type: 'speaking_demo', entityId: entry.id || entry.target, xp: 0, simulated: true });
+      this._save();
+      return;
+    }
+    this.logEvent({ type: 'speaking_attempt', entityId: entry.id || entry.target, xp: 0, simulated: false });
     if (!Array.isArray(this.state.speechHistory)) this.state.speechHistory = [];
     if (!this.state.analytics || typeof this.state.analytics !== 'object') {
       this.state.analytics = { vocabTests: [], readingTests: [], listeningTests: [], speakingTests: [] };

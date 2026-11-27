@@ -1,6 +1,6 @@
 import { escapeHTML } from '../core/security.js';
-import { store } from '../state.js?v=34';
-import { speakText, playTone, startRecognition, evaluateSpeech } from './speak.js?v=34';
+import { store } from '../state.js?v=35';
+import { speakText, playTone, startRecognition, evaluateSpeech } from './speak.js?v=35';
 
 export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) {
   const pillsEl = document.getElementById('levelPills');
@@ -58,7 +58,7 @@ export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) 
     const isHard = ['B2', 'C1'].includes(levelObj.id);
     const minPass = isHard ? 80 : 65;
 
-    function showAppreciation(sentence, xpGain, onContinue) {
+    function showAppreciation(sentence, xpGain, onContinue, isSimulated = false) {
       playTone('fanfare');
       if (navigator.vibrate) navigator.vibrate([15, 40, 25]);
       openSheet(`
@@ -66,7 +66,7 @@ export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) 
           <div class="praise-badge">
             <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <div class="card-label" style="color:var(--ios-green);">+${xpGain} XP EARNED</div>
+          ${isSimulated ? '<div class="card-label" style="color:var(--text-secondary);">MODE SIMULASI · 0 XP (TIDAK TERCATAT)</div>' : `<div class="card-label" style="color:var(--ios-green);">+${xpGain} XP EARNED</div>`}
           <h2 class="jakarta-heading" style="font-size:26px;margin:4px 0 6px;">${isHard ? 'Outstanding!' : 'Perfect!'}</h2>
           <p style="font-size:14.5px;font-weight:700;color:var(--text-primary);margin-bottom:14px;">"${sentence}"</p>
           <div style="display:grid;grid-template-columns:1fr 1.8fr;gap:8px;">
@@ -161,16 +161,27 @@ export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) 
           </div>
         `);
 
-        const handleEval = (spoken) => {
+        const handleEval = (spoken, isSimulated = false) => {
           const res = evaluateSpeech(ex.target, spoken);
           const passed = res.accuracy >= minPass;
           document.getElementById('unitSpeakFeedback').innerHTML = `
-            <div style="margin-bottom:6px;font-size:13px;">Skor: <strong style="color:${passed ? 'var(--ios-green)' : 'var(--ios-red)'};">${res.accuracy}%</strong></div>
+            <div style="margin-bottom:6px;font-size:13px;">
+              Skor: <strong style="color:${passed ? 'var(--ios-green)' : 'var(--ios-red)'};">${res.accuracy}%</strong>
+              ${isSimulated ? '<span style="margin-left:6px;font-size:11px;padding:2px 8px;border-radius:99px;background:rgba(148,163,184,0.2);color:var(--text-secondary);">Simulasi · 0 XP</span>' : ''}
+            </div>
             <div>${res.wordAnalysis.map((w) => `<span class="word-chip-result ${w.ok ? 'word-ok' : 'word-miss'}">${escapeHTML(w.word)}</span>`).join('')}</div>
           `;
+          if (isSimulated) {
+            if (typeof store.recordSpeechAttempt === 'function') {
+              store.recordSpeechAttempt({ id: `${unit.id}:${step}`, target: ex.target, transcript: spoken, simulated: true });
+            }
+            setTimeout(() => showAppreciation(ex.target, 0, () => { step++; renderExercise(); }, true), 550);
+            return;
+          }
           if (passed) {
-            store.incrementRing('speaking', 1, 15);
-            setTimeout(() => showAppreciation(ex.target, 20, () => { step++; renderExercise(); }), 550);
+            const reward = store.incrementRing('speaking', 1, 15, `path-speak:${unit.id}:${step}`);
+            const gained = reward && reward.awarded ? reward.xpAwarded : 0;
+            setTimeout(() => showAppreciation(ex.target, gained, () => { step++; renderExercise(); }, false), 550);
           } else {
             playTone('error');
             if (navigator.vibrate) navigator.vibrate(35);
@@ -180,9 +191,9 @@ export function initPathModule(levelsData, notifyIsland, openSheet, closeSheet) 
         document.getElementById('unitListenBtn').onclick = () => speakText(ex.target);
         document.getElementById('unitRecBtn').onclick = () => {
           const w = document.getElementById('unitWave'); w.classList.add('active');
-          startRecognition({ onResult: handleEval, onError: () => {}, onEnd: () => w.classList.remove('active') });
+          startRecognition({ onResult: (txt) => handleEval(txt, false), onError: () => {}, onEnd: () => w.classList.remove('active') });
         };
-        document.getElementById('unitSimBtn').onclick = () => handleEval(ex.target);
+        document.getElementById('unitSimBtn').onclick = () => handleEval(ex.target, true);
       }
     }
     renderExercise();
