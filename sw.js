@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'begin-pwa-';
-const CACHE_NAME = 'begin-pwa-v5.1.0-xp-ledger';
+const CACHE_NAME = 'begin-pwa-v5.2.0-owner-console';
 
 self.addEventListener('install', () => {
   self.skipWaiting();
@@ -21,7 +21,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin || url.pathname.startsWith('/api/')) return;
+  if (url.origin !== self.location.origin || url.pathname.startsWith('/api/') || url.pathname.includes('/owner/')) return;
 
   event.respondWith(
     fetch(event.request)
