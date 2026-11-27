@@ -71,12 +71,21 @@ function renderNav() {
 }
 
 function renderOverview(snap) {
-  const { metrics, technical, config } = snap;
+  const { metrics, technical, config, state } = snap;
+  const daily = state.daily || { vocab: 0, speaking: 0, listening: 0 };
+  const caps = config.dailyRingCaps || { vocab: 5, speaking: 2, listening: 1 };
+
+  const rings = [
+    { label: 'Kosakata (SRS / Recall)', done: Number(daily.vocab || 0), cap: Number(caps.vocab || 5), color: 'var(--accent-emerald)' },
+    { label: 'Latihan Bicara Terukur', done: Number(daily.speaking || 0), cap: Number(caps.speaking || 2), color: 'var(--accent-sky)' },
+    { label: 'Daily Brief & Pemahaman', done: Number(daily.listening || 0), cap: Number(caps.listening || 1), color: '#818CF8' }
+  ];
+
   return `
     <div class="own-page-head">
       <div>
-        <h1 class="own-page-title jakarta">01 · Overview Ekosistem BEGIN</h1>
-        <p class="own-page-desc">Ringkasan telemetri lokal saat ini dan kesiapan arsitektur menuju Backend API.</p>
+        <h1 class="own-page-title jakarta">01 · Overview</h1>
+        <p class="own-page-desc">Ringkasan kondisi belajar, XP tervalidasi, dan status antrean lokal BEGIN.</p>
       </div>
       <span class="own-badge ${config.featureFlags.remoteBackendSync ? 'tone-emerald' : 'tone-sky'}">
         ${config.featureFlags.remoteBackendSync ? 'Backend API Connected' : 'Local Adapter Active'}
@@ -108,47 +117,25 @@ function renderOverview(snap) {
 
     <div class="own-card">
       <div class="own-sec-title">
-        <span>Arsitektur Kesiapan Produksi (BEGIN Ecosystem)</span>
-        <span class="own-badge tone-emerald">Decoupled Ready</span>
+        <span>Target Harian Perangkat Aktif</span>
+        <span class="own-badge tone-muted">Streak ${metrics.streak} hari</span>
       </div>
-      <div class="eco-flow">
-        <div class="eco-node">
-          <div class="eco-node-title">BEGIN PWA (Client Edge)</div>
-          <div class="eco-node-sub">Local learning state (${esc(snap.storageKey)}) + offline content</div>
-        </div>
-        <div class="eco-arrow">↓</div>
-        <div class="eco-split">
-          <div class="eco-node">
-            <div class="eco-node-title">Analytics Client</div>
-            <div class="eco-node-sub">Anonymous events, consent, offline queue (${metrics.unsyncedEventsCount} pending)</div>
-          </div>
-          <div class="eco-node">
-            <div class="eco-node-title">Learning Client</div>
-            <div class="eco-node-sub">XP (${metrics.totalXp}), streak (${metrics.streak}h), lesson progress</div>
-          </div>
-        </div>
-        <div class="eco-arrow">↓</div>
-        <div class="eco-node">
-          <div class="eco-node-title">Backend API (${esc(config.endpointBaseUrl)})</div>
-          <div class="eco-node-sub">Validation · Authentication · Rate limiting · Idempotency Guard</div>
-        </div>
-        <div class="eco-arrow">↓</div>
-        <div class="eco-split">
-          <div class="eco-node">
-            <div class="eco-node-title">Analytics DB</div>
-            <div class="eco-node-sub">Events, sessions, aggregates</div>
-          </div>
-          <div class="eco-node">
-            <div class="eco-node-title">Learning DB</div>
-            <div class="eco-node-sub">Progress, XP, SRS records</div>
-          </div>
-        </div>
-        <div class="eco-arrow">↓</div>
-        <div class="eco-node is-owner">
-          <div class="eco-node-title" style="color:var(--accent-emerald);">BEGIN OWNER CONSOLE</div>
-          <div class="eco-node-sub">Private analytics and management via OwnerDataAdapter</div>
-        </div>
-      </div>
+      ${rings
+        .map((r) => {
+          const pct = Math.min(100, Math.round((r.done / Math.max(1, r.cap)) * 100));
+          return `
+            <div class="own-bar-row">
+              <div class="own-bar-head">
+                <span>${r.label}</span>
+                <span>${r.done} / ${r.cap}</span>
+              </div>
+              <div class="own-bar-track">
+                <div class="own-bar-fill" style="width:${Math.max(4, pct)}%;background:${r.color};"></div>
+              </div>
+            </div>
+          `;
+        })
+        .join('')}
     </div>
   `;
 }
@@ -349,7 +336,7 @@ function renderRetention(snap) {
 }
 
 function renderTechnical(snap) {
-  const { technical } = snap;
+  const { technical, metrics, config } = snap;
   return `
     <div class="own-page-head">
       <div>
@@ -405,6 +392,52 @@ function renderTechnical(snap) {
               )
               .join('')
       }
+    </div>
+  
+
+    <div class="own-card">
+      <div class="own-sec-title">
+        <span>Arsitektur Kesiapan Produksi (BEGIN Ecosystem)</span>
+        <span class="own-badge tone-emerald">Decoupled Ready</span>
+      </div>
+      <div class="eco-flow">
+        <div class="eco-node">
+          <div class="eco-node-title">BEGIN PWA (Client Edge)</div>
+          <div class="eco-node-sub">Local learning state (${esc(snap.storageKey)}) + offline content</div>
+        </div>
+        <div class="eco-arrow">↓</div>
+        <div class="eco-split">
+          <div class="eco-node">
+            <div class="eco-node-title">Analytics Client</div>
+            <div class="eco-node-sub">Anonymous events, consent, offline queue (${metrics.unsyncedEventsCount} pending)</div>
+          </div>
+          <div class="eco-node">
+            <div class="eco-node-title">Learning Client</div>
+            <div class="eco-node-sub">XP (${metrics.totalXp}), streak (${metrics.streak}h), lesson progress</div>
+          </div>
+        </div>
+        <div class="eco-arrow">↓</div>
+        <div class="eco-node">
+          <div class="eco-node-title">Backend API (${esc(config.endpointBaseUrl)})</div>
+          <div class="eco-node-sub">Validation · Authentication · Rate limiting · Idempotency Guard</div>
+        </div>
+        <div class="eco-arrow">↓</div>
+        <div class="eco-split">
+          <div class="eco-node">
+            <div class="eco-node-title">Analytics DB</div>
+            <div class="eco-node-sub">Events, sessions, aggregates</div>
+          </div>
+          <div class="eco-node">
+            <div class="eco-node-title">Learning DB</div>
+            <div class="eco-node-sub">Progress, XP, SRS records</div>
+          </div>
+        </div>
+        <div class="eco-arrow">↓</div>
+        <div class="eco-node is-owner">
+          <div class="eco-node-title" style="color:var(--accent-emerald);">BEGIN OWNER CONSOLE</div>
+          <div class="eco-node-sub">Private analytics and management via OwnerDataAdapter</div>
+        </div>
+      </div>
     </div>
   `;
 }
