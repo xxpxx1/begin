@@ -640,7 +640,7 @@ async function renderConsole() {
 
   const modeLabel = document.getElementById('adapterModeLabel');
   if (modeLabel) {
-    modeLabel.textContent = snap.config.featureFlags.remoteBackendSync ? 'API Ready Mode' : 'Local Sandbox';
+    modeLabel.textContent = snap.config.featureFlags.remoteBackendSync ? 'API Ready' : 'Local';
   }
 
   const views = {

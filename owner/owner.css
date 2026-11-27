@@ -445,3 +445,29 @@ body {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* === COMPACT SINGLE-ROW TOPBAR (MOBILE + DESKTOP) === */
+.own-topbar {
+  gap: 8px;
+  padding: calc(10px + env(safe-area-inset-top, 0px)) 14px 10px;
+}
+.own-brand { gap: 9px; min-width: 0; }
+.own-brand-mark { width: 32px; height: 32px; border-radius: 9px; }
+.own-brand-row { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.own-brand-title { font-size: 13.5px; letter-spacing: 0.02em; white-space: nowrap; }
+.own-brand-sub { display: none; }
+.own-env-pill { padding: 2px 7px; font-size: 10px; gap: 4px; }
+.own-topbar-actions { flex-wrap: nowrap; gap: 6px; flex-shrink: 0; }
+.own-topbar-actions .own-btn { min-height: 32px; padding: 5px 10px; font-size: 12px; white-space: nowrap; }
+.label-full { display: none; }
+
+@media (min-width: 640px) {
+  .own-topbar { padding: 12px 18px; }
+  .own-brand-mark { width: 36px; height: 36px; }
+  .own-brand-title { font-size: 15px; }
+  .own-brand-sub { display: block; font-size: 11px; margin-top: 1px; }
+  .own-env-pill { padding: 3px 9px; font-size: 11px; }
+  .own-topbar-actions .own-btn { min-height: 36px; padding: 7px 13px; font-size: 12.5px; }
+  .label-short { display: none; }
+  .label-full { display: inline; }
+}
